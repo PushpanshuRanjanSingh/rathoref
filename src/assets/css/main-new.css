@@ -1,0 +1,149 @@
+.border-bottom {
+  border-bottom: 4px solid #f00 !important;
+  width: 10%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.privacy {
+  padding: 50px 0 50px;
+}
+h4.extra-title {
+  color: #000;
+  font-size: 30px;
+}
+.privacy h5 {
+  font-size: 20px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+.product-col .product-media {
+  display: inline-block;
+  margin: 0;
+  margin-right: 2.8rem;
+  flex-shrink: 0;
+  max-width: 60px;
+}
+.table.table-cart.table-mobile img {
+  height: auto;
+}
+.product-media > a {
+  display: block;
+}
+.product-col .product {
+  margin: 0;
+  padding-right: 2rem;
+  box-shadow: none;
+  align-items: center;
+  display: flex;
+}
+.cart-product-quantity {
+  width: 100px;
+}
+.input-spinner {
+  position: relative;
+}
+
+.input-spinner .input-group-prepend,
+.input-spinner .input-group-append {
+  position: absolute;
+  top: 0;
+}
+
+.input-spinner .input-group-prepend {
+  left: 0;
+}
+
+.input-spinner .input-group-append {
+  right: 0;
+}
+
+.input-spinner .form-control {
+  padding: 0.85rem 2.6rem;
+  height: auto;
+  border-color: #dadada;
+  background-color: #fff;
+  margin: 0;
+}
+
+.input-spinner .form-control[disabled] {
+  background-color: #f9f9f9;
+}
+
+.btn.btn-spinner {
+  min-width: 0;
+  color: #333333;
+  padding: 1.25rem 0.4rem;
+  font-size: 1rem;
+  border: none;
+  background: none;
+}
+
+.btn.btn-spinner i {
+  margin: 0 !important;
+}
+
+.btn.btn-spinner:hover,
+.btn.btn-spinner:focus {
+  color: #bda08f;
+}
+.table.table-cart .quantity-col {
+  width: 10%;
+  vertical-align: middle;
+}
+.table.table-cart .total-col {
+  width: 10%;
+  vertical-align: middle;
+}
+.table .remove-col {
+  padding-right: 0;
+  padding-left: 0;
+  width: 5%;
+  text-align: right;
+  vertical-align: middle;
+}
+.table .price-col {
+  width: 10%;
+  color: #333;
+  font-weight: 400;
+  font-size: 18px;
+  vertical-align: middle;
+}
+.price-col small {
+  display: block;
+  font-size: 11px;
+}
+.product-col .product-title a {
+  display: inline-block;
+  color: #333;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  margin: 0;
+}
+.product h3 {
+  display: inline-block;
+}
+.table th,
+.table thead th,
+.table td {
+  border-top: none !important;
+  border-bottom: 0.1rem solid #ebebeb !important;
+}
+.remove-col a {
+  color: #6f6d6d;
+}
+.user-page {
+  background-image: url(/assets/images/bg2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  display: flex;
+  padding: 25px 0;
+  position: relative;
+}
+.footer-content {
+  background: #e1dede;
+  padding: 40px 0;
+}

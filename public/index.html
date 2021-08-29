@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <!-- <title>Nayaak</title> -->
+  </head>
+  <body
+    class="banners-effect2 default home2--style meganeu-toggler-on"
+    data-typography="poppins"
+    data-theme-version="light"
+    data-layout="vertical"
+    data-nav-headerbg="color_1"
+    data-headerbg="color_1"
+    data-sidebar-style="full"
+    data-sibebarbg="color_1"
+    data-sidebar-position="fixed"
+    data-header-position="fixed"
+    data-container="wide"
+    direction="ltr"
+    data-primary="color_1"
+  >
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="main-wrapper mh-100v" id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="assets/js/modernizr.min.js"></script>
+    <!-- <script src="assets/js/global.min.js"></script> -->
+    <script src="assets/js/bootstrap-select.min.js"></script>
+    <!-- <script src="assets/js/custom.js"></script> -->
+    <script src="assets/js/deznav-init.js"></script>
+
+    <script src="assets/js/custom.min.js"></script>
+    <!-- <script src="assets/js/tinymce.min.js"></script> -->
+    <!-- <script  src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    <script>
+      //initiate the plugin and pass the id of the div containing gallery images
+
+      $(function () {
+        $('img').jqZoom({
+          selectorWidth: 30,
+          selectorHeight: 30,
+          viewerWidth: 400,
+          viewerHeight: 300,
+        });
+      });
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-36251023-1']);
+      _gaq.push(['_setDomainName', 'jqueryscript.net']);
+      _gaq.push(['_trackPageview']);
+
+      // (function () {
+      //   var ga = document.createElement('script');
+      //   ga.type = 'text/javascript';
+      //   ga.async = true;
+      //   ga.src =
+      //     ('https:' == document.location.protocol
+      //       ? 'https://ssl'
+      //       : 'http://www') + '.google-analytics.com/ga.js';
+      //   var s = document.getElementsByTagName('script')[0];
+      //   s.parentNode.insertBefore(ga, s);
+      // })();
+    </script>
+    <script>
+      $(document).ready(function () {
+        //adding a new class on button element
+        $('.next1').on('click', function () {
+          $('.first-form').addClass('hide');
+          $('.second-form').addClass('show');
+        });
+
+        $('.pre1').on('click', function () {
+          $('.second-form').removeClass('show');
+          $('.first-form').removeClass('hide');
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        //adding a new class on button element
+        $('.login-btn-cus').on('click', function () {
+          $('.right-login').addClass('show-right-login');
+          $('.fade-cus-shadow').addClass('fcs-show');
+        });
+
+        $('.hbSUw').on('click', function () {
+          $('.right-login').removeClass('show-right-login');
+          $('.fade-cus-shadow').removeClass('fcs-show');
+        });
+
+        $('.con-cus-btn').on('click', function () {
+          $('.right-login').removeClass('show-right-login');
+          $('.fade-cus-shadow').removeClass('fcs-show');
+        });
+      });
+    </script>
+    <script>
+      // window.onscroll = function () {
+      //   myFunction();
+      // };
+
+      var header = document.getElementById('myHeader');
+      var sticky = header.offsetTop;
+
+      // function myFunction() {
+      //   if (window.pageYOffset > sticky) {
+      //     header.classList.add('sticky');
+      //   } else {
+      //     header.classList.remove('sticky');
+      //   }
+      // }
+    </script>
+  </body>
+</html>

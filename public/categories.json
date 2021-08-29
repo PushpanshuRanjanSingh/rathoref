@@ -1,0 +1,79 @@
+{
+  "Apparels & Fashion": [
+    "Women Inner wear",
+    "Men Inner wear",
+    "Women Athleisure",
+    "Men Athleisure",
+    "Women Western wear",
+    "Men Western wear",
+    "Women Ethnic wear",
+    "Men Ethnic wear",
+    "Girls Kids wear",
+    "Boy’s kids wear",
+    "Girls Ethnic",
+    "Boys Ethnic",
+    "Women formal wear",
+    "Men Formal wear",
+    "Women Casual wear",
+    "Men Casual wear",
+    "Men Sports & Comfort Wear",
+    "Woman Sport & Comfort Wear"
+  ],
+  "FMCG": [
+    "Chips",
+    "Biscuits & Cookies",
+    "Cheese Products",
+    "Dairy products",
+    "Soft drinks",
+    "Mineral water",
+    "Juices",
+    "Chocolate",
+    "Sugar Confectionery",
+    "Cooking Spices & Masala",
+    "Noodles",
+    "Macaroni",
+    "Tobacco products",
+    "Grain mill products",
+    "Cleaning Products",
+    "Personal care",
+    "Home care",
+    "Cooking Oils",
+    "Sugar"
+  ],
+  "Cosmetics": [
+    "Colours Cosmetics",
+    "Skin Care",
+    "Hair care"
+  ],
+  "Pharmaceuticals": [
+    "Allopathic Medicine",
+    "Homeopathic Medicine",
+    "Ayurvedic Medicine",
+    "Surgical Equipment"
+  ],
+  "Automobile": [
+    "Accessories",
+    "Spare parts",
+    "Engine Parts",
+    "Electrical Parts"
+  ],
+  "Toys & Craft": [
+    "Action Figures",
+    "Animals",
+    "Cars and Radio controlled",
+    "Construction Toys",
+    "Creative Toys",
+    "Dolls",
+    "Educational Toys",
+    "Executives Toys",
+    "Food Related toys",
+    "Games",
+    "Model Buildings",
+    "Physical activity and dexterity",
+    "Puzzle / Assembly",
+    "Science and Optical",
+    "Sound Toys",
+    "Spinning Toys",
+    "Wooden Toys"
+  ]
+}

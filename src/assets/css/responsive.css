@@ -1,0 +1,1767 @@
+@media(min-width:1600px) {
+    #main {
+        background-size: cover
+    }
+}
+
+
+@media(min-width:992px) and (max-width:1199px) {
+    .banner-form .form-control,
+    .banner-form .category-dropdown {
+        height: 45px
+    }
+    .nav-right .dropdown.language-dropdown .dropdown-menu {
+        margin-top: 5px
+    }
+    .navbar-expand-lg>.container,
+    .navbar-expand-lg>.container-fluid {
+        position: relative
+    }
+    .banner-form button.form-control {
+        height: 49px
+    }
+    .download-app {
+        padding: 10px 20px
+    }
+    #header a.btn {
+        position: absolute;
+        top: 60px;
+        right: 15px;
+        z-index: 10
+    }
+    .home-two .category-list .category-item,
+    .home-one .category-list .category-item {
+        width: 16%
+    }
+    .category-list .category-item,
+    .single-service {
+        width: 33%
+    }
+    .banner-form-full.banner-form input,
+    .home-two .banner-form-full.banner-form input,
+    .home-three .banner-form-full.banner-form input {
+        min-width: 334px
+    }
+    .team-member {
+        width: 20%;
+        min-height: 250px;
+        margin-bottom: 0
+    }
+    .about-us h3 {
+        margin-top: 0
+    }
+    .ad-meta {
+        left: inherit;
+        right: 0;
+        width: 150%
+    }
+    .item-info,
+    .ad-item {
+        min-height: 160px
+    }
+    .ad-profile .user {
+        width: 40%
+    }
+    .congratulations {
+        padding: 80px;
+        padding-bottom: 90px
+    }
+    #product-carousel .carousel-indicators li,
+    #product-carousel .carousel-indicators li.active {
+        height: 100px;
+        width: 83px
+    }
+    #services-ad .pagination {
+        margin-top: 0;
+        margin-bottom: 30px
+    }
+    .section.cars-ads .car-info+.car-info {
+        margin-left: 0
+    }
+    .section.cars-ads .car-info {
+        width: 50%
+    }
+    .section.cars-ads .ad-meta {
+        width: 126%
+    }
+    .section.cars-ads .item-image-box,
+    .section.cars-ads .item-image img,
+    .cars-ads-box {
+        min-height: 173px
+    }
+    .section.cars-ads .item-title {
+        margin-bottom: 0
+    }
+    .section.cars-ads .ad-item {
+        min-height: 175px
+    }
+    .section.cars-ads .item-title a {
+        font-size: 16px
+    }
+    .home-one .featured,
+    .home-one .ad-item {
+        overflow: hidden
+    }
+    .home-one .ad-meta {
+        width: 135%
+    }
+    .select-category span.select {
+        margin-right: 10px
+    }
+    .post-option,
+    .post-option.next-stap {
+        padding: 15px
+    }
+}
+
+@media(max-width:991px) {
+  .section-new {
+	padding: 35px 20px;
+}
+.language-dropdown {
+	margin-right: 0;
+}
+.navbar-toggler {
+	margin-left: 10px;
+}
+.profile-img {
+	width: 25px;
+	height: 25px;
+  margin-right: 0;
+}
+.category-page .featured-image img {
+	width: 100%;
+	height: auto;
+}
+  iframe {
+	width: 100%;
+}
+  #home-section {
+  	padding: 30px 0 40px;
+  }
+  .featureds {
+	padding: 15px 10px 0;
+}
+  .navbar > .container, .navbar > .container-fluid {
+display: -ms-flexbox !important;
+display: flex !important;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+-ms-flex-align: center;
+align-items: center;
+-ms-flex-pack: justify;
+justify-content: space-between;
+padding: 0 15px;
+}
+.banner-top h2 {
+  color: #fff;
+  font-size: 13px;
+  margin: 5px 0 0px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.banner-top {
+  padding: 0;
+}
+.banner-top li a {
+  padding: 0 4px 0px;
+  color: #fff;
+  font-size: 10px;
+}
+.sign-in {
+  justify-content: center;
+}
+  #header .navbar .navbar-collapse.show {
+    visibility: visible;
+    transform: translateX(0);
+  }
+  #header .navbar .navbar-collapse {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1001;
+    width: 100%;
+    max-width: 250px;
+    overflow-y: auto;
+    box-shadow: 0.1rem 0 0.6rem 0 rgba(50, 50, 50, 0.65);
+    transform: translateX(-100%);
+    visibility: hidden;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    transition: all 0.35s;
+    background: #121a31;
+    height: 100% !important;
+  }
+  #header .navbar .navbar-collapse .nav-item > .nav-link {
+    padding: 12px 15px;
+    margin: 0;
+    text-align: left;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-family: "Open Sans",sans-serif;
+    font-size: 12px;
+  }
+  .logo h2 {
+  text-transform: initial;
+}
+
+#header .navbar .navbar-collapse .nav-item {
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+  width: 90%;
+}
+
+  #home-section iframe {
+  width: 100%;
+}
+.card-header button::after {
+  right: 5px;
+}
+.card-header button {
+  padding: 14px 25px 14px 0;
+}
+.banner-new-slider img {
+  height: 130px;
+}
+.img-block {
+  height: auto;
+  padding-top: 30px;
+}
+.main-title.text-none {
+  font-size: 30px;
+  margin-top: 30px;
+}
+.download-btn a {
+  width: 80%;
+}
+.download-btn .app-store-btn {
+  margin-right: 0;
+}
+.banner h3 {
+  font-size: 20px;
+}
+.banner h1.title {
+  font-size: 18px;
+  line-height: 25px;
+}
+.download-btn {
+  text-align: center;
+}
+  .clients-logo {
+  width: 50%;
+}
+.clients-logo img {
+  margin: 0 auto;
+  height: 50px;
+}
+.banner-new {
+  margin-bottom: 20px;
+}
+.banner-subtitle {
+  margin-bottom: 0;
+}
+.banner-new .btn {
+  padding: 5px 20px 7px;
+  margin-top: 0;
+}
+    .navbar>.container,
+    .navbar>.container-fluid {
+        position: relative;
+        display: block
+    }
+    .navbar-toggler-icon {
+        width: inherit;
+        height: inherit;
+        line-height: inherit
+    }
+    .nav li a,
+    .navbar-default .navbar-nav>li>a {
+        padding: 10px 12px
+    }
+    .ad-item,
+    .item-info {
+        min-height: inherit;
+        display: table
+    }
+    .trending-ads.cars-ads .ad-item,
+    .trending-ads.cars-ads .item-info {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex
+    }
+    .trending-ads.cars-ads .cars-ads-box {
+        padding-left: 0;
+        padding-right: 0
+    }
+    .section.cars-ads .car-info {
+        padding: 15px
+    }
+    .section.cars-ads .car-info+.car-info {
+        margin-left: 0
+    }
+    .trending-ads.cars-ads .item-image-box {
+        max-height: inherit;
+        overflow: visible
+    }
+    .ad-meta {
+        position: static
+    }
+    .single-cta {
+        margin-bottom: 35px
+    }
+    .footer-widget.social-widget ul li {
+        margin-bottom: 0
+    }
+    .navbar .dropdown-menu {
+        border: 0;
+        padding: 0
+    }
+    .cars-ads .ad-meta {
+        padding-left: 18px;
+        padding-right: 15px
+    }
+    .featureds .ad-info {
+        min-height: inherit
+    }
+    .select-price input[type=text] {
+        margin: 0 10px
+    }
+    .about-us-images {
+        margin-bottom: 20px
+    }
+    .item-image-box {
+        max-height: initial
+    }
+}
+
+@media(min-width:768px) and (max-width:991px) {
+    .nav-right {
+        position: absolute;
+        top: 10px;
+        right: 60px
+    }
+    .available-other-info div {
+	margin-right: 14px;
+	width: 18%;
+	display: inline-block;
+}
+.available-other-info {
+	display: block;
+}
+#main.details-page {
+	padding-bottom: 0;
+}
+    .privacy {
+	padding: 0;
+}
+    .contact-info address p {
+    	margin-bottom: 13px;
+    	font-size: 14px;
+    }
+    .contact-info {
+    	padding: 20px;
+    }
+    .banner-form input {
+        min-width: 355px
+    }
+    .banner-section h1.title,
+    .banner h1.title {
+        font-size: 45px;
+        line-height: 50px
+    }
+    .banner-form .form-control,
+    .banner-form .category-dropdown {
+        height: 44px
+    }
+    .banner-form button.form-control {
+        height: 48px
+    }
+    .category-list .category-item {
+        width: 50%
+    }
+    .ad-info .item-title {
+        font-size: 13px
+    }
+
+    .ad-meta .user-option a {
+        font-size: 16px
+    }
+    .single-cta {
+        padding: 0 10px
+    }
+    .download-app {
+        min-height: 145px;
+        text-align: center
+    }
+    .download-app img {
+        float: none;
+        display: inline-block;
+        margin-bottom: 5px
+    }
+    .footer-widget ul li a {
+        font-size: 16px;
+        line-height: 22px
+    }
+    .footer-widget h3 {
+        font-size: 22px;
+        margin-bottom: 25px
+    }
+    .social-widget ul li a {
+        margin: 10px 0
+    }
+    .footer-widget ul li a i {
+        font-size: 38px
+    }
+    .home-two .category-list .category-item,
+    .home-one .category-list .category-item {
+        width: 25%
+    }
+    .banner-form-full.banner-form .form-control,
+    .banner-form-full.banner-form .category-dropdown {
+        width: 49%;
+        border-right: 1px solid #e8e8e8;
+        border-bottom: 1px solid #e8e8e8;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0
+    }
+    .banner-form-full.banner-form .language-dropdown {
+        padding: 11px 0
+    }
+    .banner-form-full.banner-form .category-dropdown.language-dropdown {
+        margin-left: -4px
+    }
+    .banner-form-full.banner-form .category-dropdown.language-dropdown,
+    #services-ad .category-dropdown.language-dropdown {
+        border-right: 0
+    }
+    .banner-form-full.banner-form input[type=text] {
+        margin-left: 0;
+        min-width: 80%;
+        border-right: 1px solid #e8e8e8;
+        border-bottom: 0;
+        border-radius: 4px
+    }
+    .banner-form-full.banner-form button.form-control {
+        max-width: 140px;
+        border-right: 0
+    }
+    #services-ad .category-dropdown {
+        border-right: 1px solid #e8e8e8
+    }
+    #services-ad .banner-form input[type=text] {
+        margin-left: 0;
+        border-right: 1px solid #e8e8e8
+    }
+    #view-ad h2 {
+        font-size: 50px
+    }
+    #services-ad .services {
+        padding: 25px
+    }
+    .single-service {
+        width: 32%
+    }
+    .team-member {
+        width: 25%
+    }
+    .our-approach {
+        text-align: left
+    }
+    .about-us h3 {
+        font-size: 22px
+    }
+    .about-info {
+        margin-bottom: 20px
+    }
+    .post-option {
+        margin-bottom: 25px;
+        padding-bottom: 0
+    }
+    .ad-section {
+        margin: 20px 0
+    }
+    .ad-profile .user {
+        width: 40%
+    }
+    .ad-profile .my-ads,
+    .ad-profile .favorites {
+        padding: 30px
+    }
+    .ad-profile .user-menu li {
+        padding: 15px 12px
+    }
+    .home-one .featured,
+    .home-one .ad-item {
+        overflow: hidden
+    }
+    .home-one .ad-meta {
+        width: 135%
+    }
+    .congratulations {
+        padding: 50px;
+        padding-bottom: 65px
+    }
+    .congratulations h4 {
+        font-size: 20px
+    }
+    .contact-info h2 {
+        font-size: 24px
+    }
+    #product-carousel {
+        margin-bottom: 20px
+    }
+    #product-carousel .carousel-indicators li,
+    #product-carousel .carousel-indicators li.active {
+        margin-left: 28px
+    }
+    #home-section h2 {
+        font-size: 45px
+    }
+    #home-section .btn {
+        margin-right: 0
+    }
+    #services-ad .pagination {
+        margin-top: 0;
+        margin-bottom: 30px
+    }
+    .home-banner h1 {
+        font-size: 50px
+    }
+    .category-menu {
+        width: 25%
+    }
+    .pricing-section .pric {
+        padding-left: 10px;
+        padding-right: 10px
+    }
+    .pricing-section .pric li i {
+        margin-right: 10px
+    }
+    .pricing-section .pric li {
+        font-size: 13px
+    }
+    .pricing-section .pric h3 {
+        font-size: 60px;
+        line-height: 60px
+    }
+    .pricing-section .pric h3 sup {
+        top: -20px
+    }
+    .pricing-section .pric h2 {
+        margin-bottom: 10px
+    }
+    .trending-ads.cars-ads .ad-item {
+        min-height: 299px
+    }
+    .section.cars-ads .ad-meta {
+        width: 100%
+    }
+    .cars-ads-box {
+        min-height: 145px
+    }
+    .category-menu {
+        margin-top: 0
+    }
+    .page .category-section .section-title {
+        margin-bottom: 25px
+    }
+    #home-section .btn.btn-primary {
+        padding: 10px 35px 12px
+    }
+    #home-section h1 {
+        margin-top: 0
+    }
+    .ad-meta .user-option a {
+        width: 30px
+    }
+    .recommended-cta .single-cta {
+        padding: 0 15px
+    }
+}
+
+@media(max-width:767px) {
+  .dropdown-menu.language-change.show.dropdown-lg {
+	width: 320px;
+	padding: 0;
+	right: -115px;
+	left: auto;
+}
+#product-carousel .carousel-image img {
+	height: 350px;
+	object-fit: cover;
+}
+.notification-main{
+  padding:10px;
+}
+.ga-noti-update .logo-seller-noti {
+	float: right;
+	position: absolute;
+	right: 8px;
+	top: 44px;
+	margin-bottom: 0;
+}
+.ga-noti-update .logo-seller-noti img {
+	width: 30px;
+}
+.select-category .product-col .product {
+	display: block;
+}
+.select-category .product-col .product-media {
+	display: block;
+	margin-left: auto;
+	margin-right: 0;
+	max-width: 60px;
+	margin-bottom: 10px;
+}
+.main-categories .tr-accordion .card-header {
+	border-bottom: 0.1rem solid #ebebeb;
+	position: relative;
+}
+.new-collapse {
+	position: absolute;
+	z-index: 999;
+	width: 100%;
+}
+#accordionH .card:last-child {
+	width: 100%;
+}
+.accordion > .card {
+	overflow: visible;
+}
+.title-new {
+	color: #000;
+	font-size: 16px;
+	line-height: 22px;
+}
+#main.details-page {
+	padding-bottom: 0;
+}
+.description p, .description li {
+	font-size: 13px;
+}
+.lowest-price .btn {
+	width: 100%;
+}
+.list-disc {
+	list-style-type: none !important;
+}
+.sec-namelink a {
+  margin: 4px !important;
+  width: 46%;
+  display: inline-block;
+  font-size: 14px;
+  height: 51px;
+  vertical-align: top;
+}
+.description {
+	padding: 10px;
+}
+.btn {
+	padding: 5px 15px 7px;
+}
+  .available-other-info div {
+  	margin: 5px;
+  	border-radius: 8px;
+  	width: 46%;
+  	display: inline-block;
+    padding:15px;
+  }
+.available-other-info {
+display: block;
+}
+.lowest-price {
+	padding: 10px;
+}
+.slider-text span {
+	font-size: 14px !important;
+}
+.slider {
+	padding: 10px;
+}
+.width-13 {
+	width: 100% !important;
+}
+.w-m-30{
+  width:30%;
+}
+.redirection-page {
+	padding: 0 !important;
+	height: auto;
+	display: block !important;
+}
+#accordionH {
+	display: block;
+}
+#accordionH .card {
+	width: 48%;
+	display: inline-block;
+	margin-right: 5px;
+	margin-bottom: 8px;
+}
+#accordionH .card-body {
+	padding: 10px;
+	background-color: #fff;
+}
+#accordionH .card-body label {
+	position: relative;
+	padding-left: 0px;
+	display: block;
+	color: #000;
+	font-weight: 400;
+	margin-bottom: 6px;
+	font-size: 12px;
+}
+.main-categories .category-accordion button {
+	font-size: 14px;
+}
+.new-brand{
+  margin-right: 10px;
+}
+.css-h8ixx9 {
+	margin-right: 10px;
+}
+.date-prico {
+	width: 100%;
+	text-align: right;
+	margin-bottom: 0;
+}
+.section.cat-option.select-category {
+	padding: 10px !important;
+}
+.select-category .product-col .product-title a {
+	font-size: 14px;
+	font-weight: 600;
+}
+.select-category .font-12 {
+	font-size: 11px;
+	text-transform: capitalize;
+}
+.table.table-cart.table-mobile .price-col img {
+	height: auto;
+	width: 100px;
+	margin-left: auto;
+}
+.select-category .table-mobile tr td::before {
+	content: attr(data-title) ": ";
+	font-weight: 700;
+	font-size: 14px;
+	width: 160px;
+}
+.select-category .table-mobile thead {
+	display: none;
+}
+.select-category .table th, .select-category .table thead th, .select-category .table td {
+	border-bottom: none !important;
+}
+.remove-col::before {
+	display: none;
+}
+
+.select-category .table tbody tr:not(:first-child) td:first-child {
+	border-top: 1px solid #dddddd !important;
+	margin-top: 15px;
+}
+ .select-category .table td {
+	display: flex;
+}
+.table .price-col , .table.table-cart .total-col, .table .remove-col{
+	width: 100%;
+}
+.product-col .product {
+	padding-right: 0;
+	align-items: center;
+	display: flex;
+	text-align: right;
+}
+
+.img-get-alert {
+	border: 1px solid #e1d8d8;
+	padding: 10px;
+	border-radius: 5px;
+	display: inline-block;
+	width: 46%;
+}
+.img-get-alert img {
+	height: 50px;
+}
+.user-pro-section label {
+	width: 100%;
+}
+.post-option li {
+	width: 47%;
+}
+.post-option {
+	padding: 10px;
+}
+.category-page .featured-image img {
+	width: 100%;
+	height: auto;
+}
+.description-content {
+	text-align: center;
+}
+.section-new {
+	padding: 35px 10px;
+}
+h4.extra-title {
+	font-size: 25px;
+}
+.privacy {
+	padding: 0;
+}
+.footer-bottom-new li a {
+	padding: 0 5px;
+	text-align: right;
+	text-decoration: underline;
+	font-size: 12px;
+}
+.footer-bottom p {
+	margin-bottom: 0;
+	font-size: 13px;
+}
+  .navbar > .container, .navbar > .container-fluid {
+display: -ms-flexbox !important;
+display: flex !important;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+-ms-flex-align: center;
+align-items: center;
+-ms-flex-pack: justify;
+justify-content: space-between;
+}
+.banner-top h2 {
+	color: #fff;
+	font-size: 13px;
+	margin: 5px 0 0px;
+	letter-spacing: 1px;
+	text-align: center;
+}
+.banner-top {
+	padding: 0;
+}
+.banner-top li a {
+	padding: 0 4px 0px;
+	color: #fff;
+	font-size: 10px;
+}
+.sign-in {
+	justify-content: center;
+}
+  #header .navbar .navbar-collapse.show {
+  	visibility: visible;
+  	transform: translateX(0);
+  }
+  #header .navbar .navbar-collapse {
+  	position: fixed;
+  	left: 0;
+  	top: 0;
+  	bottom: 0;
+  	z-index: 1001;
+  	width: 100%;
+  	max-width: 250px;
+  	overflow-y: auto;
+  	box-shadow: 0.1rem 0 0.6rem 0 rgba(50, 50, 50, 0.65);
+  	transform: translateX(-100%);
+  	visibility: hidden;
+  	font-size: 1.2rem;
+  	line-height: 1.5;
+  	transition: all 0.35s;
+  	background: #121a31;
+  	height: 100% !important;
+  }
+  #header .navbar .navbar-collapse .nav-item > .nav-link {
+  	padding: 12px 15px;
+  	margin: 0;
+  	text-align: left;
+  	border: none;
+  	background: transparent;
+  	color: #fff;
+  	font-family: "Open Sans",sans-serif;
+  	font-size: 12px;
+  }
+  .logo h2 {
+	text-transform: initial;
+}
+
+#header .navbar .navbar-collapse .nav-item {
+	border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+	width: 90%;
+}
+
+  #home-section iframe {
+	width: 100%;
+}
+.card-header button::after {
+	right: 5px;
+}
+.card-header button {
+	padding: 14px 25px 14px 0;
+}
+.banner-new-slider img {
+	height: 130px;
+}
+.img-block {
+	height: auto;
+	padding-top: 30px;
+}
+.main-title.text-none {
+	font-size: 30px;
+	margin-top: 30px;
+}
+.download-btn a {
+	width: 80%;
+}
+.download-btn .app-store-btn {
+	margin-right: 0;
+}
+.banner h3 {
+	font-size: 20px;
+}
+.banner h1.title {
+	font-size: 18px;
+	line-height: 25px;
+}
+.download-btn {
+	text-align: center;
+}
+  .clients-logo {
+	width: 50%;
+}
+.clients-logo img {
+	margin: 0 auto;
+	height: 50px;
+}
+.banner-new {
+	margin-bottom: 20px;
+}
+.banner-subtitle {
+	margin-bottom: 0;
+}
+.banner-new .btn {
+	padding: 5px 20px 7px;
+	margin-top: 0;
+}
+
+    h1 {
+        font-size: 30px
+    }
+    h2 {
+        font-size: 22px
+    }
+    h3 {
+        font-size: 18px
+    }
+    h4 {
+        font-size: 16px
+    }
+    h5 {
+        font-size: 14px
+    }
+    #header a.btn {
+        position: absolute;
+        top: 11px;
+        right: 65px;
+        padding: 4px 15px 6px
+    }
+    .recommended-cta .single-cta {
+        padding: 0
+    }
+    .nav-right {
+        margin-bottom: 10px
+    }
+    .navbar-brand {
+        margin-right: 55px
+    }
+    .language-dropdown a {
+        font-size: 14px
+    }
+
+    .banner-section h3 {
+        font-size: 18px
+    }
+    .banner-form .form-control,
+    .banner-form .category-dropdown {
+        border-radius: 4px;
+        margin-left: 0;
+        border-bottom: 1px solid #e6e6e6;
+        border-right: 0
+    }
+    .banner-form button.form-control {
+  	margin-bottom: 0;
+  	position: inherit;
+  	right: 0;
+  	top: 0;
+  	position: absolute;
+  }
+    #services-ad .category-dropdown {
+        border-right: 0
+    }
+    .category-list .category-item,
+    .home-two .category-list .category-item,
+    .home-one .category-list .category-item {
+        width: 47%
+    }
+    .home-two .category-list .category-item,
+    .home-one .category-list .category-item {
+        margin-bottom: 10px
+    }
+    .ad-section {
+        margin: 0 0 25px
+    }
+    .item-image-box,
+    .ad-item {
+        max-height: inherit
+    }
+    .ad-info .item-title {
+        font-size: 16px
+    }
+    .ad-info .item-cat {
+        font-size: 12px
+    }
+    .ad-info .item-price {
+        font-size: 18px
+    }
+    .download-app {
+        margin-bottom: 25px
+    }
+    .footer-top {
+        padding: 20px 0 40px
+    }
+    .footer-widget h3 {
+        margin-bottom: 20px
+    }
+    .footer-widget ul li a {
+        font-size: 16px;
+        line-height: 22px
+    }
+    .social-widget ul li a {
+        margin: 10px 0
+    }
+    .footer-widget ul li a i {
+        font-size: 36px
+    }
+    #download {
+        padding: 25px 0 50px
+    }
+    .home-two .category-dropdown,
+    .home-two .banner-form input[type=text],
+    #services-ad .category-dropdown,
+    #services-ad .banner-form input[type=text] {
+        margin-left: 0;
+        border-radius: 4px
+    }
+    .banner-form-full.banner-form input,
+    .home-two .banner-form-full.banner-form input,
+    .home-three .banner-form-full.banner-form input {
+        min-width: 100%
+    }
+    .pagination > li > a, .pagination > li > span {
+  	padding: 8px 15px;
+  }
+     .pagination > li > a {
+	margin: 6px;
+}
+    .banner-form button.form-control {
+        margin-left: 0;
+        border-radius: 4px
+    }
+    #view-ad h1 {
+        margin: 0
+    }
+    #view-ad h2 {
+        font-size: 40px;
+        margin: 5px 0 20px
+    }
+    .ad-btn {
+        margin-bottom: 30px
+    }
+    #view-ad img {
+        display: none
+    }
+    #services-ad .services {
+        padding: 25px
+    }
+    .single-service {
+        width: 49%;
+        margin-bottom: 0;
+        padding: 10px
+    }
+    .breadcrumb-section h2.title {
+        font-size: 24px;
+        line-height: 26px
+    }
+    .about-us h3 {
+        font-size: 20px
+    }
+    .about-info {
+        margin-bottom: 0
+    }
+    .about-text {
+        padding-bottom: 0
+    }
+    .our-approach {
+        text-align: left
+    }
+    .team-member {
+        width: 50%;
+        min-height: 285px;
+        margin-bottom: 0
+    }
+    .client-pragrap {
+        font-size: 16px
+    }
+    .post-option li a {
+        font-size: 12px
+    }
+    .post-option li {
+	margin: 4px;
+}
+.nav li a, .navbar-default .navbar-nav > li > a {
+	padding: 10px 14px;
+	text-align: center;
+}
+.select-category span.select {
+margin-right: 0;
+display: block;
+}
+    .post-option {
+        margin-bottom: 20px;
+        padding-bottom: 0
+    }
+    .post-option.next-stap {
+        padding: 10px 25px;
+        margin-bottom: 35px
+    }
+    .next-stap h2,
+    .ad-profile .user h2 {
+        font-size: 24px
+    }
+    .user-images {
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 20%
+    }
+    .ad-profile .user {
+        width: 75%
+    }
+    .favorites-user {
+        float: right;
+        padding-bottom: 20px
+    }
+    .ad-profile .my-ads,
+    .ad-profile .favorites {
+        padding: 0 20px;
+        border-left: 0
+    }
+    .ad-profile .favorites-user a {
+        font-size: 30px
+    }
+    .ad-profile .favorites-user small {
+        font-size: 13px
+    }
+    .ad-profile .user-menu li {
+        border: 1px solid #f5f5f5
+    }
+    .ad-profile .user-menu li a {
+        font-size: 14px
+    }
+    .ad-profile .user h5 {
+        font-size: 14px
+    }
+    .user-profile {
+        margin-bottom: 15px
+    }
+    .ad-profile .user-menu li {
+        padding: 12px 19px
+    }
+    .user-pro-section .section {
+        padding: 10px 20px
+    }
+    .user-pro-section label {
+        font-size: 14px
+    }
+    .user-pro-section .form-control {
+  	width: 100%;
+  }
+    .user-pro-section select,
+    .user-pro-section input {
+        font-size: 14px;
+        height: 35px
+    }
+    .ad-meta .meta-content {
+        padding: 5px
+    }
+    .ad-meta .meta-content .visitors {
+        display: block
+    }
+    #something-sell h2.title {
+        font-size: 28px;
+        line-height: 32px
+    }
+    .congratulations {
+        padding: 60px 25px;
+        padding-bottom: 70px
+    }
+    .recommended-ads {
+        padding: 15px 10px 0
+    }
+    .recommended-ads h4 {
+        display: inline
+    }
+    .pagination>li>a {
+        font-size: 12px
+    }
+    .user-account {
+        padding: 20px;
+    }
+    .user-account h2 {
+        margin-bottom: 20px
+    }
+    .user-account .custom-control-label {
+	position: relative;
+	margin-bottom: 0;
+	vertical-align: top;
+	font-size: 15px;
+}
+    .user-page .btn-primary {
+        padding: 10px 30px;
+        font-size: 16px
+    }
+    .contact-info,
+    .feedback {
+        min-height: inherit
+    }
+    .contact-info {
+        margin-bottom: 25px
+    }
+    .contact-info h2 {
+        margin-top: 0
+    }
+    .selected-product .select-category li {
+        margin-bottom: 5px;
+        margin-right: 0
+    }
+    .postdetails li a {
+        font-size: 14px
+    }
+    .selected-product .select-category li.active {
+        padding-left: 20px
+    }
+    .adpost-details .form-group {
+        margin-bottom: 20px
+    }
+    .adpost-details label.label-title {
+        padding-top: 0
+    }
+    .add-image label.upload-image:before {
+        font-size: 26px;
+        margin-left: -11px
+    }
+    .select-price input[type=text] {
+        max-width: 190px
+    }
+    .checkbox label {
+        margin-right: 20px
+    }
+    .adpost-details label {
+        font-size: 14px
+    }
+    .btn.btn-primary {
+        padding: 8px 30px 10px;
+        font-size: 16px
+    }
+    #product-carousel {
+        margin-bottom: 20px
+    }
+    #product-carousel .carousel-indicators li,
+    #product-carousel .carousel-indicators li.active {
+        height: 70px;
+        width: 68px;
+        margin-left: 8px
+    }
+    #product-carousel .carousel-control {
+        font-size: 28px;
+        line-height: 28px;
+        margin-top: -14px
+    }
+    #product-carousel .carousel-indicators {
+        bottom: -105px
+    }
+    .slider-text h2 {
+    font-size: 15px;
+  }
+    #main .slider-text h3.title {
+    font-size: 16px;
+    margin: 5px 0 8px;
+  }
+    .short-info li a {
+        font-size: 14px
+    }
+    #services-ad .pagination,
+    .pagination {
+        margin-top: 0;
+        margin-bottom: 25px
+    }
+    #home-section h2 {
+        font-size: 36px
+    }
+    #home-section img {
+        display: none
+    }
+    .home-banner {
+        padding-top: 0;
+        padding-bottom: 30px
+    }
+    .home-banner .car-info {
+        margin-top: 50px;
+        margin-bottom: 20px
+    }
+    .home-banner h1 {
+        font-size: 40px
+    }
+    .category-menu {
+        width: 50%;
+        margin-top: 0
+    }
+    .page .section-title {
+        margin-bottom: 20px
+    }
+    .category-section .section-title h4,
+    .category-section .section-title h5 {
+        float: none
+    }
+    .found-section h1 {
+        font-size: 70px
+    }
+    .found-section {
+        padding-top: 20px;
+        padding-bottom: 50px
+    }
+    .upcoming-section {
+        padding-top: 50px;
+        padding-bottom: 60px
+    }
+    .upcoming-section h1 {
+        font-size: 36px;
+        margin-top: 15px
+    }
+    #countdown li span {
+        font-size: 45px;
+        line-height: 60px
+    }
+    #countdown li {
+        width: 70px
+    }
+    #countdown li+li {
+        margin-left: 25px
+    }
+    #countdown {
+        margin-top: 0;
+        margin-bottom: 25px
+    }
+    .about-trade {
+        padding: 40px 0
+    }
+    .about-trade .logo-intro img {
+        width: 15%
+    }
+    .about-trade h1 {
+        font-size: 36px
+    }
+    .about-trade .about-title {
+        margin-bottom: 20px
+    }
+    .about-trade .about-info {
+        margin-top: 10px
+    }
+    .contac-section h1 {
+        font-size: 36px;
+        margin-bottom: 25px
+    }
+    .contac-section {
+        padding: 20px 0
+    }
+    .section.cars-ads .car-info+.car-info {
+        margin-left: 0;
+        padding-top: 0
+    }
+    .section.cars-ads .ad-meta {
+        width: 100%
+    }
+    .trending-ads.cars-ads .item-image {
+        float: none;
+        margin-right: 0;
+        max-width: 100%
+    }
+    .section.cars-ads .ad-info {
+        padding: 15px
+    }
+    .section.cars-ads .ad-info {
+        min-height: 0
+    }
+    .section.cars-ads .car-info {
+        padding-top: 0
+    }
+    .cars-ads-box {
+        min-height: 205px
+    }
+    .language-proficiency ul>li+li {
+        margin-left: 0;
+        padding-left: 5px;
+        border-left: 0
+    }
+    .language-proficiency ul li {
+        margin-bottom: 5px;
+        overflow: hidden;
+        width: 49%
+    }
+    .language-proficiency ul>li ul li {
+        width: inherit
+    }
+    .personal-info .address li h5 {
+        min-width: 110px
+    }
+    .personal-info .address li span {
+        margin-right: 10px
+    }
+    .download-button.resume {
+        float: none
+    }
+    .download-button.resume a.btn {
+        margin-left: 0
+    }
+    .profile-logo {
+        margin-right: 20px
+    }
+    .footer-widget h3 {
+        margin-top: 20px
+    }
+    .navbar>.container,
+    .navbar>.container-fluid {
+        padding-left: 15px;
+        padding-right: 15px
+    }
+    .navbar-toggler {
+        right: 15px
+    }
+    .add-image label.upload-image {
+        width: 19%
+    }
+    .nav-right .dropdown.language-dropdown .dropdown-menu {
+        margin-top: 0
+    }
+}
+
+@media(max-width:575px) {
+    .ad-meta {
+        padding-left: 15px
+    }
+    .navbar-brand {
+        margin-right: 20px
+    }
+    .home-banner.banner {
+        padding: 80px 0
+    }
+}
+
+@media(max-width:479px) {
+    .tab-manu .nav-tabs li a {
+        padding: 10px 6px
+    }
+    .slider {
+	padding: 10px !important;
+}
+    .select-category .table-mobile tr td::before {
+	width: auto;
+}
+    .detail-pro h3 {
+  font-size: 12px !important;
+}
+.detail-pro del {
+  font-size: 12px;
+}
+.detail-pro .color-off {
+  font-size: 10px;
+}
+    .download-app {
+        padding: 10px 18px
+    }
+    .download-app strong {
+        font-size: 20px
+    }
+    .banner-form-full.banner-form input,
+    .home-two .banner-form-full.banner-form input,
+    .home-three .banner-form-full.banner-form input {
+        min-width: 100%
+    }
+    .single-service {
+        width: 100%;
+        margin-bottom: 0
+    }
+    .team-member {
+        width: 100%;
+        margin-bottom: 15px
+    }
+    .user-images {
+        width: auto;
+    }
+    .ad-profile .user {
+        width: 100%
+    }
+    .ad-profile {
+        position: relative
+    }
+    .favorites-user {
+        position: absolute;
+        top: 25px;
+        right: 20px
+    }
+    .ad-profile .my-ads,
+    .ad-profile .favorites {
+        padding: 0 10px;
+        border-left: 0
+    }
+    .ad-profile .user-menu li {
+        padding: 10px 14px
+    }
+    .single-cta {
+        margin-bottom: 0
+    }
+    .ad-meta {
+        padding-left: 16px
+    }
+    .ad-meta .user-option a {
+        width: 25px;
+        height: 25px;
+        line-height: 25px
+    }
+    #something-sell h2.title {
+        font-size: 25px;
+        line-height: 28px
+    }
+    .congratulations {
+        padding: 45px 15px;
+        padding-bottom: 50px
+    }
+    .congratulations h4 {
+        font-size: 18px
+    }
+    .congratulations i {
+        font-size: 45px;
+        margin-bottom: 10px
+    }
+    .recommended-ads h4 {
+        display: block
+    }
+    .user-option .forgot-password {
+        float: left !important;
+        width: 100%;
+        text-align: left
+    }
+    .user-account .checkbox label {
+        margin: 0
+    }
+    .user-account .user-option {
+        margin-top: 20px
+    }
+    .ad-details-page h4 span {
+        display: none
+    }
+    .postdetails .edit {
+        right: 0;
+        top: -15px
+    }
+    .add-image label.upload-image {
+        margin-left: 10px;
+        height: 60px
+    }
+    .select-price input[type=text] {
+        margin: 10px 0
+    }
+    .slider {
+        padding: 10px
+    }
+    #product-carousel {
+        margin-bottom: 20px
+    }
+    #product-carousel .carousel-indicators li,
+    #product-carousel .carousel-indicators li.active {
+        height: 37px;
+        width: 38px
+    }
+    #product-carousel .carousel-indicators {
+        bottom: -70px
+    }
+    #main .slider-text h3.title {
+  	font-size: 15px;
+  	line-height: 20px;
+  }
+    .category-menu {
+        width: 100%
+    }
+    .home-banner h1 {
+        font-size: 30px
+    }
+    .home-banner .contact-info {
+        padding-bottom: 20px
+    }
+    .pricing-section .pric h3 {
+        font-size: 50px;
+        line-height: 20px
+    }
+    .pricing-section .pric h3 sup {
+        top: -20px
+    }
+    .pricing-section .pric h2 {
+        margin-bottom: 20px
+    }
+    .upcoming-section h1 {
+        font-size: 30px;
+        margin-bottom: 0
+    }
+    .upcoming-section h2 {
+        font-size: 20px;
+        margin-top: 5px
+    }
+    #countdown li {
+        font-size: 14px;
+        width: 60px
+    }
+    #countdown li+li {
+        margin-left: 10px
+    }
+    #countdown li span {
+        font-size: 30px;
+        line-height: 45px
+    }
+    .col-to-action h1 {
+        font-size: 24px
+    }
+    .col-to-action {
+        padding: 30px 0 45px
+    }
+    .job-category-ad .category-list .category-item {
+        width: 100%
+    }
+    .job-ad-item .ad-info span {
+        font-size: 16px
+    }
+    .job-ad-item {
+        padding: 20px
+    }
+    .social-media .btn.btn-primary.bookmark {
+        margin-top: 10px
+    }
+    .share-social li+li {
+        margin-left: 7px
+    }
+    .job-short-info li span.icon {
+        margin-right: 0
+    }
+    .user-account .nav-tabs {
+        margin-bottom: 45px
+    }
+    .user-account .nav-tabs>li a {
+        padding: 10px 15px
+    }
+    .job-postdetails .location .category-dropdown {
+        min-width: 100%;
+        margin-bottom: 10px
+    }
+    .job-postdetails .location .form-group {
+        margin-bottom: 10px
+    }
+    .language-proficiency ul>li {
+        width: 100%
+    }
+    .language-proficiency ul>li+li {
+        margin-left: 0;
+        padding-left: 5px;
+        border-left: 0;
+        margin-bottom: 10px
+    }
+    .language-proficiency ul>li ul li {
+        width: inherit
+    }
+    .download-button {
+        float: none
+    }
+    .download-button a.btn {
+        margin-left: 0
+    }
+    .profile-logo {
+        margin-bottom: 20px;
+        float: none
+    }
+    .featureds .ad-info {
+        min-height: inherit
+    }
+    .trending-ads {
+        padding: 15px
+    }
+    .ad-info {
+  	padding: 12px 0;
+  }
+  .ad-info .item-title {
+	font-size: 13px;
+}
+.rating-logo li i {
+	font-size: 11px;
+}
+.rating-logo ul li {
+	font-size: 12px;
+}
+.logo-icon img {
+	width: 30px !important;
+}
+.rating-logo {
+	margin-top: 0;
+}
+#services-ad .featured {
+	margin-bottom: 12px;
+}
+.recommended-ads .featured {
+	margin-bottom: 12px;
+}
+marquee-page {
+	padding: 0;
+}
+.single-cta {
+	padding: 0;
+}
+.cta h3 {
+	font-size: 16px;
+}
+.feedback {
+	padding: 20px;
+}
+.contact-info address p {
+	margin-bottom: 13px;
+	font-size: 14px;
+}
+.contact-info {
+	padding: 20px;
+}
+.privacy {
+	padding: 0;
+}
+.category-title {
+	display: block;
+	font-size: 13px;
+}
+.category-dropdown i {
+	right: 4px;
+}
+#main.main-categories, .ad-post-page, .about-us, .contact-us, .details-page, .ad-profile-page {
+	padding: 0px 0 50px;
+}
+}
+@media(max-width:360px) {
+  .logo h2 {
+	font-size: 18px !important;
+}
+}
