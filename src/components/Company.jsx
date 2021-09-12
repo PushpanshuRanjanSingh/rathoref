@@ -16,9 +16,17 @@ import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import { v4 as uuidv4 } from 'uuid';
+import { Multiselect } from 'multiselect-react-dropdown';
 // import DatePicker from 'react-date-picker';
 function Index(props) {
   let history = useHistory();
+  const [inputFields, setInputFields] = useState([
+    { id: uuidv4(), name: '', brandName: '' },
+  ]);
+  const [inputFieldscity, setInputFieldscity] = useState([
+    { id: 0, state: '', city: '' },
+  ]);
   const [successMs, setsuccessMs] = useState('');
   const [successMsg, setsuccessMsg] = useState('');
   const [post, setpost] = useState([]);
@@ -35,7 +43,7 @@ function Index(props) {
   const [blockData, setblockData] = useState([]);
   const [id, setid] = useState('');
   const [Vechicle, setVechicle] = useState([]);
-  const [formToggle, setformToggle] = useState(1);
+  const [formToggle, setformToggle] = useState(3);
   const [vehicle, setvehicle] = useState(props?.location?.data);
   const [prevData, setprevData] = useState(props);
   const [data, setdata] = useState({});
@@ -64,14 +72,14 @@ function Index(props) {
   }
   function categoryy() {
     axios
-      .get('http://localhost:3000/categories.json')
+      .get(window.location.origin + '/categories.json')
       .then((resp) => setcategory(resp?.data))
       .catch((err) => console.log(err));
   }
   const onSubmit = (formsubmitdata) => {
     if (formToggle == 1) {
       axios
-        .post('http://localhost:3040/user/register', {
+        .post(apiUrl + 'user/register', {
           phoneNo: formsubmitdata.phoneNo,
           firstName: formsubmitdata.firstName,
           password: formsubmitdata.password,
@@ -87,34 +95,34 @@ function Index(props) {
         });
     } else if (formToggle == 6) {
       console.log(
-        `state,`,
-        state?.profileImg,
         state?.phoneNo,
-        state?.city,
-        state?.state
+        state?.profileImg,
+        inputFieldscity,
+        inputFields,
+        'all data'
       );
-      console.log(`all data`, state);
-
       const formData = new FormData();
-      formData.append('phoneNo', state?.phoneNo);
+      formData.append('phoneNo', 6161515115);
       formData.append('profileImg', state?.profileImg);
-      formData.append('city', state?.city);
-      formData.append('state', state?.state);
       formData.append('category', state?.category);
-      formData.append('subCategory', state?.subCategory);
-      formData.append('brandName', state?.brandName);
+      formData.append('preferred', JSON.stringify(inputFieldscity)); //state or city
+      formData.append('subCategory', JSON.stringify(inputFields));
+
       axios
-        .post('http://localhost:3040/user/updateuserprofile', formData)
+        .post(apiUrl + 'user/updateuserprofile', formData)
         .then(function (respon) {
           console.log(`respon`, respon);
+          showNotification('success', 'Company Added Successfully');
+          history.push({
+            pathname: '/',
+          });
         })
         .catch(function (error) {
           console.log(`error`, error);
+          showNotification('danger', 'something went wrong');
         });
-      showNotification('success', 'Company Added Successfully');
-      history.push({
-        pathname: '/',
-      });
+    } else {
+      console.log('InputFields', inputFields);
     }
     try {
       if (formToggle == 1) {
@@ -331,6 +339,75 @@ function Index(props) {
     setsubCategory(category[e]);
     // console.log(`subCategory`, category[e]);
   };
+
+  const handleChangeInput = (id, event) => {
+    const newInputFields = inputFields.map((i) => {
+      if (id === i.id) {
+        i[event.target.name] = event.target.value;
+      }
+      return i;
+    });
+
+    setInputFields(newInputFields);
+  };
+
+  const handleAddFields = () => {
+    setInputFields([
+      ...inputFields,
+      { id: uuidv4(), firstName: '', lastName: '' },
+    ]);
+  };
+
+  const handleRemoveFields = (id) => {
+    const values = [...inputFields];
+    values.splice(
+      values.findIndex((value) => value.id === id),
+      1
+    );
+    setInputFields(values);
+  };
+
+  // state and city
+  const handleChangeInputcity = (id, event) => {
+    console.log(id, event.target);
+    const newInputFields = inputFieldscity.map((i) => {
+      if (id === 0) {
+        i[event.target.name] = event.target.value;
+      }
+      return i;
+    });
+
+    setInputFieldscity(newInputFields);
+  };
+  const handleChangeInputcitynew = (id, data) => {
+    const newInputFields = inputFieldscity.map((i) => {
+      console.log(i, 'ifff');
+      if (id === 0) {
+        i.city = data;
+      }
+      console.log(i, 'innnn');
+      return i;
+    });
+
+    setInputFieldscity(newInputFields);
+  };
+
+  const handleAddFieldscity = () => {
+    setInputFieldscity([
+      ...inputFields,
+      { id: uuidv4(), firstName: '', lastName: '' },
+    ]);
+  };
+
+  const handleRemoveFieldscity = (id) => {
+    const values = [...inputFields];
+    values.splice(
+      values.findIndex((value) => value.id === id),
+      1
+    );
+    setInputFields(values);
+  };
+
   return (
     <>
       {/* <Header /> */}
@@ -901,132 +978,75 @@ function Index(props) {
                       )}
                       {formToggle == 4 && (
                         <div className='row'>
-                          <div className='row w-100 bb'>
-                            <div className='col-4 bb'>Sub Category</div>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='subCategory'
-                                value={state?.subCategory}
-                                onChange={handleChange}
-                                ref={register}>
-                                {/* {subCategory.map((data) => {
+                          {inputFields.map((inputField) => (
+                            <div key={inputField.id} className='row w-100 bb'>
+                              <div className='col-2 bb'>Sub Category</div>
+                              <div className='col-4 bb'>
+                                <select
+                                  className='form-control'
+                                  id='exampleFormControlSelect1'
+                                  name='name'
+                                  // value={state?.subCategory}
+                                  // value={inputField.firstName}
+                                  // onChange={handleChange}
+                                  onChange={(event) => {
+                                    handleChangeInput(inputField.id, event);
+                                    handleChange(event);
+                                  }}
+                                  ref={register}>
+                                  {/* {subCategory.map((data) => {
                                   <option value={data}>{data}</option>;
                                 })} */}
-                                <option value=''>Select Sub Category</option>
-                                {subCategory.map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
+                                  <option value=''>Select Sub Category</option>
+                                  {subCategory.map((data) => (
+                                    <option value={data}>{data}</option>
+                                  ))}
+                                </select>
+                              </div>
+                              <div className='col-4 bb'>
+                                <input
+                                  type='text'
+                                  className='form-control'
+                                  id='val-username'
+                                  name='brandName'
+                                  onChange={(event) => {
+                                    handleChangeInput(inputField.id, event);
+                                    handleChange(event);
+                                  }}
+                                  // value={state?.brandName}
+                                  // onChange={handleChange}
+                                  placeholder='Add more Brand'
+                                  // required
+                                  ref={register({
+                                    //   required: 'This is required ',
+                                  })}
+                                />
+                              </div>
+                              <div className='col-2 bb'>
+                                {inputFields.length == 1 ? (
+                                  ''
+                                ) : (
+                                  <span
+                                    class='badge light badge-danger'
+                                    onClick={() =>
+                                      inputFields.length == 1
+                                        ? ''
+                                        : handleRemoveFields(inputField.id)
+                                    }>
+                                    Delete
+                                  </span>
+                                )}
+
+                                <span
+                                  class='badge light badge-success ml-1'
+                                  onClick={handleAddFields}>
+                                  Add
+                                </span>
+                              </div>
                             </div>
-                            <div className='col-4 bb'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='val-username'
-                                name='brandName'
-                                value={state?.brandName}
-                                onChange={handleChange}
-                                placeholder='Add more Brand'
-                                // required
-                                ref={register({
-                                  //   required: 'This is required ',
-                                })}
-                              />
-                            </div>
-                          </div>
-                          <div className='row w-100 bb'>
-                            <div className='col-4 bb'>Sub Category</div>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='subCategory2   '
-                                value={state?.subCategory2}
-                                ref={register}>
-                                {subCategory.map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
-                            </div>
-                            <div className='col-4 bb'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='val-username'
-                                name='firstName2'
-                                value={state?.firstName2}
-                                onChange={handleChange}
-                                placeholder='Add more Brand'
-                                // required
-                                ref={register({
-                                  //   required: 'This is required ',
-                                })}
-                              />
-                            </div>
-                          </div>
-                          <div className='row w-100 bb'>
-                            <div className='col-4 bb'>Sub Category</div>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='subCategory3'
-                                value={state?.subCategory3}
-                                ref={register}>
-                                {subCategory.map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
-                            </div>
-                            <div className='col-4 bb'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='val-username'
-                                name='firstName3'
-                                value={state?.firstName3}
-                                onChange={handleChange}
-                                placeholder='Add more Brand'
-                                // required
-                                ref={register({
-                                  //   required: 'This is required ',
-                                })}
-                              />
-                            </div>
-                          </div>
-                          <div className='row w-100 bb'>
-                            <div className='col-4 bb'>Sub Category</div>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='subCategory4'
-                                value={state?.subCategory4}
-                                ref={register}>
-                                {subCategory.map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
-                            </div>
-                            <div className='col-4 bb'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='val-username'
-                                name='firstName4'
-                                value={state?.firstName4}
-                                onChange={handleChange}
-                                placeholder='Add more Brand'
-                                // required
-                                ref={register({
-                                  //   required: 'This is required ',
-                                })}
-                              />
-                            </div>
-                          </div>
-                          <h5 class='mt-5 mb-2'>
+                          ))}
+
+                          {/* <h5 class='mt-5 mb-2'>
                             Select preferred location for distribution-ship
                             appointment
                           </h5>
@@ -1071,7 +1091,7 @@ function Index(props) {
                                 Add
                               </button>
                             </div>
-                          </div>
+                          </div> */}
 
                           <div className='col-lg-12 d-flex justify-content-end'>
                             <button
@@ -1127,142 +1147,72 @@ function Index(props) {
                               />
                             </div>
                           </div>
-                          <div className='row w-100 bb'>
-                            <div className='col-4 bb'>Sub Category</div>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='subCategory2   '
-                                value={state?.subCategory21}
-                                ref={register}>
-                                {subCategory.map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
-                            </div>
-                            <div className='col-4 bb'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='val-username'
-                                name='firstName2'
-                                value={state?.firstName2}
-                                onChange={handleChange}
-                                placeholder='Add more Brand'
-                                // required
-                                ref={register({
-                                  //   required: 'This is required ',
-                                })}
-                              />
-                            </div>
-                          </div>
-                          <div className='row w-100 bb'>
-                            <div className='col-4 bb'>Sub Category</div>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='subCategory3'
-                                value={state?.subCategory3}
-                                ref={register}>
-                                {subCategory.map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
-                            </div>
-                            <div className='col-4 bb'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='val-username'
-                                name='firstName3'
-                                value={state?.firstName3}
-                                onChange={handleChange}
-                                placeholder='Add more Brand'
-                                // required
-                                ref={register({
-                                  //   required: 'This is required ',
-                                })}
-                              />
-                            </div>
-                          </div>
-                          <div className='row w-100 bb'>
-                            <div className='col-4 bb'>Sub Category</div>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='subCategory4'
-                                value={state?.subCategory4}
-                                ref={register}>
-                                {subCategory.map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
-                            </div>
-                            <div className='col-4 bb'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='val-username'
-                                name='firstName4'
-                                value={state?.firstName4}
-                                onChange={handleChange}
-                                placeholder='Add more Brand'
-                                // required
-                                ref={register({
-                                  //   required: 'This is required ',
-                                })}
-                              />
-                            </div>
-                          </div>
-                          {/* <h5 class='mt-5 mb-2'>
+
+                          <h5 class='mt-5 mb-2'>
                             Select preferred location for distribution-ship
                             appointment
                           </h5>
-                          <div className='row w-100 bb'>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='state'
-                                required
-                                value={state?.state}
-                                onChange={(e) => {
-                                  handleChange(e);
-                                  handleStatefunforcity(e.target.value);
-                                }}
-                                ref={register}>
-                                <option value=''>Select State </option>
-                                {Object.keys(statehandle).map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
+                          {inputFieldscity.map((InputFieldcity) => (
+                            <div className='row w-100 bb'>
+                              <div className='col-4 bb'>
+                                <select
+                                  className='form-control'
+                                  id='exampleFormControlSelect1'
+                                  name='state'
+                                  required
+                                  // value={state?.state}
+                                  onChange={(event) => {
+                                    handleChangeInputcity(
+                                      InputFieldcity.id,
+                                      event
+                                    );
+                                    handleStatefunforcity(event.target.value);
+                                  }}
+                                  // onChange={(e) => {
+                                  //   handleChange(e);
+                                  //   handleStatefunforcity(e.target.value);
+                                  // }}
+                                  ref={register}>
+                                  <option value=''>Select State </option>
+                                  {Object.keys(statehandle).map((data) => (
+                                    <option value={data}>{data}</option>
+                                  ))}
+                                </select>
+                              </div>
+                              <div className='col-4 bb'>
+                                <Multiselect
+                                  isObject={false}
+                                  onRemove={function noRefCheck() {}}
+                                  onSearch={function noRefCheck() {}}
+                                  onSelect={(data) =>
+                                    handleChangeInputcitynew(0, data)
+                                  }
+                                  options={cityhandle}
+                                />
+                              </div>
+
+                              <div className='col-4 bb'>
+                                {inputFieldscity.length == 1 ? (
+                                  ''
+                                ) : (
+                                  <span
+                                    class='badge light badge-danger'
+                                    onClick={() =>
+                                      handleRemoveFields(InputFieldcity.id)
+                                    }>
+                                    Delete
+                                  </span>
+                                )}
+
+                                <span
+                                  class='badge light badge-success ml-1'
+                                  // onClick={handleAddFieldscity}
+                                >
+                                  Add
+                                </span>
+                              </div>
                             </div>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='city'
-                                required
-                                value={state?.city}
-                                onChange={(e) => {
-                                  handleChange(e);
-                                }}
-                                ref={register}>
-                                <option value=''>Select City </option>
-                                {cityhandle.map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
-                            </div>
-                            <div className='col-4 bb'>
-                              <button type='button' className='btn btn-primary'>
-                                Add
-                              </button>
-                            </div>
-                          </div> */}
+                          ))}
 
                           <div className='col-lg-12 d-flex justify-content-end'>
                             <button

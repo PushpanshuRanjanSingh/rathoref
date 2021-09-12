@@ -65,14 +65,14 @@ function SerchField(props) {
   }
   function categoryy() {
     axios
-      .get('http://localhost:3000/categories.json')
+      .get(window.location.origin + '/categories.json')
       .then((resp) => setcategory(resp?.data))
       .catch((err) => console.log(err));
   }
   const onSubmit = (formsubmitdata) => {
     console.log(`object`, formsubmitdata);
     axios
-      .post('http://localhost:3040/user/search', formsubmitdata) //data.data.verify_otp
+      .post(apiUrl + 'user/search', formsubmitdata) //data.data.verify_otp
       .then(function (respon) {
         // if()
         setsearchresult(respon?.data?.data?.verify_otp ?? []);
@@ -262,9 +262,8 @@ function SerchField(props) {
                       <Image
                         className='img-fluid'
                         alt='img'
-                        src={'http://localhost:3040/' + data.profileImg}
+                        src={apiUrl + data.profileImg}
                       />
-                      {console.log('http://localhost:3040/' + data.profileImg)}
                     </div>
                     <div class='gsc_col-xs-12 holder truncate'>
                       {/* <Link title="Maruti Swift" to="/"> */}
