@@ -104,16 +104,18 @@ function SerchField(props) {
   return (
     <>
       {/* <Header /> */}
-      <div className='serch'>
+      <div className='serch '>
         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
           <div className='container-fluid'>
-            <div className='row  h-100  emi_row'>
+            <div className='row  h-100  emi_row justify-content-center'>
               <div className='col-8'>
                 <div className='card widget-stat'>
                   <div className='card-body'>
                     <div className='form-validation'>
+                      <div className='row'>
+                        <span className='pl-3'>Select Any one of These </span>
+                      </div>
                       <div className='row align-items-center'>
-                        <span>Select Any one of These </span>
                         <div className='col-4'>
                           <div className='form-group '>
                             <div className='d-flex px-2'>
@@ -248,7 +250,7 @@ function SerchField(props) {
                 </div>
               </div>
             </div>
-            <h4>
+            <h4 class='container-fluid mt-5 pt-5'>
               {searchresult.length != 0
                 ? state?.type.toUpperCase() + ' Record found'
                 : ''}

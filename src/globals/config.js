@@ -3,7 +3,7 @@ const api = {
   platform: 'http://nayakb.toxsl.in/',
 
   // localhost: 'http://localhost:3040/',
-  localhost: "http://192.168.18.10:3000/",
+  localhost: 'http://192.168.18.10:3001/',
 };
 
 let apiBase = '';

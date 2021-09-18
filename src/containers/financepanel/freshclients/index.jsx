@@ -203,15 +203,15 @@ function Index(props) {
                               <td>
                                 {data?.status ? (
                                   <span
-                                    class='badge light badge-danger'
+                                    class='badge light badge-success'
                                     onClick={() => reject(data._id)}>
-                                    Banned
+                                    Block
                                   </span>
                                 ) : (
                                   <span
                                     class='badge light badge-danger'
                                     onClick={() => approve(data._id)}>
-                                    Un-Bann
+                                    UnBlock
                                   </span>
                                 )}
 
