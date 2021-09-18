@@ -339,12 +339,15 @@ class HomePage extends Component {
                               alt='img'
                             />
                           </div>
+
+                          {/*
                           <h4>Connect Company to distributer</h4>
 
                           <h3>And Vice Versa</h3>
                           <Link to='/about' className='banner-btn-cus'>
                             About us
                           </Link>
+                        */}
                         </div>
                       </div>
                     </div>

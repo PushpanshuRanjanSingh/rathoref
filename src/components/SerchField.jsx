@@ -107,19 +107,15 @@ function SerchField(props) {
       <div className='serch'>
         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
           <div className='container-fluid'>
-            <div className='row justify-content-center h-100 align-items-center emi_row'>
-              <div className='col-md-12'>
+            <div className='row  h-100  emi_row'>
+              <div className='col-8'>
                 <div className='card widget-stat'>
                   <div className='card-body'>
                     <div className='form-validation'>
                       <div className='row align-items-center'>
+                        <span>Select Any one of These </span>
                         <div className='col-4'>
                           <div className='form-group '>
-                            <label
-                              className='col-form-label'
-                              htmlFor='val-username'>
-                              Select Any one of these
-                            </label>
                             <div className='d-flex px-2'>
                               <div className='w-110 d-flex align-items-center mr-3'>
                                 Company{' '}
@@ -160,7 +156,9 @@ function SerchField(props) {
                             </div>
                           </div>
                         </div>
-                        <div className='col-4'>
+                      </div>
+                      <div className='row align-items-center '>
+                        <div className='col-6'>
                           <select
                             className='form-control'
                             id='exampleFormControlSelect1'
@@ -178,7 +176,7 @@ function SerchField(props) {
                             ))}
                           </select>
                         </div>
-                        <div className='col-4'>
+                        <div className='col-6'>
                           <select
                             className='form-control'
                             id='exampleFormControlSelect1'
@@ -197,49 +195,52 @@ function SerchField(props) {
                           </select>
                         </div>
                       </div>
-
-                      <div className='row'>
-                        <div className='row w-100 bb'>
-                          <div className='col-4 bb'>
-                            <select
-                              className='form-control'
-                              id='exampleFormControlSelect1'
-                              name='state'
-                              required
-                              value={state?.state}
-                              onChange={(e) => {
-                                handleChange(e);
-                                handleStatefunforcity(e.target.value);
-                              }}
-                              ref={register}>
-                              <option value=''>Select State </option>
-                              {Object.keys(statehandle).map((data) => (
-                                <option value={data}>{data}</option>
-                              ))}
-                            </select>
-                          </div>
-                          <div className='col-4 bb'>
-                            <select
-                              className='form-control'
-                              id='exampleFormControlSelect1'
-                              name='city'
-                              required
-                              value={state?.city}
-                              onChange={(e) => {
-                                handleChange(e);
-                              }}
-                              ref={register}>
-                              <option value=''>Select City </option>
-                              {cityhandle.map((data) => (
-                                <option value={data}>{data}</option>
-                              ))}
-                            </select>
-                          </div>
-                          <div className='col-4 bb'>
-                            <button type='submit' className='btn btn-primary'>
+                      <div className='row align-item-center pt-2 '>
+                        <div className='col-6 bb'>
+                          <select
+                            className='form-control'
+                            id='exampleFormControlSelect1'
+                            name='state'
+                            required
+                            value={state?.state}
+                            onChange={(e) => {
+                              handleChange(e);
+                              handleStatefunforcity(e.target.value);
+                            }}
+                            ref={register}>
+                            <option value=''>Select State </option>
+                            {Object.keys(statehandle).map((data) => (
+                              <option value={data}>{data}</option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className='col-6 bb'>
+                          <select
+                            className='form-control'
+                            id='exampleFormControlSelect1'
+                            name='city'
+                            required
+                            value={state?.city}
+                            onChange={(e) => {
+                              handleChange(e);
+                            }}
+                            ref={register}>
+                            <option value=''>Select City </option>
+                            {cityhandle.map((data) => (
+                              <option value={data}>{data}</option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                      <div className=' row align-item-center'>
+                        <div className='offset-2 col-8 bb mt-2'>
+                          <span className=''>
+                            <button
+                              type='submit'
+                              className='btn px-5 btn-primary btn-lg'>
                               search
                             </button>
-                          </div>
+                          </span>
                         </div>
                       </div>
                     </div>

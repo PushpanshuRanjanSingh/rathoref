@@ -91,7 +91,7 @@ function Index(props) {
   }
   function categoryy() {
     axios
-      .get('http://localhost:3000/categories.json')
+      .get(window.location.origin + '/categories.json')
       .then((resp) => setcategory(resp?.data))
       .catch((err) => console.log(err));
   }
@@ -100,7 +100,7 @@ function Index(props) {
     if (formToggle == 1) {
       console.log(`state.phoneNo`, state.phoneNo);
       axios
-        .post('http://localhost:3040/user/register', {
+        .post(apiUrl + 'user/register', {
           phoneNo: formsubmitdata.phoneNo,
           firstName: formsubmitdata.firstName,
           password: formsubmitdata.password,
@@ -132,7 +132,7 @@ function Index(props) {
       formData.append('subCategory', state?.subCategory);
       // formData.append('brandName', state?.brandName);
       axios
-        .post('http://localhost:3040/user/updateuserprofile', formData)
+        .post(apiUrl + 'user/updateuserprofile', formData)
         .then(function (respon) {
           console.log(`respon`, respon);
         })

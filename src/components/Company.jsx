@@ -43,7 +43,7 @@ function Index(props) {
   const [blockData, setblockData] = useState([]);
   const [id, setid] = useState('');
   const [Vechicle, setVechicle] = useState([]);
-  const [formToggle, setformToggle] = useState(3);
+  const [formToggle, setformToggle] = useState(1);
   const [vehicle, setvehicle] = useState(props?.location?.data);
   const [prevData, setprevData] = useState(props);
   const [data, setdata] = useState({});
