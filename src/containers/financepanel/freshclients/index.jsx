@@ -75,7 +75,7 @@ function Index(props) {
       .post(apiUrl + 'user/approve', { id: userid }, headers)
       .then((resp) => {
         ongoing(page);
-        showNotification('success', 'Un-Blocked Sucessfull');
+        showNotification('success ', 'Un-Blocked Sucessfull');
       })
       .catch((err) => {
         showNotification('danger', err.message);
