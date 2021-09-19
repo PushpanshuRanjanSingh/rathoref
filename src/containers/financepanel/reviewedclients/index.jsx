@@ -85,27 +85,27 @@ function Index(props) {
         showNotification('danger', err.message);
       });
   };
-  const reject = (userid) => {
-    const formData = new FormData();
+  // const reject = (userid) => {
+  //   const formData = new FormData();
 
-    formData.append('userid', userid);
-    formData.append('financeApproval', false);
+  //   formData.append('userid', userid);
+  //   formData.append('financeApproval', false);
 
-    let token = localStorage.getItem('myData');
-    let headers = {
-      headers: {
-        'x-token': `Bearer ${token}`,
-      },
-    };
-    axios
-      .post(apiUrl + 'user/updateLead', formData, headers)
-      .then((resp) => {
-        ongoing(page);
-      })
-      .catch((err) => {
-        showNotification('danger', err.message);
-      });
-  };
+  //   let token = localStorage.getItem('myData');
+  //   let headers = {
+  //     headers: {
+  //       'x-token': `Bearer ${token}`,
+  //     },
+  //   };
+  //   axios
+  //     .post(apiUrl + 'user/updateLead', formData, headers)
+  //     .then((resp) => {
+  //       ongoing(page);
+  //     })
+  //     .catch((err) => {
+  //       showNotification('danger', err.message);
+  //     });
+  // };
   const update = (id) => {
     props.history.push({
       pathname: '/financel3',
@@ -130,6 +130,41 @@ function Index(props) {
         showNotification('danger', err.message);
       });
   };
+  const approve = (userid) => {
+    let token = localStorage.getItem('myData');
+    let headers = {
+      headers: {
+        'x-token': `Bearer ${token}`,
+      },
+    };
+    axios
+      .post(apiUrl + 'user/approve', { id: userid }, headers)
+      .then((resp) => {
+        ongoing(page);
+        showNotification('success ', 'Un-Blocked Sucessfull');
+      })
+      .catch((err) => {
+        showNotification('danger', err.message);
+      });
+  };
+  const reject = (userid) => {
+    let token = localStorage.getItem('myData');
+    let headers = {
+      headers: {
+        'x-token': `Bearer ${token}`,
+      },
+    };
+    axios
+      .post(apiUrl + 'user/reject', { id: userid }, headers)
+      .then((resp) => {
+        ongoing(page);
+        showNotification('danger', 'Blocked Sucessfull');
+      })
+      .catch((err) => {
+        showNotification('danger', err.message);
+      });
+  };
+
   console.log(`confirmLead`, confirmLead);
   return (
     <>
@@ -212,7 +247,20 @@ function Index(props) {
                               <td>{data?.phoneNo}</td>
 
                               <td>
-                                {' '}
+                                {data?.status ? (
+                                  <span
+                                    class='badge light badge-success'
+                                    onClick={() => reject(data._id)}>
+                                    Block
+                                  </span>
+                                ) : (
+                                  <span
+                                    class='badge light badge-danger'
+                                    onClick={() => approve(data._id)}>
+                                    UnBlock
+                                  </span>
+                                )}
+
                                 <span
                                   class='badge light badge-danger'
                                   onClick={() => deleteOne(data._id)}>

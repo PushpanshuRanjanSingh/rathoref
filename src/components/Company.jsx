@@ -77,21 +77,36 @@ function Index(props) {
       .catch((err) => console.log(err));
   }
   const onSubmit = (formsubmitdata) => {
-    if (formToggle == 1) {
+    if (formToggle == 1 && formsubmitdata.phoneNo && formsubmitdata.password) {
       axios
-        .post(apiUrl + 'user/register', {
+        .post(apiUrl + 'user/getPhone', {
           phoneNo: formsubmitdata.phoneNo,
-          firstName: formsubmitdata.firstName,
-          password: formsubmitdata.password,
-          companyName: formsubmitdata.companyName,
-          role: 0, //type
-          type: 'company',
         })
         .then(function (respon) {
+          seterrorMsg(respon.data.message);
           console.log(`respon`, respon);
         })
         .catch(function (error) {
-          console.log(`error`, error);
+          axios
+            .post(apiUrl + 'user/register', {
+              phoneNo: formsubmitdata.phoneNo,
+              firstName: formsubmitdata.firstName,
+              password: formsubmitdata.password,
+              companyName: formsubmitdata.companyName,
+              role: 0, //type
+              type: 'company',
+            })
+            .then(function (respon) {
+              if (formToggle == 1) {
+                setstep(1);
+                setformToggle(2);
+                setheading('firm Details');
+              }
+              console.log(`respon`, respon);
+            })
+            .catch(function (error) {
+              console.log(`error`, error);
+            });
         });
     } else if (formToggle == 6) {
       console.log(
@@ -101,10 +116,11 @@ function Index(props) {
         inputFields,
         'all data'
       );
+      JSON.stringify([state?.category]);
       const formData = new FormData();
-      formData.append('phoneNo', 6161515115);
+      formData.append('phoneNo', state?.phoneNo);
       formData.append('profileImg', state?.profileImg);
-      formData.append('category', state?.category);
+      formData.append('category', JSON.stringify([state?.category]));
       formData.append('preferred', JSON.stringify(inputFieldscity)); //state or city
       formData.append('subCategory', JSON.stringify(inputFields));
 
@@ -125,11 +141,7 @@ function Index(props) {
       console.log('InputFields', inputFields);
     }
     try {
-      if (formToggle == 1) {
-        setstep(1);
-        setformToggle(2);
-        setheading('firm Details');
-      } else if (formToggle == 2) {
+      if (formToggle == 2) {
         setstep(2);
         setformToggle(3);
         setheading('Categories Details');
@@ -565,11 +577,14 @@ function Index(props) {
                                 className='form-control'
                                 id='val-username'
                                 name='phoneNo'
-                                onChange={() => seterrorMsg('')}
+                                onChange={(e) => {
+                                  seterrorMsg('');
+                                  handleChange(e);
+                                }}
                                 maxLength='10'
                                 required
                                 value={state?.phoneNo}
-                                onChange={handleChange}
+                                // onChange={handleChange}
                                 onKeyPress={(e) => restrictAlpha(e)}
                                 placeholder='Enter mobile number...'
                                 // ref={register}
