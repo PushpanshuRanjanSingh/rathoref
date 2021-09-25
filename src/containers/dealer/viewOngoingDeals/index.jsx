@@ -4,19 +4,13 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import apiUrl from '../../../globals/config';
 import Header from '../../header/header';
-import * as constant from "../../../services/constant";
-import showNotification from "../../../services/notificationService";
+import * as constant from '../../../services/constant';
+import showNotification from '../../../services/notificationService';
 import { param } from 'jquery';
 var fileDownload = require('js-file-download');
 function ViewProfile(props) {
-  if (!props.location.data) {
-    props.history.push({
-      pathname: '/',
-    });
-  }
-
   const history = useHistory();
-  
+
   const [post, setpost] = useState([]);
   const [pramsdata, setpramsdata] = useState(props.location.data);
   const [blockData, setblockData] = useState([]);
@@ -41,7 +35,7 @@ function ViewProfile(props) {
         setpost([{ Name: data.postOffice }]);
       })
       .catch(function (error) {
-        showNotification("danger", error.message);
+        showNotification('danger', error.message);
       });
   };
   function download(url, name) {
@@ -55,13 +49,10 @@ function ViewProfile(props) {
         fileDownload(res.data, fileName);
       });
   }
-  if(state&&state?.vehicles[0]){
-
-  
+  if (state && state?.vehicles[0]) {
   }
   return (
     <>
-   
       <div className='content-body'>
         <div className='container-fluid'>
           <div className='row justify-content-center h-100 align-items-center emi_row'>
@@ -175,7 +166,7 @@ function ViewProfile(props) {
                         </div>
                         <div className='col-sm-9 col-7'>
                           <span>
-                            {state &&state?.vehicles[0]
+                            {state && state?.vehicles[0]
                               ? state?.vehicles[0]?.wheels
                               : 'N/A'}{' '}
                           </span>
@@ -218,7 +209,7 @@ function ViewProfile(props) {
                         <div className='col-sm-9 col-7'>
                           <span>
                             {state && state?.vehicles[0]
-                              ?state?.vehicles[0]?.vehicleID[0]?.vehicleName
+                              ? state?.vehicles[0]?.vehicleID[0]?.vehicleName
                               : 'N/A'}{' '}
                           </span>
                         </div>
@@ -538,7 +529,6 @@ function ViewProfile(props) {
                           </h6>
                         </div>
                         <div className='col-sm-9 col-7  d-flex align-items-center'>
-                         
                           <span className='file-name-box'>
                             {state && state.docs?.aadharDoc
                               ? state.docs.aadharDoc
@@ -578,7 +568,6 @@ function ViewProfile(props) {
                           </h6>
                         </div>
                         <div className='col-sm-9 col-7 d-flex align-items-center'>
-                          
                           <span className='file-name-box'>
                             {state && state.docs?.panDoc
                               ? state.docs.panDoc
@@ -603,125 +592,125 @@ function ViewProfile(props) {
                   </div>
                 </div>
               </div>
-               <div className="card widget-stat">
-                <div className="card-header bg-custom-blue ">
-                  <h4 className="card-title text-white">Bank Details</h4>
-                   <div className="two_btns_ps"></div>
+              <div className='card widget-stat'>
+                <div className='card-header bg-custom-blue '>
+                  <h4 className='card-title text-white'>Bank Details</h4>
+                  <div className='two_btns_ps'></div>
                 </div>
-                <div className="card-body">
-                  <div className="form-validation">
-                    <div className="profile-personal-info">
-                      <div className="row mb-2">
-                        <div className="col-sm-3 col-5">
-                          <h6 className="f-w-500">
-                            Bank Name <span className="pull-right">:</span>
+                <div className='card-body'>
+                  <div className='form-validation'>
+                    <div className='profile-personal-info'>
+                      <div className='row mb-2'>
+                        <div className='col-sm-3 col-5'>
+                          <h6 className='f-w-500'>
+                            Bank Name <span className='pull-right'>:</span>
                           </h6>
                         </div>
-                        <div className="col-sm-9 col-7">
+                        <div className='col-sm-9 col-7'>
                           <span>
                             {state && state.docs?.bankName
                               ? state.docs.bankName
-                              : "N/A"}{" "}
+                              : 'N/A'}{' '}
                           </span>
                         </div>
                       </div>
-                      <div className="row mb-2 align-items-center">
-                        <div className="col-sm-3 col-5">
-                          <h6 className="f-w-500">
+                      <div className='row mb-2 align-items-center'>
+                        <div className='col-sm-3 col-5'>
+                          <h6 className='f-w-500'>
                             Bank Passbook (Uploaded)
-                            <span className="pull-right">:</span>
+                            <span className='pull-right'>:</span>
                           </h6>
                         </div>
-                        <div className="col-sm-9 col-7 d-flex align-items-center">
-                         <span className="file-name-box">
+                        <div className='col-sm-9 col-7 d-flex align-items-center'>
+                          <span className='file-name-box'>
                             {state && state.docs?.bankDoc
                               ? state.docs.bankDoc
-                              : "N/A"}
+                              : 'N/A'}
                           </span>
                           {state && state.docs?.bankDoc ? (
                             <button
-                              type="button"
+                              type='button'
                               onClick={(e) => download(state.docs.bankDoc)}
-                              class="btn btn-dark  bg-dark-cus ml-auto"
-                            >
+                              class='btn btn-dark  bg-dark-cus ml-auto'>
                               <i
-                                class="fa fa-cloud-download pr-1"
-                                aria-hidden="true"
-                              ></i>
+                                class='fa fa-cloud-download pr-1'
+                                aria-hidden='true'></i>
                               <span>Download</span>
                             </button>
                           ) : (
-                            ""
+                            ''
                           )}
                         </div>
-                      </div>{" "}
-                      <div className="row mb-2">
-                        <div className="col-sm-3 col-5">
-                          <h6 className="f-w-500">
-                            A/C No. <span className="pull-right">:</span>
+                      </div>{' '}
+                      <div className='row mb-2'>
+                        <div className='col-sm-3 col-5'>
+                          <h6 className='f-w-500'>
+                            A/C No. <span className='pull-right'>:</span>
                           </h6>
                         </div>
-                        <div className="col-sm-9 col-7">
+                        <div className='col-sm-9 col-7'>
                           <span>
                             {state && state.docs?.acNo
                               ? state.docs.acNo
-                              : "N/A"}{" "}
+                              : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>{" "}
-                      <div className="row mb-2">
-                        <div className="col-sm-3 col-5">
-                          <h6 className="f-w-500">
-                            Account Holder<span className="pull-right">:</span>
+                      </div>{' '}
+                      <div className='row mb-2'>
+                        <div className='col-sm-3 col-5'>
+                          <h6 className='f-w-500'>
+                            Account Holder<span className='pull-right'>:</span>
                           </h6>
                         </div>
-                        <div className="col-sm-9 col-7">
+                        <div className='col-sm-9 col-7'>
                           <span>
                             {state && state.docs?.accountHolder
                               ? state.docs.accountHolder
-                              : "N/A"}{" "}
+                              : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>{" "}
-                      <div className="row mb-2">
-                        <div className="col-sm-3 col-5">
-                          <h6 className="f-w-500">
-                            IFSC code<span className="pull-right">:</span>
+                      </div>{' '}
+                      <div className='row mb-2'>
+                        <div className='col-sm-3 col-5'>
+                          <h6 className='f-w-500'>
+                            IFSC code<span className='pull-right'>:</span>
                           </h6>
                         </div>
-                        <div className="col-sm-9 col-7">
+                        <div className='col-sm-9 col-7'>
                           <span>
                             {state && state.docs?.ifscCode
                               ? state.docs.ifscCode
-                              : "N/A"}{" "}
+                              : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>{" "}
-                      <div className="row mb-2">
-                        <div className="col-sm-3 col-5">
-                          <h6 className="f-w-500">
+                      </div>{' '}
+                      <div className='row mb-2'>
+                        <div className='col-sm-3 col-5'>
+                          <h6 className='f-w-500'>
                             Do you have cheque book?
-                            <span className="pull-right">:</span>
+                            <span className='pull-right'>:</span>
                           </h6>
                         </div>
-                        <div className="col-sm-9 col-7">
+                        <div className='col-sm-9 col-7'>
                           <span>
                             {state && state.docs?.chequeBook
                               ? state.docs.chequeBook
-                              : "N/A"}{" "}
+                              : 'N/A'}{' '}
                           </span>
                         </div>
-                      </div>{" "}
+                      </div>{' '}
                     </div>
                   </div>
                 </div>
               </div>
-            
+
               {role == constant.INSURANCE ? (
                 <>
                   <div className='card widget-stat'>
                     <div className='card-header bg-custom-blue '>
-                      <h4 className='card-title text-white'>Vehicle Document</h4>
+                      <h4 className='card-title text-white'>
+                        Vehicle Document
+                      </h4>
 
                       <div className='two_btns_ps'></div>
                     </div>
@@ -729,38 +718,36 @@ function ViewProfile(props) {
                     <div className='card-body'>
                       <div className='form-validation'>
                         <div className='profile-personal-info'>
-                         <div className="row mb-2 align-items-center">
-                        <div className="col-sm-3 col-5">
-                          <h6 className="f-w-500">
-                          Tax Invoice{" "}
-                            <span className="pull-right">:</span>
-                          </h6>
-                        </div>
-                        <div className="col-sm-9 col-7  d-flex align-items-center">
-                       
-                          <span className="file-name-box">
-                            {state && state?.taxInvoiceL2
-                              ? apiUrl + state.taxInvoiceL2
-                              : "N/A"}
-                          </span>
-                          {state && state?.taxInvoiceL2 ? (
-                            <button
-                              type="button"
-                              onClick={(e) => download(state.taxInvoiceL2,"taxinvoice")}
-                              class="btn btn-dark  bg-dark-cus ml-auto"
-                            >
-                              <i
-                                class="fa fa-cloud-download pr-1"
-                                aria-hidden="true"
-                              ></i>
-                              <span>Download</span>
-                            </button>
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                      </div>{" "}
-                    
+                          <div className='row mb-2 align-items-center'>
+                            <div className='col-sm-3 col-5'>
+                              <h6 className='f-w-500'>
+                                Tax Invoice{' '}
+                                <span className='pull-right'>:</span>
+                              </h6>
+                            </div>
+                            <div className='col-sm-9 col-7  d-flex align-items-center'>
+                              <span className='file-name-box'>
+                                {state && state?.taxInvoiceL2
+                                  ? apiUrl + state.taxInvoiceL2
+                                  : 'N/A'}
+                              </span>
+                              {state && state?.taxInvoiceL2 ? (
+                                <button
+                                  type='button'
+                                  onClick={(e) =>
+                                    download(state.taxInvoiceL2, 'taxinvoice')
+                                  }
+                                  class='btn btn-dark  bg-dark-cus ml-auto'>
+                                  <i
+                                    class='fa fa-cloud-download pr-1'
+                                    aria-hidden='true'></i>
+                                  <span>Download</span>
+                                </button>
+                              ) : (
+                                ''
+                              )}
+                            </div>
+                          </div>{' '}
                         </div>
                       </div>
                     </div>
@@ -774,14 +761,16 @@ function ViewProfile(props) {
                     </div>
                   </div>
                 </>
-              ) : <div className='col-lg-12 d-flex '>
-              <button
-                type='button'
-                className='btn btn-primary mr-2 tp-cus-btn'
-                onClick={() => history.goBack()}>
-                Back
-              </button>
-            </div>}
+              ) : (
+                <div className='col-lg-12 d-flex '>
+                  <button
+                    type='button'
+                    className='btn btn-primary mr-2 tp-cus-btn'
+                    onClick={() => history.goBack()}>
+                    Back
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

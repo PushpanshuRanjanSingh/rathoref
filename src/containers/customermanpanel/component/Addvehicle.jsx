@@ -1,52 +1,52 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Row, Col, Button } from "react-bootstrap";
-import { Image } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
-import showNotification from "../../../services/notificationService";
-import { useForm } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
-import ReactPaginate from "react-paginate";
-import apiUrl from "../../../globals/config";
-import { Tabs, Tab } from "react-bootstrap-tabs";
-import Swal from "sweetalert2";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Row, Col, Button } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import showNotification from '../../../services/notificationService';
+import { useForm } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
+import ReactPaginate from 'react-paginate';
+import apiUrl from '../../../globals/config';
+import { Tabs, Tab } from 'react-bootstrap-tabs';
+import Swal from 'sweetalert2';
 // import Editor from '../component/Editor';
 // import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw } from "draft-js";
-import Editor from "../component/Editor";
-import "../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { EditorState, convertToRaw } from 'draft-js';
+import Editor from '../component/Editor';
+import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 function Addlead() {
   const { register, reset, handleSubmit } = useForm();
-  const [State, setState] = useState("");
-  const [otherImage, setotherImage] = useState("");
+  const [State, setState] = useState('');
+  const [otherImage, setotherImage] = useState('');
   const [getppl, setgetppl] = useState([]);
-  const [imagename, setimagename] = useState("");
+  const [imagename, setimagename] = useState('');
   const [getData, setData] = useState([]);
   const [datacount, setdatacount] = useState();
   const [page, setPage] = useState(1);
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState('');
   useEffect(() => {
     getppll();
     brandAddedHandle(page);
   }, []);
   let index = 0;
   const getppll = () => {
-    let token = localStorage.getItem("myData");
+    let token = localStorage.getItem('myData');
     let headers = {
       headers: {
-        "x-token": `Bearer ${token}`,
+        'x-token': `Bearer ${token}`,
       },
     };
     axios
-      .get(apiUrl + "ppl/getPplList?skip=1&limit=200", headers)
+      .get(apiUrl + 'ppl/getPplList?skip=1&limit=200', headers)
 
       .then((resp) => {
         setgetppl(resp?.data?.data[index].data); //
       })
       .catch((err) => {
-        showNotification("danger", err.message);
+        showNotification('danger', err.message);
       });
   };
   const fileChange = (e) => {
@@ -68,78 +68,76 @@ function Addlead() {
     const formData = new FormData();
     Object.keys(data).forEach((key) => {
       if (data[key]) {
-        if (key != "otherImage") {
+        if (key != 'otherImage') {
           formData.append([key], data[key]);
         }
       }
     });
 
     for (let i = index; i < otherImage.length; i++) {
-      formData.append("otherImage", otherImage[i]);
+      formData.append('otherImage', otherImage[i]);
     }
 
-    let token = localStorage.getItem("myData");
+    let token = localStorage.getItem('myData');
     let headers = {
       headers: {
-        "x-token": `Bearer ${token}`,
+        'x-token': `Bearer ${token}`,
       },
     };
     axios
-      .post(apiUrl + "addVehicle/addVehicleData", formData, headers)
+      .post(apiUrl + 'addVehicle/addVehicleData', formData, headers)
       .then((resp) => {
         Swal.fire({
-          icon: "success",
-          title: "Your Data has been saved",
+          icon: 'success',
+          title: 'Your Data has been saved',
           showConfirmButton: false,
           timer: 2500,
         });
         reset();
         brandAddedHandle(page);
-        setState("");
+        setState('');
       })
       .catch(function (error) {
-        showNotification("danger", error.message);
+        showNotification('danger', error.message);
       });
   };
 
   const brandAddedHandle = (page) => {
-    let token = localStorage.getItem("myData");
+    let token = localStorage.getItem('myData');
     let headers = {
       headers: {
-        "x-token": `Bearer ${token}`,
+        'x-token': `Bearer ${token}`,
       },
     };
     axios
       .get(
-        apiUrl + "addVehicle/getVehicleData?skip=" + page + "&limit=10",
+        apiUrl + 'addVehicle/getVehicleData?skip=' + page + '&limit=10',
         headers
       )
       .then((response) => {
-       
         let data = response?.data?.data[0].data;
         setData(data);
         setdatacount(response?.data?.data[0].count);
       })
       .catch(function (error) {
-        showNotification("danger", error.message);
+        showNotification('danger', error.message);
       });
   };
 
   const deleteOne = (id) => {
-    let token = localStorage.getItem("myData");
+    let token = localStorage.getItem('myData');
     let headers = {
       headers: {
-        "x-token": `Bearer ${token}`,
+        'x-token': `Bearer ${token}`,
       },
     };
     axios
-      .delete(apiUrl + "addVehicle/deleteVehicleData/" + id, headers)
+      .delete(apiUrl + 'addVehicle/deleteVehicleData/' + id, headers)
 
       .then((resp) => {
-       
         Swal.fire({
-          icon: "success",
-          title: "Your Data has been saved",
+          icon: 'success',
+          title: 'Your Data has been saved',
           showConfirmButton: false,
           timer: 2500,
         });
@@ -155,29 +153,27 @@ function Addlead() {
   };
 
   return (
-    <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
-      <div className="container-fluid px-0">
-        <div class="row emi_row ">
-          <div class="col-lg-12">
-            <div class="card widget-stat">
-              <div class="card-header bg-custom-blue ">
-                <h4 class="card-title text-white">Add Vehicle</h4>
+    <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
+      <div className='container-fluid px-0'>
+        <div class='row emi_row '>
+          <div class='col-lg-12'>
+            <div class='card widget-stat'>
+              <div class='card-header bg-custom-blue '>
+                <h4 class='card-title text-white'>Add Vehicle</h4>
               </div>
-              <div class="card-body">
-                <div class="form-validation">
+              <div class='card-body'>
+                <div class='form-validation'>
                   <Row>
                     <Col sm={6}>
-                      <div class="form-group">
-                        <label class="col-form-label" for="val-username">
+                      <div class='form-group'>
+                        <label class='col-form-label' for='val-username'>
                           Select PPL
                         </label>
                         <select
-                          class="form-control"
+                          class='form-control'
                           ref={register}
-                          required
-                          name="selectPplId"
-                          id="exampleFormControlSelect1"
-                        >
+                          name='selectPplId'
+                          id='exampleFormControlSelect1'>
                           {getppl.length != index &&
                             getppl.map((options, index) => (
                               <option value={options._id}>
@@ -188,208 +184,193 @@ function Addlead() {
                       </div>
                     </Col>
                     <Col sm={6}>
-                      <div class="form-group ">
-                        <label class="col-form-label" for="val-username">
+                      <div class='form-group '>
+                        <label class='col-form-label' for='val-username'>
                           Vehicle Name
                         </label>
                         <input
-                          type="text"
+                          type='text'
                           ref={register}
-                          class="form-control"
-                          id="val-username"
-                          required
-                          name="vehicleName"
-                          placeholder="Enter a vehicle name.."
+                          class='form-control'
+                          id='val-username'
+                          name='vehicleName'
+                          placeholder='Enter a vehicle name..'
                         />
                       </div>
                     </Col>
                     <Col sm={6}>
-                      <div class="form-group ">
-                        <label class="col-form-label" for="val-username">
+                      <div class='form-group '>
+                        <label class='col-form-label' for='val-username'>
                           PL Name
                         </label>
                         <input
-                          type="text"
+                          type='text'
                           ref={register}
-                          class="form-control"
-                          id="val-username"
-                          required
-                          name="plName"
-                          placeholder="Enter a PL name.."
+                          class='form-control'
+                          id='val-username'
+                          name='plName'
+                          placeholder='Enter a PL name..'
                         />
                       </div>
                     </Col>
                     <Col sm={6}>
-                      <div class="form-group ">
-                        <label class="col-form-label" for="val-username">
+                      <div class='form-group '>
+                        <label class='col-form-label' for='val-username'>
                           Wheel
                         </label>
                         <input
-                          type="text"
+                          type='text'
                           ref={register}
-                          class="form-control"
-                          id="val-username"
-                          required
-                          name="wheel"
-                          placeholder="Enter wheel"
+                          class='form-control'
+                          id='val-username'
+                          name='wheel'
+                          placeholder='Enter wheel'
                         />
                       </div>
                     </Col>
 
                     <Col sm={6}>
-                      <div class="form-group ">
-                        <label class="col-form-label" for="val-username">
+                      <div class='form-group '>
+                        <label class='col-form-label' for='val-username'>
                           Maximum Price
                         </label>
                         <input
-                          type="number"
+                          type='number'
                           ref={register}
-                          class="form-control"
-                          required
-                          id="val-username"
-                          name="maximumPriceRange"
-                          placeholder="Enter  Maximum Price..."
+                          class='form-control'
+                          id='val-username'
+                          name='maximumPriceRange'
+                          placeholder='Enter  Maximum Price...'
                         />
                       </div>
                     </Col>
                     <Col sm={6}>
-                      <div class="form-group ">
-                        <label class="col-form-label" for="val-username">
+                      <div class='form-group '>
+                        <label class='col-form-label' for='val-username'>
                           Minimum Price
                         </label>
                         <input
-                          type="number"
+                          type='number'
                           ref={register}
-                          class="form-control"
-                          required
-                          id="val-username"
-                          name="minimumPriceRange"
-                          placeholder="Minimum Price"
+                          class='form-control'
+                          id='val-username'
+                          name='minimumPriceRange'
+                          placeholder='Minimum Price'
                         />
                       </div>
                     </Col>
 
-                  
-
                     <Col sm={6}>
-                      <div class="form-group ">
-                        <label class="col-form-label" for="val-username">
+                      <div class='form-group '>
+                        <label class='col-form-label' for='val-username'>
                           Primary Image
                         </label>
 
-                        <div class="custom-file mb-3">
+                        <div class='custom-file mb-3'>
                           <input
-                            type="file"
-                            class="custom-file-input"
-                            id="customFile"
+                            type='file'
+                            class='custom-file-input'
+                            id='customFile'
                             ref={register}
-                            required
                             onChange={fileChange}
-                            name="primaryImage"
+                            name='primaryImage'
                           />
-                          <label class="custom-file-label" for="customFile">
+                          <label class='custom-file-label' for='customFile'>
                             {State?.primaryImage?.name
                               ? State?.primaryImage?.name
-                              : "Choose File"}
+                              : 'Choose File'}
                           </label>
                         </div>
                       </div>
                     </Col>
                     <Col sm={6}>
-                      <div class="form-group ">
-                        <label class="col-form-label" for="val-username">
+                      <div class='form-group '>
+                        <label class='col-form-label' for='val-username'>
                           Other Image
                         </label>
 
-                        <div class="custom-file mb-3">
+                        <div class='custom-file mb-3'>
                           <input
-                            type="file"
-                            required
-                            class="custom-file-input"
-                            id="customFile"
+                            type='file'
+                            class='custom-file-input'
+                            id='customFile'
                             onChange={(e) => {
                               setotherImage(e.target.files);
 
-                              let data = "";
+                              let data = '';
                               Object.keys(e.target.files).forEach((key) => {
-                                if (data == "") {
+                                if (data == '') {
                                   data = data + e.target.files[key].name;
                                 } else {
-                                  data = data + "," + e.target.files[key].name;
+                                  data = data + ',' + e.target.files[key].name;
                                 }
                                 setimagename(data);
                               });
                             }}
-                            name="otherImage"
+                            name='otherImage'
                             multiple
                           />
-                          <label class="custom-file-label" for="customFile">
-                            {imagename ? imagename : "Choose File"}
+                          <label class='custom-file-label' for='customFile'>
+                            {imagename ? imagename : 'Choose File'}
                           </label>
                         </div>
                       </div>
                     </Col>
                     <Col sm={6}>
-                      <div class="form-group ">
-                        <label class="col-form-label" for="val-username">
+                      <div class='form-group '>
+                        <label class='col-form-label' for='val-username'>
                           Add Icon
                         </label>
 
-                        <div class="custom-file mb-3">
+                        <div class='custom-file mb-3'>
                           <input
-                            type="file"
+                            type='file'
                             ref={register}
-                            class="custom-file-input"
-                            id="customFile"
-                            required
-                            name="addIcon"
+                            class='custom-file-input'
+                            id='customFile'
+                            name='addIcon'
                             onChange={fileChange}
                           />
-                          <label class="custom-file-label" for="customFile">
+                          <label class='custom-file-label' for='customFile'>
                             {State?.addIcon?.name
                               ? State?.addIcon?.name
-                              : "Choose File"}
+                              : 'Choose File'}
                           </label>
                         </div>
                       </div>
                     </Col>
                     <Col sm={6}>
-                      <div class="form-group ">
-                        <label class="col-form-label" for="val-username">
+                      <div class='form-group '>
+                        <label class='col-form-label' for='val-username'>
                           Add Title
                         </label>
                         <input
-                          type="text"
+                          type='text'
                           ref={register}
-                          class="form-control"
-                          required
-                          id="val"
-                          name="addTitle"
-                          placeholder="Enter a title name.."
+                          class='form-control'
+                          id='val'
+                          name='addTitle'
+                          placeholder='Enter a title name..'
                         />
                       </div>
                     </Col>
 
                     <Col sm={12}>
-                      <div class="form-group ">
+                      <div class='form-group '>
                         {/* <label class="col-form-label" for="val-username">
                         Key Features 
                         </label> */}
                       </div>
                     </Col>
-                    <br className="" />
+                    <br className='' />
                     <Col sm={12}>
-                      
-                      <Editor
-                        onEditorStateChange={setDescription}
-                        
-                      />
+                      <Editor onEditorStateChange={setDescription} />
                     </Col>
 
-                    <br className="" />
+                    <br className='' />
 
-                    <Col sm={12} className="d-flex mt-3 mb-2">
-                      <button type="submit" class="btn btn-primary">
+                    <Col sm={12} className='d-flex mt-3 mb-2'>
+                      <button type='submit' class='btn btn-primary'>
                         Save
                       </button>
                     </Col>
@@ -399,28 +380,27 @@ function Addlead() {
             </div>
           </div>
 
-          <div class="col-lg-12 mt-0">
-            <div class="card">
-              <div class="card-body">
+          <div class='col-lg-12 mt-0'>
+            <div class='card'>
+              <div class='card-body'>
                 <div
-                  id="example_filter"
-                  class="dataTables_filter d-flex justify-content-end"
-                >
+                  id='example_filter'
+                  class='dataTables_filter d-flex justify-content-end'>
                   <input
-                    type="search"
-                    class="w-30 mr-3"
-                    placeholder=""
-                    aria-controls="example"
-                  />{" "}
-                  <a href="#0" class="btn btn-primary rounded d-block">
+                    type='search'
+                    class='w-30 mr-3'
+                    placeholder=''
+                    aria-controls='example'
+                  />{' '}
+                  <a href='#0' class='btn btn-primary rounded d-block'>
                     Search
                   </a>
                 </div>
-                <div class="table-responsive">
-                  <table class="table">
+                <div class='table-responsive'>
+                  <table class='table'>
                     <thead>
-                      <tr className="table_th">
-                        <th class="width100">
+                      <tr className='table_th'>
+                        <th class='width100'>
                           <span>S.NO</span>
                         </th>
                         <th>
@@ -453,7 +433,7 @@ function Addlead() {
                       {getData.map((data, index) => (
                         <tr>
                           <td>
-                            {" "}
+                            {' '}
                             <strong>{(page - 1) * 10 + index + 1}</strong>
                           </td>
                           <td>
@@ -480,55 +460,50 @@ function Addlead() {
                             <td>Rs.{data.minimumPriceRange}</td>
                           </td>
                           <td>
-                           
                             <span
-                              class="badge light badge-danger"
-                              onClick={() => deleteOne(data._id)}
-                            >
+                              class='badge light badge-danger'
+                              onClick={() => deleteOne(data._id)}>
                               Delete
                             </span>
                           </td>
-                          
                         </tr>
-                      ))}{" "}
+                      ))}{' '}
                     </tbody>
                   </table>
                 </div>
-                <div class="d-flex justify-content-between mt-3">
+                <div class='d-flex justify-content-between mt-3'>
                   <div
-                    class="dataTables_info pl-3"
-                    id="example_info"
-                    role="status"
-                    aria-live="polite"
-                  >
+                    class='dataTables_info pl-3'
+                    id='example_info'
+                    role='status'
+                    aria-live='polite'>
                     Showing 1 to 10 {datacount} of entries
                   </div>
                   <div
-                    class="dataTables_paginate paging_simple_numbers"
-                    id="example_paginate"
-                  >
+                    class='dataTables_paginate paging_simple_numbers'
+                    id='example_paginate'>
                     {datacount > 10 ? (
                       <ReactPaginate
-                        previousLabel={"←Previous"}
-                        nextLabel={"Next→"}
-                        breakLabel={"..."}
-                        breakClassName={"break-me"}
+                        previousLabel={'←Previous'}
+                        nextLabel={'Next→'}
+                        breakLabel={'...'}
+                        breakClassName={'break-me'}
                         pageCount={Math.ceil(datacount / 10)}
                         initialPage={0}
                         marginPagesDisplayed={5}
                         onPageChange={(data) => handlePageClick(data)}
-                        containerClassName={"pagination m-0"}
-                        subContainerClassName={"pages pagination"}
-                        pageClassName="page-item"
-                        activeClassName={"active"}
-                        activeLinkClassName={"page-link"}
-                        pageLinkClassName={"page-link"}
-                        nextClassName={"page-link arrow text-danger"}
-                        previousLinkClassName={"page-link arrow"}
+                        containerClassName={'pagination m-0'}
+                        subContainerClassName={'pages pagination'}
+                        pageClassName='page-item'
+                        activeClassName={'active'}
+                        activeLinkClassName={'page-link'}
+                        pageLinkClassName={'page-link'}
+                        nextClassName={'page-link arrow text-danger'}
+                        previousLinkClassName={'page-link arrow'}
                         disableInitialCallback={true}
                       />
                     ) : (
-                      ""
+                      ''
                     )}
                   </div>
                 </div>

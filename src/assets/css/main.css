@@ -41163,4 +41163,22 @@ select.form-control {
 .padding_serch_content{
   padding-top: 20vh;
 }
-
+.innerimg{
+     height: 100%;
+    position:relative;
+    background:   url("http://192.168.18.10:3001/upload/1632344951449-5.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 5vw
+}
+.img{
+   width: 100%;
+    height: 300px;
+    min-height: 200px;
+    position: relative;
+    
+}
+.hr{
+    border-top:2px !important;
+}

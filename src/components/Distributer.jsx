@@ -18,15 +18,19 @@ import { ErrorMessage } from '@hookform/error-message';
 import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { Multiselect } from 'multiselect-react-dropdown';
+var _ = require('underscore');
 function Index(props) {
   let history = useHistory();
   const [inputFields, setInputFields] = useState([
     { id: uuidv4(), name: '', brandName: '' },
   ]);
+  const [intrestinputFields, setIntrestinputFields] = useState([
+    { id: uuidv4(), name: '', brandName: '' },
+  ]);
   const [inputFieldscity, setInputFieldscity] = useState([
     { id: 0, state: '', city: '' },
   ]);
-  const [successMs, setsuccessMs] = useState('');
+  const [imagename, setimagename] = useState('');
   const [successMsg, setsuccessMsg] = useState('');
   const [post, setpost] = useState([]);
   const [brand, setbrand] = useState([]);
@@ -42,7 +46,7 @@ function Index(props) {
   const [blockData, setblockData] = useState([]);
   const [id, setid] = useState('');
   const [Vechicle, setVechicle] = useState([]);
-  const [formToggle, setformToggle] = useState(1);
+  const [formToggle, setformToggle] = useState(4);
   const [vehicle, setvehicle] = useState(props?.location?.data);
   const [prevData, setprevData] = useState(props);
   const [data, setdata] = useState({});
@@ -50,7 +54,7 @@ function Index(props) {
   const [errorMsg, seterrorMsg] = useState('');
   const [SelectedDate, setSelectedDate] = useState(null);
   const [Varient, setVarient] = useState([]);
-  const [exchange, setexchange] = useState(false);
+  const [otherImage, setotherImage] = useState('');
   const [step, setstep] = useState(0);
   const [statehandle, setstatehandle] = useState({});
   const [cityhandle, setcityhandle] = useState([]); //
@@ -150,12 +154,25 @@ function Index(props) {
       updatesubcategory(dataaa);
     } else if (formToggle == 6) {
       const formData = new FormData();
-      formData.append('phoneNo', state?.phoneNo);
-      formData.append('profileImg', state?.profileImg);
+      Object.keys(state).forEach((key) => {
+        if (state[key]) {
+          if (key == 'category') {
+            // console.log(`key..`, key == 'category', state?.category);
+            formData.append('category', JSON.stringify([state?.category]));
+          } else {
+            formData.append([key], state[key]);
+          }
+        }
+      });
+      for (let i = 0; i < otherImage.length; i++) {
+        formData.append('otherImage', otherImage[i]);
+      }
+      // formData.append('phoneNo', state?.phoneNo);
+      // formData.append('profileImg', state?.profileImg);
       formData.append('category', JSON.stringify(newCategory));
       formData.append('preferred', JSON.stringify(inputFieldscity)); //state or city
       formData.append('subCategory', JSON.stringify(inputFields));
-      // formData.append('brandName', state?.brandName);
+      formData.append('intreset', JSON.stringify(intrestinputFields));
       axios
         .post(apiUrl + 'user/updateuserprofile', formData)
         .then(function (respon) {
@@ -267,6 +284,7 @@ function Index(props) {
             let obj = {
               district: res.data[0].PostOffice[0].District,
               pincode: pincode,
+              state: res.data[0].PostOffice[0].State,
             };
             setState({
               ...state,
@@ -330,6 +348,33 @@ function Index(props) {
     });
 
     setInputFieldscity(newInputFields);
+  };
+  //handle  Intreset
+  const intresthandleChangeInput = (id, event) => {
+    const newInputFields = intrestinputFields.map((i) => {
+      if (id === i.id) {
+        i[event.target.name] = event.target.value;
+      }
+      return i;
+    });
+
+    setIntrestinputFields(newInputFields);
+  };
+
+  const intresthandleAddFields = () => {
+    setIntrestinputFields([
+      ...intrestinputFields,
+      { id: uuidv4(), firstName: '', lastName: '' },
+    ]);
+  };
+
+  const intresthandleRemoveFields = (id) => {
+    const values = [...intrestinputFields];
+    values.splice(
+      values.findIndex((value) => value.id === id),
+      1
+    );
+    setIntrestinputFields(values);
   };
   // console.log(`subCategory`, subCategory);
   return (
@@ -565,6 +610,7 @@ function Index(props) {
                                 className='form-control'
                                 id='val-username'
                                 name='companyName'
+                                onChange={handleChange}
                                 placeholder='Enter company number..'
                                 ref={register({
                                   // pattern: {
@@ -735,8 +781,8 @@ function Index(props) {
                                 type='text'
                                 className='form-control'
                                 id='val-username'
-                                name='turnoverOfTheCompany'
-                                value={state.turnoverOfTheCompany}
+                                name='numberofBrand'
+                                value={state.numberofBrand}
                                 onChange={handleChange}
                                 placeholder='Enter  Number of Brand'
                                 ref={register}
@@ -755,8 +801,8 @@ function Index(props) {
                                 type='text'
                                 className='form-control'
                                 id='val-username'
-                                name='turnoverOfTheCompany'
-                                value={state.turnoverOfTheCompany}
+                                name=' distributorCoverArea'
+                                value={state.distributorCoverArea}
                                 onChange={handleChange}
                                 placeholder='Enter Distributor Cover Area'
                                 ref={register}
@@ -775,8 +821,8 @@ function Index(props) {
                                 type='text'
                                 className='form-control'
                                 id='val-username'
-                                name='turnoverOfTheCompany'
-                                value={state.turnoverOfTheCompany}
+                                name=' numberofEmployee'
+                                value={state.numberofEmployee}
                                 onChange={handleChange}
                                 placeholder='Enter Number of Employee'
                                 ref={register}
@@ -795,8 +841,8 @@ function Index(props) {
                                 type='text'
                                 className='form-control'
                                 id='val-username'
-                                name='turnoverOfTheCompany'
-                                value={state.turnoverOfTheCompany}
+                                name='godownSpace'
+                                value={state.godownSpace}
                                 onChange={handleChange}
                                 placeholder='Enter Godown Space'
                                 ref={register}
@@ -815,30 +861,10 @@ function Index(props) {
                                 type='text'
                                 className='form-control'
                                 id='val-username'
-                                name='turnoverOfTheCompany'
-                                value={state.turnoverOfTheCompany}
+                                name='website'
+                                value={state.website}
                                 onChange={handleChange}
                                 placeholder='Enter Website'
-                                ref={register}
-                              />
-                            </div>
-                          </div>
-                          <div className='col-lg-6'>
-                            <div className='form-group '>
-                              <label
-                                className='col-form-label'
-                                htmlFor='val-username'>
-                                About US
-                              </label>
-
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='val-username'
-                                name='turnoverOfTheCompany'
-                                value={state.turnoverOfTheCompany}
-                                onChange={handleChange}
-                                placeholder='About US'
                                 ref={register}
                               />
                             </div>
@@ -860,7 +886,7 @@ function Index(props) {
                                 name='pincode'
                                 maxLength={6}
                                 onKeyUp={(e) => checkpincode(e)}
-                                defaultValue={state.pincode}
+                                defaultValue={state?.pincode}
                                 placeholder='Enter pin code..'
                                 ref={register()}
                               />
@@ -884,10 +910,11 @@ function Index(props) {
                               <select
                                 className='form-control'
                                 id='exampleFormControlSelect1'
-                                name='district'
-                                value={state.district}
+                                name='Country'
+                                onChange={handleChange}
+                                value={state?.Country}
                                 ref={register}>
-                                <option>{'India'}</option>
+                                <option value='India'>{'India'}</option>
                               </select>
                             </div>
                           </div>
@@ -896,20 +923,19 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                City
+                                State
                               </label>
-                              <select
+
+                              <input
+                                type='text'
                                 className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='postOffice'
-                                ref={register}>
-                                <option selected='true' disabled='disabled'>
-                                  Choose City
-                                </option>
-                                {post.map((name, index) => (
-                                  <option>{name?.Name}</option>
-                                ))}
-                              </select>
+                                id='val-username'
+                                name='state'
+                                value={state?.state}
+                                onChange={handleChange}
+                                placeholder='Enter State name..'
+                                ref={register}
+                              />
                             </div>
                           </div>
 
@@ -926,7 +952,7 @@ function Index(props) {
                                 className='form-control'
                                 id='val-username'
                                 name='cityVillage'
-                                value={state.cityVillage}
+                                value={state?.cityVillage}
                                 onChange={handleChange}
                                 placeholder='Enter city-village name..'
                                 ref={register}
@@ -947,9 +973,30 @@ function Index(props) {
                                 className='form-control'
                                 id='val-username'
                                 name='address'
-                                value={state.address}
+                                value={state?.address}
                                 onChange={handleChange}
                                 placeholder='Enter address name..'
+                                ref={register}
+                              />
+                            </div>
+                          </div>
+
+                          <div className='col-lg-6'>
+                            <div className='form-group '>
+                              <label
+                                className='col-form-label'
+                                htmlFor='val-username'>
+                                About US
+                              </label>
+
+                              <input
+                                type='text'
+                                className='form-control'
+                                id='val-username'
+                                name='turnoverOfTheCompany'
+                                value={state.turnoverOfTheCompany}
+                                onChange={handleChange}
+                                placeholder='About US'
                                 ref={register}
                               />
                             </div>
@@ -1199,52 +1246,62 @@ function Index(props) {
                             </div>
                           ))}
 
-                          {/* <h5 class='mt-5 mb-2'>
-                            Select preferred location for distribution-ship
-                            appointment
+                          <h5 class='mt-5 mb-2'>
+                            Upload Product Image (* Multiple Image )
                           </h5>
-                          <div className='row w-100 bb'>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='state'
-                                required
-                                value={state?.state}
-                                onChange={(e) => {
-                                  handleChange(e);
-                                  handleStatefunforcity(e.target.value);
-                                }}
-                                ref={register}>
-                                <option value=''>Select State </option>
-                                {Object.keys(statehandle).map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
+                          <div className='row w-100 '>
+                            <div className='col-6 '>
+                              <div class='form-group '>
+                                <label
+                                  class='col-form-label'
+                                  for='val-username'>
+                                  Select Multiple Image
+                                </label>
+
+                                <div class='custom-file mb-3'>
+                                  <input
+                                    type='file'
+                                    class='custom-file-input'
+                                    id='customFile'
+                                    onChange={(e) => {
+                                      setotherImage(e.target.files);
+                                      console.log(
+                                        _.size(e.target.files),
+                                        'otherImage'
+                                      );
+                                      let data = '';
+                                      Object.keys(e.target.files).forEach(
+                                        (key) => {
+                                          if (data == '') {
+                                            data =
+                                              data + e.target.files[key].name;
+                                          } else {
+                                            data =
+                                              data +
+                                              ',' +
+                                              e.target.files[key].name;
+                                          }
+                                          setimagename(data);
+                                        }
+                                      );
+                                    }}
+                                    name='otherImage'
+                                    multiple
+                                  />
+                                  <label
+                                    class='custom-file-label'
+                                    for='customFile'>
+                                    {imagename ? imagename : 'Choose File'}
+                                  </label>
+                                </div>
+                              </div>
                             </div>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='city'
-                                required
-                                value={state?.city}
-                                onChange={(e) => {
-                                  handleChange(e);
-                                }}
-                                ref={register}>
-                                <option value=''>Select City </option>
-                                {cityhandle.map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
-                            </div>
-                            <div className='col-4 bb'>
+                            {/* <div className='col-4 bb'>
                               <button type='button' className='btn btn-primary'>
                                 Add
                               </button>
-                            </div>
-                          </div> */}
+                            </div> */}
+                          </div>
 
                           <div className='col-lg-12 d-flex justify-content-end'>
                             <button
@@ -1265,42 +1322,81 @@ function Index(props) {
                       )}
                       {formToggle == 5 && (
                         <div className='row'>
-                          <div className='row w-100 bb'>
-                            <div className='col-4 bb'>Sub Category</div>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='subCategory'
-                                value={state?.subCategory11111}
-                                onChange={handleChange}
-                                ref={register}>
-                                {/* {subCategory.map((data) => {
+                          {intrestinputFields.map((inputField) => (
+                            <div key={inputField.id} className='row w-100 bb'>
+                              <div className='col-2 bb'>Sub Category</div>
+                              <div className='col-4 bb'>
+                                <select
+                                  className='form-control'
+                                  id='exampleFormControlSelect1'
+                                  name='name'
+                                  // value={state?.subCategory}
+                                  // value={inputField.firstName}
+                                  // onChange={handleChange}
+                                  onChange={(event) => {
+                                    intresthandleChangeInput(
+                                      inputField.id,
+                                      event
+                                    );
+                                    handleChange(event);
+                                  }}
+                                  ref={register}>
+                                  {/* {subCategory.map((data) => {
                                   <option value={data}>{data}</option>;
                                 })} */}
-                                <option value=''>Select Sub Category</option>
-                                {subCategory.map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
-                            </div>
-                            <div className='col-4 bb'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='val-username'
-                                name='brandName'
-                                value={state?.brandName11}
-                                onChange={handleChange}
-                                placeholder='Add more Brand'
-                                // required
-                                ref={register({
-                                  //   required: 'This is required ',
-                                })}
-                              />
-                            </div>
-                          </div>
+                                  <option value=''>Select Sub Category</option>
+                                  {subCategory.map((data) => (
+                                    <option value={data}>{data}</option>
+                                  ))}
+                                </select>
+                              </div>
+                              <div className='col-4 bb'>
+                                <input
+                                  type='text'
+                                  className='form-control'
+                                  id='val-username'
+                                  name='brandName'
+                                  onChange={(event) => {
+                                    intresthandleChangeInput(
+                                      inputField.id,
+                                      event
+                                    );
+                                    handleChange(event);
+                                  }}
+                                  // value={state?.brandName}
+                                  // onChange={handleChange}
+                                  placeholder='Add more Brand'
+                                  // required
+                                  ref={register({
+                                    //   required: 'This is required ',
+                                  })}
+                                />
+                              </div>
+                              <div className='col-2 bb'>
+                                {intrestinputFields.length == 1 ? (
+                                  ''
+                                ) : (
+                                  <span
+                                    class='badge light badge-danger'
+                                    onClick={() =>
+                                      intrestinputFields.length == 1
+                                        ? ''
+                                        : intresthandleRemoveFields(
+                                            inputField.id
+                                          )
+                                    }>
+                                    Delete
+                                  </span>
+                                )}
 
+                                <span
+                                  class='badge light badge-success ml-1'
+                                  onClick={intresthandleAddFields}>
+                                  Add
+                                </span>
+                              </div>
+                            </div>
+                          ))}
                           <h5 class='mt-5 mb-2'>
                             Select preferred location for distribution-ship
                             appointment

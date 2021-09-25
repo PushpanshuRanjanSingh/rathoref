@@ -99,10 +99,10 @@ function Index(props) {
       });
   };
 
-  const update = (id) => {
+  const view = (data) => {
     props.history.push({
-      pathname: '/financel3',
-      data: id,
+      pathname: '/viewLead',
+      data,
     });
   };
 
@@ -177,7 +177,7 @@ function Index(props) {
                         </thead>
                         <tbody>
                           {confirmLead.map((data, index) => (
-                            <tr>
+                            <tr onClick={() => view(data)}>
                               <td>
                                 <strong>
                                   {(page - constant.START) * constant.ONPAGE +

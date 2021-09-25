@@ -20,6 +20,7 @@ import {
 } from '../globals/constant';
 import { withRouter } from 'react-router';
 import SerchField from './SerchField';
+import ViewCompany from './viewCompany';
 declare var $;
 
 class HomePage extends Component {
@@ -89,20 +90,20 @@ class HomePage extends Component {
       this.state.fuel,
       this.state.search
     );
-    this.getHowItWorks();
-    this.getTestimonials();
-    this.getFaq();
-    this.getAllCarBrands();
-    this.loadsticky();
+    // this.getHowItWorks();
+    // this.getTestimonials();
+    // this.getFaq();
+    // this.getAllCarBrands();
+    // this.loadsticky();
   }
-  loadsticky() {
-    $(function () {
-      $('.left-sidebar').StickySidebar({
-        // Settings
-        additionalMarginTop: 40,
-      });
-    });
-  }
+  // loadsticky() {
+  //   $(function () {
+  //     $('.left-sidebar').StickySidebar({
+  //       // Settings
+  //       additionalMarginTop: 40,
+  //     });
+  //   });
+  // }
 
   getFilterForCarsBasedOnBrandModelFuel(brand, model, fuelType) {
     // service
@@ -375,6 +376,7 @@ class HomePage extends Component {
         </section>
         {/* End of Slider */}
         <SerchField />
+        {/* // <ViewCompany /> */}
       </>
     );
   }

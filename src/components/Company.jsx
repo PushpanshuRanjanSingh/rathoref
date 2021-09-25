@@ -19,9 +19,13 @@ import { ErrorMessage } from '@hookform/error-message';
 import { v4 as uuidv4 } from 'uuid';
 import { Multiselect } from 'multiselect-react-dropdown';
 // import DatePicker from 'react-date-picker';
+var _ = require('underscore');
 function Index(props) {
   let history = useHistory();
   const [inputFields, setInputFields] = useState([
+    { id: uuidv4(), name: '', brandName: '' },
+  ]);
+  const [intrestinputFields, setIntrestinputFields] = useState([
     { id: uuidv4(), name: '', brandName: '' },
   ]);
   const [inputFieldscity, setInputFieldscity] = useState([
@@ -43,15 +47,15 @@ function Index(props) {
   const [blockData, setblockData] = useState([]);
   const [id, setid] = useState('');
   const [Vechicle, setVechicle] = useState([]);
-  const [formToggle, setformToggle] = useState(1);
+  const [formToggle, setformToggle] = useState(4);
   const [vehicle, setvehicle] = useState(props?.location?.data);
   const [prevData, setprevData] = useState(props);
   const [data, setdata] = useState({});
   const [Selectedyear, setSelectedyear] = useState(null);
   const [errorMsg, seterrorMsg] = useState('');
   const [SelectedDate, setSelectedDate] = useState(null);
-  const [Varient, setVarient] = useState([]);
-  const [exchange, setexchange] = useState(false);
+  const [imagename, setimagename] = useState('');
+  const [otherImage, setotherImage] = useState('');
   const [step, setstep] = useState(0);
   const [state, setState] = React.useState();
   const [statehandle, setstatehandle] = useState({});
@@ -77,6 +81,8 @@ function Index(props) {
       .catch((err) => console.log(err));
   }
   const onSubmit = (formsubmitdata) => {
+    // console.log(`formsubmitdata`, intrestinputFields);
+
     if (formToggle == 1 && formsubmitdata.phoneNo && formsubmitdata.password) {
       axios
         .post(apiUrl + 'user/getPhone', {
@@ -84,7 +90,7 @@ function Index(props) {
         })
         .then(function (respon) {
           seterrorMsg(respon.data.message);
-          console.log(`respon`, respon);
+          //  console.log(`respon`, respon);
         })
         .catch(function (error) {
           axios
@@ -102,32 +108,39 @@ function Index(props) {
                 setformToggle(2);
                 setheading('firm Details');
               }
-              console.log(`respon`, respon);
+              // console.log(`respon`, respon);
             })
             .catch(function (error) {
               console.log(`error`, error);
             });
         });
     } else if (formToggle == 6) {
-      console.log(
-        state?.phoneNo,
-        state?.profileImg,
-        inputFieldscity,
-        inputFields,
-        'all data'
-      );
-      JSON.stringify([state?.category]);
+      // console.log(`state`, state);
+
       const formData = new FormData();
-      formData.append('phoneNo', state?.phoneNo);
+      Object.keys(state).forEach((key) => {
+        if (state[key]) {
+          if (key == 'category') {
+            // console.log(`key..`, key == 'category', state?.category);
+            formData.append('category', JSON.stringify([state?.category]));
+          } else {
+            formData.append([key], state[key]);
+          }
+        }
+      });
+      for (let i = 0; i < otherImage.length; i++) {
+        formData.append('otherImage', otherImage[i]);
+      }
+      formData.append('establishmentYear', Selectedyear);
       formData.append('profileImg', state?.profileImg);
-      formData.append('category', JSON.stringify([state?.category]));
       formData.append('preferred', JSON.stringify(inputFieldscity)); //state or city
       formData.append('subCategory', JSON.stringify(inputFields));
+      formData.append('intreset', JSON.stringify(intrestinputFields));
 
       axios
         .post(apiUrl + 'user/updateuserprofile', formData)
         .then(function (respon) {
-          console.log(`respon`, respon);
+          // console.log(`respon`, respon);
           showNotification('success', 'Company Added Successfully');
           history.push({
             pathname: '/',
@@ -138,7 +151,7 @@ function Index(props) {
           showNotification('danger', 'something went wrong');
         });
     } else {
-      console.log('InputFields', inputFields);
+      //console.log('InputFields', inputFields);
     }
     try {
       if (formToggle == 2) {
@@ -243,6 +256,7 @@ function Index(props) {
             let obj = {
               district: res.data[0].PostOffice[0].District,
               pincode: pincode,
+              state: res.data[0].PostOffice[0].State,
             };
             setState({
               ...state,
@@ -266,92 +280,20 @@ function Index(props) {
       .get(apiUrl + 'brand/getBrandList?skip=1&limit=2000', headers)
       .then((response) => {
         let data = response?.data?.data[0].data;
-
+        // console.log(`data`, data);
         setbrand(data);
       })
       .catch(function (error) {
         showNotification('danger', error.message);
       });
   };
-  const brandHandle = (e) => {
-    //  e.target.value
-    if (e.target.value) {
-      let token = localStorage.getItem('myData');
-      let headers = {
-        headers: {
-          'x-token': `Bearer ${token}`,
-        },
-      };
-      axios
-        .get(
-          apiUrl + 'ppl/getBrandId?skip=1&limit=200&id=' + e.target.value,
-          headers
-        )
-        .then((response) => {
-          let data = response?.data?.data[0].data;
 
-          setType(data);
-        })
-        .catch(function (error) {
-          showNotification('danger', error.message);
-        });
-    } else {
-      showNotification('danger', 'Select value');
-    }
-  };
-  const handleType = (e) => {
-    let token = localStorage.getItem('myData');
-    let headers = {
-      headers: {
-        'x-token': `Bearer ${token}`,
-      },
-    };
-    axios
-      .get(
-        apiUrl + 'addVehicle/getPplId?skip=1&limit=200&id=' + e.target.value,
-        headers
-      )
-      .then((response) => {
-        let data = response?.data?.data[0].data;
-
-        setVechicle(data);
-      })
-      .catch(function (error) {
-        showNotification('danger', error.message);
-      });
-  };
-  const handleVehicle = (e) => {
-    let token = localStorage.getItem('myData');
-    let headers = {
-      headers: {
-        'x-token': `Bearer ${token}`,
-      },
-    };
-    axios
-      .get(
-        apiUrl + 'variant/getVehicleId?skip=1&limit=2000&id=' + e.target.value,
-        headers
-      )
-      .then((response) => {
-        let data = response?.data?.data[0].data;
-
-        setVarient(data);
-      })
-      .catch(function (error) {
-        showNotification('danger', error.message);
-      });
-  };
-  const handleExchange = (e) => {
-    if (e?.target?.value == 'no') {
-      setexchange(true);
-    }
-  };
   // console.log(`category`, category, Object.key(category));Apparels & Fashion
   const updatesubcategory = (e) => {
     setsubCategory(category[e]);
     // console.log(`subCategory`, category[e]);
   };
-
+  //handle Sub Category
   const handleChangeInput = (id, event) => {
     const newInputFields = inputFields.map((i) => {
       if (id === i.id) {
@@ -379,6 +321,12 @@ function Index(props) {
     setInputFields(values);
   };
 
+  const view = (data) => {
+    props.history.push({
+      pathname: '/viewLead',
+      data,
+    });
+  };
   // state and city
   const handleChangeInputcity = (id, event) => {
     console.log(id, event.target);
@@ -419,7 +367,33 @@ function Index(props) {
     );
     setInputFields(values);
   };
+  //handle  Intreset
+  const intresthandleChangeInput = (id, event) => {
+    const newInputFields = intrestinputFields.map((i) => {
+      if (id === i.id) {
+        i[event.target.name] = event.target.value;
+      }
+      return i;
+    });
 
+    setIntrestinputFields(newInputFields);
+  };
+
+  const intresthandleAddFields = () => {
+    setIntrestinputFields([
+      ...intrestinputFields,
+      { id: uuidv4(), firstName: '', lastName: '' },
+    ]);
+  };
+
+  const intresthandleRemoveFields = (id) => {
+    const values = [...intrestinputFields];
+    values.splice(
+      values.findIndex((value) => value.id === id),
+      1
+    );
+    setIntrestinputFields(values);
+  };
   return (
     <>
       {/* <Header /> */}
@@ -657,6 +631,7 @@ function Index(props) {
                                 id='val-username'
                                 name='companyName'
                                 value={state?.companyName}
+                                onChange={handleChange}
                                 placeholder='Enter company number..'
                                 ref={register({
                                   // pattern: {
@@ -855,7 +830,8 @@ function Index(props) {
                               <select
                                 className='form-control'
                                 id='exampleFormControlSelect1'
-                                name='district'
+                                name='Country'
+                                onChange={handleChange}
                                 value={state?.Country}
                                 ref={register}>
                                 <option value='India'>{'India'}</option>
@@ -867,20 +843,19 @@ function Index(props) {
                               <label
                                 className='col-form-label'
                                 htmlFor='val-username'>
-                                City
+                                State
                               </label>
-                              <select
+
+                              <input
+                                type='text'
                                 className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='postOffice'
-                                ref={register}>
-                                <option selected='true' disabled='disabled'>
-                                  Choose City
-                                </option>
-                                {post.map((name, index) => (
-                                  <option>{name?.Name}</option>
-                                ))}
-                              </select>
+                                id='val-username'
+                                name='state'
+                                value={state?.state}
+                                onChange={handleChange}
+                                placeholder='Enter State name..'
+                                ref={register}
+                              />
                             </div>
                           </div>
 
@@ -1061,52 +1036,62 @@ function Index(props) {
                             </div>
                           ))}
 
-                          {/* <h5 class='mt-5 mb-2'>
-                            Select preferred location for distribution-ship
-                            appointment
+                          <h5 class='mt-5 mb-2'>
+                            Upload Product Image (* Multiple Image )
                           </h5>
-                          <div className='row w-100 bb'>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='state'
-                                required
-                                value={state?.state}
-                                onChange={(e) => {
-                                  handleChange(e);
-                                  handleStatefunforcity(e.target.value);
-                                }}
-                                ref={register}>
-                                <option value=''>Select State </option>
-                                {Object.keys(statehandle).map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
+                          <div className='row w-100 '>
+                            <div className='col-6 '>
+                              <div class='form-group '>
+                                <label
+                                  class='col-form-label'
+                                  for='val-username'>
+                                  Select Multiple Image
+                                </label>
+
+                                <div class='custom-file mb-3'>
+                                  <input
+                                    type='file'
+                                    class='custom-file-input'
+                                    id='customFile'
+                                    onChange={(e) => {
+                                      setotherImage(e.target.files);
+                                      console.log(
+                                        _.size(e.target.files),
+                                        'otherImage'
+                                      );
+                                      let data = '';
+                                      Object.keys(e.target.files).forEach(
+                                        (key) => {
+                                          if (data == '') {
+                                            data =
+                                              data + e.target.files[key].name;
+                                          } else {
+                                            data =
+                                              data +
+                                              ',' +
+                                              e.target.files[key].name;
+                                          }
+                                          setimagename(data);
+                                        }
+                                      );
+                                    }}
+                                    name='otherImage'
+                                    multiple
+                                  />
+                                  <label
+                                    class='custom-file-label'
+                                    for='customFile'>
+                                    {imagename ? imagename : 'Choose File'}
+                                  </label>
+                                </div>
+                              </div>
                             </div>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='city'
-                                required
-                                value={state?.city}
-                                onChange={(e) => {
-                                  handleChange(e);
-                                }}
-                                ref={register}>
-                                <option value=''>Select City </option>
-                                {cityhandle.map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
-                            </div>
-                            <div className='col-4 bb'>
+                            {/* <div className='col-4 bb'>
                               <button type='button' className='btn btn-primary'>
                                 Add
                               </button>
-                            </div>
-                          </div> */}
+                            </div> */}
+                          </div>
 
                           <div className='col-lg-12 d-flex justify-content-end'>
                             <button
@@ -1127,42 +1112,81 @@ function Index(props) {
                       )}
                       {formToggle == 5 && (
                         <div className='row'>
-                          <div className='row w-100 bb'>
-                            <div className='col-4 bb'>Sub Category</div>
-                            <div className='col-4 bb'>
-                              <select
-                                className='form-control'
-                                id='exampleFormControlSelect1'
-                                name='subCategory'
-                                value={state?.subCategory11111}
-                                onChange={handleChange}
-                                ref={register}>
-                                {/* {subCategory.map((data) => {
+                          {intrestinputFields.map((inputField) => (
+                            <div key={inputField.id} className='row w-100 bb'>
+                              <div className='col-2 bb'>Sub Category</div>
+                              <div className='col-4 bb'>
+                                <select
+                                  className='form-control'
+                                  id='exampleFormControlSelect1'
+                                  name='name'
+                                  // value={state?.subCategory}
+                                  // value={inputField.firstName}
+                                  // onChange={handleChange}
+                                  onChange={(event) => {
+                                    intresthandleChangeInput(
+                                      inputField.id,
+                                      event
+                                    );
+                                    handleChange(event);
+                                  }}
+                                  ref={register}>
+                                  {/* {subCategory.map((data) => {
                                   <option value={data}>{data}</option>;
                                 })} */}
-                                <option value=''>Select Sub Category</option>
-                                {subCategory.map((data) => (
-                                  <option value={data}>{data}</option>
-                                ))}
-                              </select>
-                            </div>
-                            <div className='col-4 bb'>
-                              <input
-                                type='text'
-                                className='form-control'
-                                id='val-username'
-                                name='brandName'
-                                value={state?.brandName11}
-                                onChange={handleChange}
-                                placeholder='Add more Brand'
-                                // required
-                                ref={register({
-                                  //   required: 'This is required ',
-                                })}
-                              />
-                            </div>
-                          </div>
+                                  <option value=''>Select Sub Category</option>
+                                  {subCategory.map((data) => (
+                                    <option value={data}>{data}</option>
+                                  ))}
+                                </select>
+                              </div>
+                              <div className='col-4 bb'>
+                                <input
+                                  type='text'
+                                  className='form-control'
+                                  id='val-username'
+                                  name='brandName'
+                                  onChange={(event) => {
+                                    intresthandleChangeInput(
+                                      inputField.id,
+                                      event
+                                    );
+                                    handleChange(event);
+                                  }}
+                                  // value={state?.brandName}
+                                  // onChange={handleChange}
+                                  placeholder='Add more Brand'
+                                  // required
+                                  ref={register({
+                                    //   required: 'This is required ',
+                                  })}
+                                />
+                              </div>
+                              <div className='col-2 bb'>
+                                {intrestinputFields.length == 1 ? (
+                                  ''
+                                ) : (
+                                  <span
+                                    class='badge light badge-danger'
+                                    onClick={() =>
+                                      intrestinputFields.length == 1
+                                        ? ''
+                                        : intresthandleRemoveFields(
+                                            inputField.id
+                                          )
+                                    }>
+                                    Delete
+                                  </span>
+                                )}
 
+                                <span
+                                  class='badge light badge-success ml-1'
+                                  onClick={intresthandleAddFields}>
+                                  Add
+                                </span>
+                              </div>
+                            </div>
+                          ))}
                           <h5 class='mt-5 mb-2'>
                             Select preferred location for distribution-ship
                             appointment
@@ -1250,7 +1274,7 @@ function Index(props) {
                         <div className='row'>
                           <div class='form-row mt-4'>
                             <div class='col-12 col-sm-4'>
-                              <label for='file'>Upload Logo/Vedio</label>
+                              <label for='file'>Upload Logo/Video</label>
                             </div>
                             <div class='col-12 col-sm-8 mt-4 mt-sm-0'>
                               <input
@@ -1271,6 +1295,9 @@ function Index(props) {
                             </label>
                             <textarea
                               class='form-control'
+                              name='aboutCompany'
+                              onChange={handleChange}
+                              ref={register}
                               id='exampleFormControlTextarea1'
                               rows='3'></textarea>{' '}
                           </div>

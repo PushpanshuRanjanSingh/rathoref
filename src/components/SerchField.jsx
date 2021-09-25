@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import base from '../globals/base';
 import DatePicker from 'react-datepicker';
@@ -12,13 +12,15 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import apiUrl from '../globals/config.js';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
-// import DatePicker from 'react-date-picker';
+import Swal from 'sweetalert2';
+import * as session from '../utils/session';
 function SerchField(props) {
-  let history = useHistory();
+  const history = useHistory();
+
   const [successMs, setsuccessMs] = useState('');
   const [successMsg, setsuccessMsg] = useState('');
   const [post, setpost] = useState([]);
@@ -70,20 +72,7 @@ function SerchField(props) {
       .catch((err) => console.log(err));
   }
   const onSubmit = (formsubmitdata) => {
-    console.log(`object`, formsubmitdata);
-    axios
-      .post(apiUrl + 'user/search', formsubmitdata) //data.data.verify_otp
-      .then(function (respon) {
-        // if()
-        setsearchresult(respon?.data?.data?.verify_otp ?? []);
-        console.log(`respon...`, respon?.data?.data?.verify_otp.length);
-        if (respon?.data?.data?.verify_otp.length == 0) {
-          showNotification('danger', 'No record Found');
-        }
-      })
-      .catch(function (error) {
-        console.log(`error`, error);
-      });
+    serch(formsubmitdata);
   };
   const handleStatefunforcity = (data) => {
     setcityhandle(statehandle[data]);
@@ -100,6 +89,48 @@ function SerchField(props) {
   };
   const updatesubcategory = (e) => {
     setsubCategory(category[e]);
+  };
+  const serch = (formsubmitdata) => {
+    if (session.getToken() == null) {
+      Swal.fire({
+        title: 'Login To Perform search',
+        icon: 'info',
+        // html:
+        //   "<a href='/company' class='btn btn-primary ' > Company </a>" +
+        //   "<a href='/Distributer' class='btn btn-primary ml-3' > Distributer </a>",
+        showCloseButton: true,
+        showConfirmButton: false,
+        showClass: {
+          popup: 'animate__animated animate__zoomIn',
+        },
+        hideClass: {
+          popup: 'animate__animated animate__zoomOut',
+        },
+      });
+    } else {
+      axios
+        .post(apiUrl + 'user/search', formsubmitdata) //data.data.verify_otp
+        .then(function (respon) {
+          // if()
+          setsearchresult(respon?.data?.data?.verify_otp ?? []);
+          console.log(`respon...`, respon?.data?.data?.verify_otp.length);
+          if (respon?.data?.data?.verify_otp.length == 0) {
+            showNotification('danger', 'No record Found');
+          }
+        })
+        .catch(function (error) {
+          console.log(`error`, error);
+        });
+    }
+  };
+  const view = (data) => {
+    console.log('fgff', data);
+
+    history.push({
+      pathname: '/vehicle-detail/60f7d9285efda3d40c2857fb',
+      data,
+      type: state?.type,
+    });
   };
   return (
     <>
@@ -281,25 +312,21 @@ function SerchField(props) {
                         {data?.companyName}
                         <sup></sup>
                       </div>
+                      <span>
+                        <i class='fas fa-map-marker-alt '>
+                          <span class='pl-2'>
+                            {data?.state}
+                            {','}
+                            {data?.cityVillage}
+                          </span>
+                        </i>
+                      </span>
                       <div class='BtnFull buttonHolder buttonHolder virtualNumberBtn'>
                         <div
                           class=' btn-dcb btn-col-cus'
-                          // onClick={(e) =>
-                          // vechicleBook(
-                          //   data?.vehicleDescription[index]?.ppl[index]
-                          //     ?.brandId,
-                          //   data?.vehicleDescription[index]?.ppl[index]?._id,
-                          //   data?.vehicleDescription[index]?._id,
-                          //   data?.variants[index]?._id
-                          // )
-                          // }
-                        >
-                          Contact now
+                          onClick={() => view(data)}>
+                          View {state?.type}
                         </div>
-                        {/* <a target='_blank' href={}>
-                          {' '}
-                          <div class='primaryButton btn-dcb'>Check Video</div>
-                        </a> */}
                       </div>
                     </div>
                   </div>

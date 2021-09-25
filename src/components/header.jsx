@@ -88,7 +88,7 @@ export default class Header extends Component {
   handleLogout = (e) => {
     localStorage.removeItem('myData');
     localStorage.removeItem('role');
-    window.location.href = '/home';
+    window.location.href = '/';
   };
   registershow = (e) => {
     Swal.fire({
@@ -114,7 +114,7 @@ export default class Header extends Component {
         <header
           id='header'
           className={
-            this.context.store.pathName === '/home'
+            this.context.store.pathName === '/'
               ? `banner-header`
               : 'inner-page-header'
           }>
@@ -123,7 +123,7 @@ export default class Header extends Component {
               id='main-menu'
               className='navbar navbar-expand-lg navbar-light py-3 px-0'>
               <span onClick={this.changePage}>
-                <a href='/home' className='navbar-brand'>
+                <a href='/' className='navbar-brand'>
                   {/* <img
                   src={
                     this.context.store.pathName === "/home"
@@ -148,7 +148,7 @@ export default class Header extends Component {
               <div className='collapse navbar-collapse' id='naayakNav'>
                 <ul className='menu navbar-nav mx-auto'>
                   <span onClick={this.changePage}>
-                    <a href='/home' className='navbar-brand d-lg-none mx-auto'>
+                    <a href='/' className='navbar-brand d-lg-none mx-auto'>
                       {/* <img
                         src={
                           this.context.store.pathName === '/home'
@@ -161,7 +161,7 @@ export default class Header extends Component {
                     </a>
                   </span>
                   <li className='nav-item' onClick={this.changePage}>
-                    <NavLink className='nav-link' to='/home'>
+                    <NavLink className='nav-link' to='/'>
                       Home{' '}
                     </NavLink>
                   </li>
@@ -200,13 +200,25 @@ export default class Header extends Component {
                     )}
                   </li>
                   <li>
-                    <div className='login-button call-btn'>
-                      <a
-                        className='btn btn-primary ml-3'
-                        onClick={this.registershow}>
-                        Register
-                      </a>
-                    </div>
+                    {session.getToken() == null ? (
+                      <div className='login-button call-btn'>
+                        <a
+                          className='btn btn-primary ml-3'
+                          onClick={this.registershow}>
+                          Register
+                        </a>
+                      </div>
+                    ) : (
+                      <div className='login-button call-btn'>
+                        <Link
+                          to='/dashboard'
+                          className='btn btn-primary ml-3'
+                          //onClick={this.registershow}
+                        >
+                          Dashboard
+                        </Link>
+                      </div>
+                    )}
                   </li>
                 </ul>
               </div>

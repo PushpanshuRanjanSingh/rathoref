@@ -144,8 +144,8 @@ const routes = [
     Component: VehicleListing,
   },
   {
-    exact: true,
-    path: '/vehicle-detail/:id/:pplName/:vehicleName',
+    // exact: true,
+    path: '/vehicle-detail/:id',
     Component: VehicleDetail,
   },
   {
@@ -156,7 +156,7 @@ const routes = [
 
   {
     exact: true,
-    path: '/home',
+    path: '/',
     Component: HomePage,
   },
 
