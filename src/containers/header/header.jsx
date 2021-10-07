@@ -92,9 +92,10 @@ function Header(props) {
     localStorage.removeItem('myData');
     localStorage.removeItem('role');
     // history.push("/signup");
-    // history.push("/signup");
     showNotification('success', 'Logout Successfull');
-    window.location.href = '/home';
+    history.push('/');
+
+    // window.location.href = '/';
   };
 
   return (
@@ -462,7 +463,10 @@ function Header(props) {
               {role == 0 ? (
                 ''
               ) : (
-                <Link className='ai-icon ' aria-expanded='false' to='/'>
+                <Link
+                  className='ai-icon '
+                  aria-expanded='false'
+                  to='/dashboard'>
                   <i className='fa fa-dashboard'></i>
                   <span className='nav-text'>Dashboard</span>
                 </Link>
@@ -557,6 +561,12 @@ function Header(props) {
                     to='/reviewedclients'>
                     <i class='fa fa-check-square' aria-hidden='true'></i>
                     <span className='nav-text'>Distributer</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link className='ai-icon' aria-expanded='false' to='/help'>
+                    <i className='fa fa-question-circle'></i>
+                    <span className='nav-text'>Contact Form</span>
                   </Link>
                 </li>
                 {/* <li>

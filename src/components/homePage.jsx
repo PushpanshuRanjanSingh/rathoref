@@ -10,7 +10,6 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import StoreContext from '../context/store';
-// import history from '../history';
 import showNotification from '../services/notificationService';
 import * as constant from '../services/constant';
 import {

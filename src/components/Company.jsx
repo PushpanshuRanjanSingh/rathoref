@@ -19,6 +19,8 @@ import { ErrorMessage } from '@hookform/error-message';
 import { v4 as uuidv4 } from 'uuid';
 import { Multiselect } from 'multiselect-react-dropdown';
 // import DatePicker from 'react-date-picker';
+import Swal from 'sweetalert2';
+
 var _ = require('underscore');
 function Index(props) {
   let history = useHistory();
@@ -47,7 +49,7 @@ function Index(props) {
   const [blockData, setblockData] = useState([]);
   const [id, setid] = useState('');
   const [Vechicle, setVechicle] = useState([]);
-  const [formToggle, setformToggle] = useState(4);
+  const [formToggle, setformToggle] = useState(1);
   const [vehicle, setvehicle] = useState(props?.location?.data);
   const [prevData, setprevData] = useState(props);
   const [data, setdata] = useState({});
@@ -66,6 +68,23 @@ function Index(props) {
     stateee();
     categoryy();
   }, []);
+  const sweetAlert = (msg) => {
+    Swal.fire({
+      title: msg,
+      timer: 7000,
+      icon: 'success',
+
+      confirmButtonText: 'OK',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        history.goBack();
+      } else {
+        history.goBack();
+      }
+      // setTimeout(history.goBack(), 500);
+    });
+  };
   function stateee() {
     axios
       .get(
@@ -80,6 +99,7 @@ function Index(props) {
       .then((resp) => setcategory(resp?.data))
       .catch((err) => console.log(err));
   }
+
   const onSubmit = (formsubmitdata) => {
     // console.log(`formsubmitdata`, intrestinputFields);
 
@@ -90,6 +110,7 @@ function Index(props) {
         })
         .then(function (respon) {
           seterrorMsg(respon.data.message);
+
           //  console.log(`respon`, respon);
         })
         .catch(function (error) {
@@ -141,10 +162,11 @@ function Index(props) {
         .post(apiUrl + 'user/updateuserprofile', formData)
         .then(function (respon) {
           // console.log(`respon`, respon);
-          showNotification('success', 'Company Added Successfully');
-          history.push({
-            pathname: '/',
-          });
+          //showNotification('success', 'Company Added Successfully');
+          sweetAlert('Company Added Successfully');
+          // history.push({
+          //   pathname: '/',
+          // });
         })
         .catch(function (error) {
           console.log(`error`, error);
@@ -1053,6 +1075,7 @@ function Index(props) {
                                     type='file'
                                     class='custom-file-input'
                                     id='customFile'
+                                    accept='image/*'
                                     onChange={(e) => {
                                       setotherImage(e.target.files);
                                       console.log(
@@ -1280,6 +1303,7 @@ function Index(props) {
                               <input
                                 class='multisteps-form__input form-control'
                                 type='file'
+                                accept='image/*'
                                 name='profileImg'
                                 onChange={fileChange}
                                 placeholder='image'

@@ -4825,7 +4825,11 @@ html[dir='rtl']
     margin-left: 17rem;
   }
 }
-
+@media screen and (max-width: 768px) {
+  .content-body {
+    margin-left: 0rem !important;
+  }
+}
 .bell img {
   -webkit-animation: ring 8s 0.7s ease-in-out infinite;
   -webkit-transform-origin: 50% 4px;
@@ -41140,9 +41144,9 @@ select.form-control {
   align-items: center;
   justify-content: center;
 }
-.active {
+/* .active {
   color: white !important;
-}
+} */
 .Toastify__toast-container {
   z-index: 999999999999 !important;
 }
@@ -41181,4 +41185,12 @@ select.form-control {
 }
 .hr{
     border-top:2px !important;
+}
+
+@media screen and (min-width: 480px) {
+  .coln-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+}
 }

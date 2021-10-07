@@ -270,12 +270,12 @@ function Main() {
           <Route path='/leads' component={Leads} />
           <Route path='/help' component={Help} />
           <Route path='/bankDetails' component={BankDetails} />
-          <Route path='/updateData' component={UpdateData} />
+          <Route path='/updateData/:id' component={UpdateData} />
           <Route path='/generatePDF' component={GeneratePDF} />
           <Route path='/updateLeadData' component={UpdateLeadData} />
           <Route path='/viewcompletedlead' component={Viewcompletedlead} />
           <Route path='/view' component={ViewOnGoingDeals} />
-          <Route path='/viewLead' component={ViewLead} />
+          <Route path='/viewLead/:id' component={ViewLead} />
           <Route path='/completedDeals' component={CompletedDeals} />
           <Route path='/pendingDeals' component={PendingDeals} />
           <Route path='/PendingForm' component={PendingForm} />

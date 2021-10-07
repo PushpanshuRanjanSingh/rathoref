@@ -139,7 +139,7 @@ function SerchField(props) {
         <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
           <div className='container-fluid'>
             <div className='row  h-100  emi_row justify-content-center'>
-              <div className='col-8'>
+              <div className='coln-8'>
                 <div className='card widget-stat'>
                   <div className='card-body'>
                     <div className='form-validation'>

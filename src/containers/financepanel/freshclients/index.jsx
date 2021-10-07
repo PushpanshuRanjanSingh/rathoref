@@ -99,9 +99,9 @@ function Index(props) {
       });
   };
 
-  const view = (data) => {
+  const view = (data, id) => {
     props.history.push({
-      pathname: '/viewLead',
+      pathname: '/viewLead/' + id,
       data,
     });
   };
@@ -123,7 +123,6 @@ function Index(props) {
         showNotification('danger', err.message);
       });
   };
-  console.log(`confirmLead`, confirmLead);
   return (
     <>
       <div className='content-body'>
@@ -177,7 +176,7 @@ function Index(props) {
                         </thead>
                         <tbody>
                           {confirmLead.map((data, index) => (
-                            <tr onClick={() => view(data)}>
+                            <tr>
                               <td>
                                 <strong>
                                   {(page - constant.START) * constant.ONPAGE +
@@ -219,6 +218,11 @@ function Index(props) {
                                   class='badge light badge-danger'
                                   onClick={() => deleteOne(data._id)}>
                                   Delete
+                                </span>
+                                <span
+                                  class='badge light badge-primary'
+                                  onClick={() => view(data, data._id)}>
+                                  View /Update
                                 </span>
                               </td>
                             </tr>

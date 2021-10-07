@@ -18,6 +18,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { Multiselect } from 'multiselect-react-dropdown';
+import Swal from 'sweetalert2';
 var _ = require('underscore');
 function Index(props) {
   let history = useHistory();
@@ -25,10 +26,16 @@ function Index(props) {
     { id: uuidv4(), name: '', brandName: '' },
   ]);
   const [intrestinputFields, setIntrestinputFields] = useState([
-    { id: uuidv4(), name: '', brandName: '' },
+    {
+      id: uuidv4(),
+      name: '',
+      brandName: '',
+      category: '',
+      categoryDropDown: [],
+    },
   ]);
   const [inputFieldscity, setInputFieldscity] = useState([
-    { id: 0, state: '', city: '' },
+    { id: uuidv4(), state: '', city: '', cityDropDown: [] },
   ]);
   const [imagename, setimagename] = useState('');
   const [successMsg, setsuccessMsg] = useState('');
@@ -46,7 +53,7 @@ function Index(props) {
   const [blockData, setblockData] = useState([]);
   const [id, setid] = useState('');
   const [Vechicle, setVechicle] = useState([]);
-  const [formToggle, setformToggle] = useState(4);
+  const [formToggle, setformToggle] = useState(1);
   const [vehicle, setvehicle] = useState(props?.location?.data);
   const [prevData, setprevData] = useState(props);
   const [data, setdata] = useState({});
@@ -94,6 +101,23 @@ function Index(props) {
     stateee();
     categoryy();
   }, []);
+  const sweetAlert = (msg) => {
+    Swal.fire({
+      title: msg,
+      timer: 7000,
+      icon: 'success',
+
+      confirmButtonText: 'OK',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        history.goBack();
+      } else {
+        history.goBack();
+      }
+      // setTimeout(history.goBack(), 500);
+    });
+  };
   function stateee() {
     axios
       .get(
@@ -109,8 +133,6 @@ function Index(props) {
       .catch((err) => console.log(err));
   }
   const onSubmit = (formsubmitdata) => {
-    // console.log(`formsubmitdata`, formsubmitdata.category);
-
     if (formToggle == 1 && formsubmitdata.phoneNo && formsubmitdata.password) {
       axios
         .post(apiUrl + 'user/getPhone', {
@@ -167,8 +189,10 @@ function Index(props) {
       for (let i = 0; i < otherImage.length; i++) {
         formData.append('otherImage', otherImage[i]);
       }
-      // formData.append('phoneNo', state?.phoneNo);
-      // formData.append('profileImg', state?.profileImg);
+
+      // console.log(`intrestinputFields`, intrestinputFields);
+      // console.log(`inputFieldscity`, inputFieldscity);
+
       formData.append('category', JSON.stringify(newCategory));
       formData.append('preferred', JSON.stringify(inputFieldscity)); //state or city
       formData.append('subCategory', JSON.stringify(inputFields));
@@ -177,10 +201,11 @@ function Index(props) {
         .post(apiUrl + 'user/updateuserprofile', formData)
         .then(function (respon) {
           console.log(`respon`, respon);
-          showNotification('success', 'Distributer Added Successfully');
-          history.push({
-            pathname: '/',
-          });
+          sweetAlert('Distributer Added Successfully');
+          // showNotification('success', 'Distributer Added Successfully');
+          // history.push({
+          //   pathname: '/',
+          // });
         })
         .catch(function (error) {
           console.log(`error`, error);
@@ -301,6 +326,7 @@ function Index(props) {
     setsubCategory(e);
     // console.log(`subCategory`, category[e]);
   };
+
   const handleChangeInput = (id, event) => {
     const newInputFields = inputFields.map((i) => {
       if (id === i.id) {
@@ -331,17 +357,23 @@ function Index(props) {
   // state and city
   const handleChangeInputcity = (id, event) => {
     const newInputFields = inputFieldscity.map((i) => {
-      if (id === 0) {
-        i[event.target.name] = event.target.value;
+      if (id === i.id) {
+        if (event.target.name == 'state') {
+          i[event.target.name] = event.target.value;
+          i.cityDropDown = statehandle[event.target.value];
+        } else {
+          i[event.target.name] = event.target.value;
+        }
       }
       return i;
     });
+    console.log(`newInputFields`, newInputFields);
 
     setInputFieldscity(newInputFields);
   };
   const handleChangeInputcitynew = (id, data) => {
     const newInputFields = inputFieldscity.map((i) => {
-      if (id === 0) {
+      if (id === i.id) {
         i.city = data;
       }
       return i;
@@ -349,22 +381,53 @@ function Index(props) {
 
     setInputFieldscity(newInputFields);
   };
+  const handleAddFieldscity = () => {
+    setInputFieldscity([
+      ...inputFieldscity,
+      { id: uuidv4(), state: '', city: '', cityDropDown: [] },
+    ]);
+  };
+
+  const cityRemoveFields = (id) => {
+    const values = [...inputFieldscity];
+    values.splice(
+      values.findIndex((value) => value.id === id),
+      1
+    );
+    setInputFieldscity(values);
+  };
+
   //handle  Intreset
   const intresthandleChangeInput = (id, event) => {
     const newInputFields = intrestinputFields.map((i) => {
       if (id === i.id) {
+        if (event.target.name == 'category') {
+          // console.log(
+          //   `id`,
+          //   i.categoryDropDown,
+          //   event.target.name == 'Category'
+          // );
+          i[event.target.name] = event.target.value;
+          i.categoryDropDown = category[event.target.value];
+        }
         i[event.target.name] = event.target.value;
       }
       return i;
     });
-
+    console.log(`category`, newInputFields);
     setIntrestinputFields(newInputFields);
   };
 
   const intresthandleAddFields = () => {
     setIntrestinputFields([
       ...intrestinputFields,
-      { id: uuidv4(), firstName: '', lastName: '' },
+      {
+        id: uuidv4(),
+        name: '',
+        brandName: '',
+        category: '',
+        categoryDropDown: [],
+      },
     ]);
   };
 
@@ -376,7 +439,7 @@ function Index(props) {
     );
     setIntrestinputFields(values);
   };
-  // console.log(`subCategory`, subCategory);
+  // console.log(`inputFieldscity`, inputFieldscity);
   return (
     <>
       {/* <Header /> */}
@@ -1261,6 +1324,7 @@ function Index(props) {
                                 <div class='custom-file mb-3'>
                                   <input
                                     type='file'
+                                    accept='image/*'
                                     class='custom-file-input'
                                     id='customFile'
                                     onChange={(e) => {
@@ -1302,7 +1366,10 @@ function Index(props) {
                               </button>
                             </div> */}
                           </div>
-
+                          {console.log(
+                            'intrestinputFields',
+                            intrestinputFields
+                          )}
                           <div className='col-lg-12 d-flex justify-content-end'>
                             <button
                               type='button'
@@ -1324,7 +1391,34 @@ function Index(props) {
                         <div className='row'>
                           {intrestinputFields.map((inputField) => (
                             <div key={inputField.id} className='row w-100 bb'>
-                              <div className='col-2 bb'>Sub Category</div>
+                              <div className='col-4 bb'>
+                                <select
+                                  className='form-control'
+                                  id='exampleFormControlSelect1'
+                                  name='category'
+                                  // value={state?.subCategory}
+                                  // value={inputField.firstName}
+                                  // onChange={handleChange}
+                                  onChange={(event) => {
+                                    intresthandleChangeInput(
+                                      inputField.id,
+                                      event
+                                    );
+                                    // handleChange(event);
+                                  }}
+                                  ref={register}>
+                                  {/* {subCategory.map((data) => {
+                                  <option value={data}>{data}</option>;
+                                })} */}
+                                  <option value=''>Select Category</option>
+                                  {/* {category.map((data) => (
+                                    <option value={data}>{data}</option>
+                                  ))} */}
+                                  {Object.keys(category).map((data, id) => (
+                                    <option value={data}>{data}</option>
+                                  ))}
+                                </select>
+                              </div>
                               <div className='col-4 bb'>
                                 <select
                                   className='form-control'
@@ -1338,40 +1432,17 @@ function Index(props) {
                                       inputField.id,
                                       event
                                     );
-                                    handleChange(event);
+                                    //handleChange(event);
                                   }}
                                   ref={register}>
-                                  {/* {subCategory.map((data) => {
-                                  <option value={data}>{data}</option>;
-                                })} */}
                                   <option value=''>Select Sub Category</option>
-                                  {subCategory.map((data) => (
+                                  {inputField.categoryDropDown.map((data) => (
                                     <option value={data}>{data}</option>
                                   ))}
+                                  {}
                                 </select>
                               </div>
-                              <div className='col-4 bb'>
-                                <input
-                                  type='text'
-                                  className='form-control'
-                                  id='val-username'
-                                  name='brandName'
-                                  onChange={(event) => {
-                                    intresthandleChangeInput(
-                                      inputField.id,
-                                      event
-                                    );
-                                    handleChange(event);
-                                  }}
-                                  // value={state?.brandName}
-                                  // onChange={handleChange}
-                                  placeholder='Add more Brand'
-                                  // required
-                                  ref={register({
-                                    //   required: 'This is required ',
-                                  })}
-                                />
-                              </div>
+
                               <div className='col-2 bb'>
                                 {intrestinputFields.length == 1 ? (
                                   ''
@@ -1415,7 +1486,7 @@ function Index(props) {
                                       InputFieldcity.id,
                                       event
                                     );
-                                    handleStatefunforcity(event.target.value);
+                                    // handleStatefunforcity(event.target.value);
                                   }}
                                   // onChange={(e) => {
                                   //   handleChange(e);
@@ -1434,9 +1505,12 @@ function Index(props) {
                                   onRemove={function noRefCheck() {}}
                                   onSearch={function noRefCheck() {}}
                                   onSelect={(data) =>
-                                    handleChangeInputcitynew(0, data)
+                                    handleChangeInputcitynew(
+                                      InputFieldcity.id,
+                                      data
+                                    )
                                   }
-                                  options={cityhandle}
+                                  options={InputFieldcity.cityDropDown}
                                 />
                               </div>
 
@@ -1447,7 +1521,7 @@ function Index(props) {
                                   <span
                                     class='badge light badge-danger'
                                     onClick={() =>
-                                      handleRemoveFields(InputFieldcity.id)
+                                      cityRemoveFields(InputFieldcity.id)
                                     }>
                                     Delete
                                   </span>
@@ -1455,8 +1529,7 @@ function Index(props) {
 
                                 <span
                                   class='badge light badge-success ml-1'
-                                  // onClick={handleAddFieldscity}
-                                >
+                                  onClick={handleAddFieldscity}>
                                   Add
                                 </span>
                               </div>
@@ -1490,6 +1563,7 @@ function Index(props) {
                               <input
                                 class='multisteps-form__input form-control'
                                 type='file'
+                                accept='image/*'
                                 name='profileImg'
                                 onChange={fileChange}
                                 placeholder='image'

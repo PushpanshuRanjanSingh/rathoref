@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import axios from 'axios';
 import apiUrl from '../../globals/config';
@@ -8,11 +8,13 @@ import { param } from 'jquery';
 import showNotification from '../../services/notificationService';
 var fileDownload = require('js-file-download');
 function ViewProfile(props) {
+  const { id } = useParams();
   // if (!props.location.data) {
   //   props.history.push({
-  //     pathname: "/leads",
+  //     pathname: '/',
   //   });
   // }
+
   let history = useHistory();
   const [category, setcategory] = useState(
     props?.location?.data?.category ?? []
@@ -20,16 +22,25 @@ function ViewProfile(props) {
   const [subCategory, setsubCategory] = useState(
     props?.location?.data?.subCategory ?? []
   );
-  subCategory.map((data) => {
-    console.log(data.name, 'name...');
-  });
+  subCategory.map((data) => {});
   const [intreset, setintreset] = useState(props.location.data?.intreset ?? []);
   const [loction, setloction] = useState(props.location.data?.preferred ?? []);
-  const [state, setState] = React.useState(props.location.data ?? []);
-  console.log(`state`, state);
+
+  const [state, setState] = React.useState(false ?? []);
+  console.log(`id`, id);
   useEffect(() => {
-    // getLeads();
-    console.log(`pramsdata`, category, subCategory);
+    const ongoing = (page) => {
+      axios
+        .get(apiUrl + 'user/getcompanyById/' + id)
+        .then((resp) => {
+          var data = resp?.data?.data;
+          setState(resp?.data?.data);
+        })
+        .catch((err) => {
+          showNotification('danger', err.message);
+        });
+    };
+    ongoing();
   }, []);
   // const getLeads = () => {
   //   axios
@@ -71,7 +82,24 @@ function ViewProfile(props) {
                 <div className='card-header bg-custom-blue '>
                   <h4 className='card-title text-white'>Personal Details</h4>
 
-                  <div className='two_btns_ps'></div>
+                  <div className='two_btns_ps'>
+                    {/* <Link to="/"> */}
+                    <button
+                      type='button'
+                      onClick={() => {
+                        history.push({
+                          pathname: '/updateData/' + id,
+                          data: 1,
+                        });
+                      }}
+                      className='btn btn-light ml-2'>
+                      <i
+                        className='fa fa-pencil-square-o pr-1'
+                        aria-hidden='true'></i>
+                      <span>Update</span>
+                    </button>
+                    {/* </Link> */}
+                  </div>
                 </div>
 
                 <div className='card-body'>
@@ -133,9 +161,6 @@ function ViewProfile(props) {
                         </div>
                         <div className='col-sm-9 col-7 d-flex align-items-center'>
                           <span>
-                            {state && state.profileImg
-                              ? state.profileImg
-                              : 'N/A'}
                             <Image
                               className='doc_image'
                               alt='img'
@@ -190,7 +215,24 @@ function ViewProfile(props) {
                 <div className='card-header bg-custom-blue '>
                   <h4 className='card-title text-white'>firm Details</h4>
 
-                  <div className='two_btns_ps'></div>
+                  <div className='two_btns_ps'>
+                    {/* <Link to="/"> */}
+                    <button
+                      type='button'
+                      onClick={() => {
+                        history.push({
+                          pathname: '/updateData/' + id,
+                          data: 2,
+                        });
+                      }}
+                      className='btn btn-light ml-2'>
+                      <i
+                        className='fa fa-pencil-square-o pr-1'
+                        aria-hidden='true'></i>
+                      <span>Update</span>
+                    </button>
+                    {/* </Link> */}
+                  </div>
                 </div>
 
                 <div className='card-body'>
@@ -382,7 +424,24 @@ function ViewProfile(props) {
                 <div className='card-header bg-custom-blue '>
                   <h4 className='card-title text-white'>Category Details</h4>
 
-                  <div className='two_btns_ps'></div>
+                  <div className='two_btns_ps'>
+                    {/* <Link to="/"> */}
+                    <button
+                      type='button'
+                      onClick={() => {
+                        history.push({
+                          pathname: '/profile',
+                          data: 6,
+                        });
+                      }}
+                      className='btn btn-light ml-2'>
+                      <i
+                        className='fa fa-pencil-square-o pr-1'
+                        aria-hidden='true'></i>
+                      <span>Update</span>
+                    </button>
+                    {/* </Link> */}
+                  </div>
                 </div>
 
                 <div className='card-body'>
@@ -424,7 +483,24 @@ function ViewProfile(props) {
                 <div className='card-header bg-custom-blue '>
                   <h4 className='card-title text-white'>subCategory Details</h4>
 
-                  <div className='two_btns_ps'></div>
+                  <div className='two_btns_ps'>
+                    {/* <Link to="/"> */}
+                    <button
+                      type='button'
+                      onClick={() => {
+                        history.push({
+                          pathname: '/profile',
+                          data: 6,
+                        });
+                      }}
+                      className='btn btn-light ml-2'>
+                      <i
+                        className='fa fa-pencil-square-o pr-1'
+                        aria-hidden='true'></i>
+                      <span>Update</span>
+                    </button>
+                    {/* </Link> */}
+                  </div>
                 </div>
 
                 <div className='card-body'>
@@ -467,8 +543,24 @@ function ViewProfile(props) {
               <div className='card widget-stat'>
                 <div className='card-header bg-custom-blue '>
                   <h4 className='card-title text-white'>Interest Details</h4>
-
-                  <div className='two_btns_ps'></div>
+                  <div className='two_btns_ps'>
+                    {/* <Link to="/"> */}
+                    <button
+                      type='button'
+                      onClick={() => {
+                        history.push({
+                          pathname: '/profile',
+                          data: 6,
+                        });
+                      }}
+                      className='btn btn-light ml-2'>
+                      <i
+                        className='fa fa-pencil-square-o pr-1'
+                        aria-hidden='true'></i>
+                      <span>Update</span>
+                    </button>
+                    {/* </Link> */}
+                  </div>
                 </div>
 
                 <div className='card-body'>
@@ -511,7 +603,24 @@ function ViewProfile(props) {
                 <div className='card-header bg-custom-blue '>
                   <h4 className='card-title text-white'>Prefered Location</h4>
 
-                  <div className='two_btns_ps'></div>
+                  <div className='two_btns_ps'>
+                    {/* <Link to="/"> */}
+                    <button
+                      type='button'
+                      onClick={() => {
+                        history.push({
+                          pathname: '/profile',
+                          data: 6,
+                        });
+                      }}
+                      className='btn btn-light ml-2'>
+                      <i
+                        className='fa fa-pencil-square-o pr-1'
+                        aria-hidden='true'></i>
+                      <span>Update</span>
+                    </button>
+                    {/* </Link> */}
+                  </div>
                 </div>
 
                 <div className='card-body'>

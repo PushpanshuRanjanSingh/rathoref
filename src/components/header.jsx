@@ -161,7 +161,14 @@ export default class Header extends Component {
                     </a>
                   </span>
                   <li className='nav-item' onClick={this.changePage}>
-                    <NavLink className='nav-link' to='/'>
+                    <NavLink
+                      // className='nav-link'
+                      className={
+                        this.context.store.pathName === '/'
+                          ? ` nav-link `
+                          : 'nav-link'
+                      }
+                      to='/'>
                       Home{' '}
                     </NavLink>
                   </li>
