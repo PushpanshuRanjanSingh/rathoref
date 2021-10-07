@@ -1,9 +1,9 @@
 const hostname = window.location.host;
 const api = {
-  platform: 'http://nayakb.toxsl.in/',
+  localhost: 'https://rathorebackend.herokuapp.com/',
 
   // localhost: 'http://localhost:3040/',
-  localhost: 'http://192.168.18.10:3001/',
+  // localhost: 'http://192.168.18.10:3001/',
 };
 
 let apiBase = '';
