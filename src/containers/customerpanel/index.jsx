@@ -30,7 +30,7 @@ export default function Index(props) {
     <>
       <div className='content-body'>
         <div className='container-fluid'>
-          <div className='container-fluid'></div>
+          <div className='container-fluid'>hii</div>
         </div>
       </div>
     </>

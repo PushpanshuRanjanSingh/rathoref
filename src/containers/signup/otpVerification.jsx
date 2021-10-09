@@ -33,6 +33,7 @@ function OtpVerification(props) {
       .post(apiUrl + 'user/otpVerification', data)
       .then(function (response) {
         if (response?.data.token) {
+          alert(JSON.stringify(response));
           localStorage.setItem('myData', response.data.token);
           localStorage.setItem('role', response.data.role);
           history.push('/');

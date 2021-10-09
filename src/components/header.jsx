@@ -57,12 +57,13 @@ export default class Header extends Component {
       phoneNo: this.state.phoneNumber,
       password: this.state.password,
     }).then((resp) => {
+      console.log(`resp.data`, resp.data)
       if (resp?.data.token) {
         showNotification('success', 'Login  Successfully');
         localStorage.setItem('myData', resp.data.token);
         localStorage.setItem('role', resp?.data?.role ?? 0);
-        this.props.history.push('/');
-        window.location.reload();
+       // this.props.history.push('/');
+       // window.location.reload();
       } else {
         showNotification('danger', 'Invalid Crendiantial ');
         console.log(`resp`, resp);

@@ -122,6 +122,7 @@ function Index(props) {
               companyName: formsubmitdata.companyName,
               role: 0, //type
               type: 'company',
+              userType:1
             })
             .then(function (respon) {
               if (formToggle == 1) {

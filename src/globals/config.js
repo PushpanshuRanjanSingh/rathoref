@@ -2,7 +2,7 @@ const hostname = window.location.host;
 const api = {
   localhost: 'https://rathorebackend.herokuapp.com/',
 
-  // localhost: 'http://localhost:3040/',
+  // localhost: 'http://localhost:3001/',
   // localhost: 'http://192.168.18.10:3001/',
 };
 
