@@ -8,15 +8,16 @@ export default class Footer extends Component {
         <div className='x_footer_bottom_main_wrapper float_left'>
           <div className='container'>
             <div className='row'>
-              <div className='col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12'>
+              <div className='col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12'>
                 <div className='x_footer_bottom_box_wrapper float_left'>
                   <h3>About Us</h3>
                   <p>
-                    Consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
+                    Distributor Hub is a B2B platform that connects the
+                    distributors with relevant companies / manufacturers’
+                    vice-versa
                   </p>
                   <span>
-                    <a href='#'>
+                    <a href='/'>
                       Read More &nbsp;
                       <i className='fa fa-angle-double-right' />
                     </a>
@@ -35,7 +36,7 @@ export default class Footer extends Component {
                   </ul>
                 </div>
               </div>
-              <div className='col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12'>
+              <div className='col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12'>
                 <div className='x_footer_bottom_box_wrapper_second float_left'>
                   <h3>Information</h3>
                   <ul>
@@ -45,19 +46,20 @@ export default class Footer extends Component {
                       </Link>
                     </li>
                     <li>
-                      <Link to='/services'>
-                        <i className='fa fa-long-arrow-right' /> &nbsp; Service
+                      <Link to='/contact-us'>
+                        <i className='fa fa-long-arrow-right' /> &nbsp; Contact
+                        Us
                       </Link>
                     </li>
                     <li>
-                      <Link to='terms-condition'>
+                      <Link to='/'>
                         <i className='fa fa-long-arrow-right' /> &nbsp; Terms
                         and Conditions
                       </Link>
                     </li>
 
                     <li>
-                      <Link to='/privacy-policy'>
+                      <Link to='/'>
                         <i className='fa fa-long-arrow-right' /> &nbsp; Privacy
                         &amp; Cookies Policy
                       </Link>
@@ -65,32 +67,8 @@ export default class Footer extends Component {
                   </ul>
                 </div>
               </div>
-              <div className='col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12'>
-                <div className='x_footer_bottom_box_wrapper_second float_left'>
-                  <h3>Customer Support</h3>
-                  <ul>
-                    <li>
-                      <Link to='/faq'>
-                        <i className='fa fa-long-arrow-right' /> &nbsp; FAQ
-                      </Link>
-                    </li>
 
-                    <li>
-                      <Link to='/how-it-works'>
-                        <i className='fa fa-long-arrow-right' /> &nbsp; How it
-                        works ?
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to='/contact-us'>
-                        <i className='fa fa-long-arrow-right' /> &nbsp; Contact
-                        Us
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className='col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12'>
+              <div className='col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12'>
                 <div className='x_footer_bottom_box_wrapper_third float_left'>
                   <h3>Have Questions?</h3>
                   <div className='x_footer_bottom_icon_section float_left'>

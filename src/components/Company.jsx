@@ -27,11 +27,18 @@ function Index(props) {
   const [inputFields, setInputFields] = useState([
     { id: uuidv4(), name: '', brandName: '' },
   ]);
+
   const [intrestinputFields, setIntrestinputFields] = useState([
-    { id: uuidv4(), name: '', brandName: '' },
+    {
+      id: uuidv4(),
+      name: '',
+      brandName: '',
+      category: '',
+      categoryDropDown: [],
+    },
   ]);
   const [inputFieldscity, setInputFieldscity] = useState([
-    { id: 0, state: '', city: '' },
+    { id: uuidv4(), state: '', city: '', cityDropDown: [] },
   ]);
   const [successMs, setsuccessMs] = useState('');
   const [successMsg, setsuccessMsg] = useState('');
@@ -122,7 +129,7 @@ function Index(props) {
               companyName: formsubmitdata.companyName,
               role: 0, //type
               type: 'company',
-              userType:1
+              userType: 1,
             })
             .then(function (respon) {
               if (formToggle == 1) {
@@ -352,60 +359,77 @@ function Index(props) {
   };
   // state and city
   const handleChangeInputcity = (id, event) => {
-    console.log(id, event.target);
     const newInputFields = inputFieldscity.map((i) => {
-      if (id === 0) {
-        i[event.target.name] = event.target.value;
+      if (id === i.id) {
+        if (event.target.name == 'state') {
+          i[event.target.name] = event.target.value;
+          i.cityDropDown = statehandle[event.target.value];
+        } else {
+          i[event.target.name] = event.target.value;
+        }
       }
       return i;
     });
+    console.log(`newInputFields`, newInputFields);
 
     setInputFieldscity(newInputFields);
   };
   const handleChangeInputcitynew = (id, data) => {
     const newInputFields = inputFieldscity.map((i) => {
-      console.log(i, 'ifff');
-      if (id === 0) {
+      if (id === i.id) {
         i.city = data;
       }
-      console.log(i, 'innnn');
       return i;
     });
 
     setInputFieldscity(newInputFields);
   };
-
   const handleAddFieldscity = () => {
     setInputFieldscity([
-      ...inputFields,
-      { id: uuidv4(), firstName: '', lastName: '' },
+      ...inputFieldscity,
+      { id: uuidv4(), state: '', city: '', cityDropDown: [] },
     ]);
   };
 
-  const handleRemoveFieldscity = (id) => {
-    const values = [...inputFields];
+  const cityRemoveFields = (id) => {
+    const values = [...inputFieldscity];
     values.splice(
       values.findIndex((value) => value.id === id),
       1
     );
-    setInputFields(values);
+    setInputFieldscity(values);
   };
   //handle  Intreset
   const intresthandleChangeInput = (id, event) => {
     const newInputFields = intrestinputFields.map((i) => {
       if (id === i.id) {
+        if (event.target.name == 'category') {
+          // console.log(
+          //   `id`,
+          //   i.categoryDropDown,
+          //   event.target.name == 'Category'
+          // );
+          i[event.target.name] = event.target.value;
+          i.categoryDropDown = category[event.target.value];
+        }
         i[event.target.name] = event.target.value;
       }
       return i;
     });
-
+    console.log(`category`, newInputFields);
     setIntrestinputFields(newInputFields);
   };
 
   const intresthandleAddFields = () => {
     setIntrestinputFields([
       ...intrestinputFields,
-      { id: uuidv4(), firstName: '', lastName: '' },
+      {
+        id: uuidv4(),
+        name: '',
+        brandName: '',
+        category: '',
+        categoryDropDown: [],
+      },
     ]);
   };
 
@@ -1229,7 +1253,7 @@ function Index(props) {
                                       InputFieldcity.id,
                                       event
                                     );
-                                    handleStatefunforcity(event.target.value);
+                                    // handleStatefunforcity(event.target.value);
                                   }}
                                   // onChange={(e) => {
                                   //   handleChange(e);
@@ -1248,9 +1272,12 @@ function Index(props) {
                                   onRemove={function noRefCheck() {}}
                                   onSearch={function noRefCheck() {}}
                                   onSelect={(data) =>
-                                    handleChangeInputcitynew(0, data)
+                                    handleChangeInputcitynew(
+                                      InputFieldcity.id,
+                                      data
+                                    )
                                   }
-                                  options={cityhandle}
+                                  options={InputFieldcity.cityDropDown}
                                 />
                               </div>
 
@@ -1261,7 +1288,7 @@ function Index(props) {
                                   <span
                                     class='badge light badge-danger'
                                     onClick={() =>
-                                      handleRemoveFields(InputFieldcity.id)
+                                      cityRemoveFields(InputFieldcity.id)
                                     }>
                                     Delete
                                   </span>
@@ -1269,8 +1296,7 @@ function Index(props) {
 
                                 <span
                                   class='badge light badge-success ml-1'
-                                  // onClick={handleAddFieldscity}
-                                >
+                                  onClick={handleAddFieldscity}>
                                   Add
                                 </span>
                               </div>

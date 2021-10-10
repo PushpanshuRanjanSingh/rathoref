@@ -56,25 +56,31 @@ export default class About extends Component {
                       <h2 className='title '>{'About us'}</h2>
                     </div>
                     <div className='text-wrap'>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer. Lorem ipsum dolor sit, amet consectetur
-                      adipisicing elit. Laudantium in dicta saepe corporis
-                      quidem unde officia sint, impedit explicabo error earum
-                      nisi odio quam molestias, ab maiores cumque adipisci
-                      perspiciatis. Lorem ipsum dolor sit amet consectetur
-                      adipisicing elit. Labore placeat unde laudantium ipsa
-                      animi maiores autem temporibus, ullam aut, atque officia
-                      laborum quaerat ipsam facilis id. Incidunt maxime pariatur
-                      beatae. Lorem, ipsum dolor sit amet consectetur
-                      adipisicing elit. Delectus qui animi veniam pariatur
-                      nulla! Pariatur distinctio corrupti voluptatum ut
-                      consequuntur itaque facere, quibusdam repellat qui libero
-                      voluptatem et iusto esse!Lor Lorem ipsum dolor sit amet
-                      consectetur, adipisicing elit. Obcaecati labore ipsa enim
-                      assumenda, reprehenderit recusandae doloremque saepe.
-                      Rerum porro deleniti, neque repellendus explicabo non a
-                      facere aliquid qui autem minus!
+                      Distributor Hub is a B2B platform that connects the
+                      distributors with relevant companies / manufacturers’
+                      vice-versa, who looking for Distributorship and business
+                      opportunities. Those companies involved in manufacturing
+                      and marketing and need to have a channel partner for their
+                      product penetration in the market. Here, Distributorhub.in
+                      fulfil the gap between companies and distributors by
+                      providing them an online gateway that comes with an
+                      informative listing of prominent distributors and
+                      companies.
+                      <div className='pt-3'>
+                        Distributorhub.in makes it simple & easy with the online
+                        listing to find out the best channel partners as per the
+                        requirement of the companies. This platform provides all
+                        crucial contact information details which help companies
+                        and distributors for going ahead in a future business
+                        partnership.
+                      </div>
+                      Giving solutions to all at one place to find out new
+                      distributorship and business opportunities.
+                      Distributorhub.in plays a vital role for companies and
+                      distributors to enhance their business proficiency with
+                      Cost-effectiveness and hassle-free journey to finding out
+                      Best channel Partner as per the needed requirement and
+                      exploring network for reaching all over India.
                     </div>
                   </div>
                 </div>
@@ -86,10 +92,11 @@ export default class About extends Component {
               <div className='section-title text-center mb--20'>
                 <h2 className='title'>Why Choose Us</h2>
                 <p className='subtitle-2'>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Officia, corrupti inventore repellat quod libero nisi
-                  cupiditate, reprehenderit commodi vel, nostrum rerum labore
-                  odit eveniet porro aliquid. Esse adipisci fugit rerum?
+                  This platform gives wing to companies and distributors who all
+                  are seeking for appointing distributors and searching
+                  manufacturing companies for taking distribution-ship in their
+                  desired state/city. This platform providing online search and
+                  offline meetings with channel partners.
                 </p>
               </div>
               <div className='row'>

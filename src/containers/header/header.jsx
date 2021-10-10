@@ -102,12 +102,12 @@ function Header(props) {
     <header>
       <div className='nav-header'>
         <Link className='brand-logo' to='/'>
-          {/* <Image
-            className="logo-abbr"
-            alt="img"
-            src={"assets/images/logo.png"}
-          /> */}
-          DistributerHub
+          <Image
+            className='logo-abbr'
+            alt='img'
+            src={'assets/images/logo.png'}
+          />
+          {/* DistributerHub */}
         </Link>
         <div className='nav-control '>
           <div

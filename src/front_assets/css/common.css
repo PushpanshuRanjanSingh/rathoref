@@ -76,7 +76,7 @@ a {
 
 .navbar-brand img {
   width: 100%;
-  max-width: 130px;
+  max-width: 190px;
 }
 
 .serach-box {
@@ -2486,7 +2486,7 @@ a.close-icon {
   margin-bottom: 10px;
 }
 
-.all-brands-box::-webkit-scrollbar-track {
+/* .all-brands-box::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -2503,7 +2503,7 @@ a.close-icon {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #555;
-}
+} */
 
 .all-brands-box.fuel-box ul li {
   width: 100%;

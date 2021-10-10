@@ -57,13 +57,13 @@ export default class Header extends Component {
       phoneNo: this.state.phoneNumber,
       password: this.state.password,
     }).then((resp) => {
-      console.log(`resp.data`, resp.data)
+      console.log(`resp.data`, resp.data);
       if (resp?.data.token) {
         showNotification('success', 'Login  Successfully');
         localStorage.setItem('myData', resp.data.token);
         localStorage.setItem('role', resp?.data?.role ?? 0);
-       // this.props.history.push('/');
-       // window.location.reload();
+        this.props.history.push('/');
+        window.location.reload();
       } else {
         showNotification('danger', 'Invalid Crendiantial ');
         console.log(`resp`, resp);
@@ -122,18 +122,18 @@ export default class Header extends Component {
           <div className='container nayk-container'>
             <nav
               id='main-menu'
-              className='navbar navbar-expand-lg navbar-light py-3 px-0'>
+              className='navbar navbar-expand-lg navbar-light  px-0'>
               <span onClick={this.changePage}>
                 <a href='/' className='navbar-brand'>
-                  {/* <img
-                  src={
-                    this.context.store.pathName === "/home"
-                      ? `/assets/images/logo-2.png`
-                      : "/assets/images/logo.png"
-                  }
-                  className="img-fluid"
-                /> */}
-                  Distributorshub
+                  <img
+                    src={
+                      this.context.store.pathName === '/'
+                        ? `/assets/images/logo.png`
+                        : '/assets/images/logo.png'
+                    }
+                    className='img-fluid'
+                  />
+                  {/* Distributorshub */}
                 </a>
               </span>
               <button
@@ -150,39 +150,55 @@ export default class Header extends Component {
                 <ul className='menu navbar-nav mx-auto'>
                   <span onClick={this.changePage}>
                     <a href='/' className='navbar-brand d-lg-none mx-auto'>
-                      {/* <img
+                      <img
                         src={
-                          this.context.store.pathName === '/home'
-                            ? `/assets/images/logo-2.png`
+                          this.context.store.pathName === '/'
+                            ? `/assets/images/logo.png`
                             : '/assets/images/logo.png'
                         }
                         className='img-fluid'
-                      /> */}
-                      Distributorshub
+                      />
+                      {/* Distributorshub */}
                     </a>
                   </span>
                   <li className='nav-item' onClick={this.changePage}>
-                    <NavLink
+                    {/* <NavLink
                       // className='nav-link'
                       className={
                         this.context.store.pathName === '/'
-                          ? ` nav-link `
+                          ? ` nav-link text-white`
                           : 'nav-link'
                       }
                       to='/'>
                       Home{' '}
-                    </NavLink>
+                    </NavLink> */}
+                    <a
+                      // className='nav-link'
+                      className={
+                        this.context.store.pathName === '/'
+                          ? ` nav-link text-white`
+                          : 'nav-link'
+                      }
+                      href='/'>
+                      Home{' '}
+                    </a>
                   </li>
                   <li className='nav-item' onClick={this.changePage}>
-                    <NavLink className='nav-link' to='/about'>
+                    {/* <NavLink className='nav-link' to='/about'>
                       About Us
-                    </NavLink>
+                    </NavLink> */}
+                    <a className='nav-link' href='/about'>
+                      About Us
+                    </a>
                   </li>
 
                   <li className='nav-item' onClick={this.changePage}>
-                    <NavLink className='nav-link' to='/contact-us'>
+                    {/* <NavLink className='nav-link' to='/contact-us'>
                       Contact Us{' '}
-                    </NavLink>
+                    </NavLink> */}
+                    <a className='nav-link' href='/contact-us'>
+                      Contact Us{' '}
+                    </a>
                   </li>
                 </ul>
                 <ul className='menu navbar-nav mt-4 mt-lg-0'>
