@@ -306,76 +306,7 @@ class HomePage extends Component {
 
     return (
       <>
-        {/* Slider */}
-        <section className='slider-section banner-sec home-banner'>
-          <div
-            id='carousel'
-            className='carousel slide banner-slider'
-            data-ride='carousel'>
-            {/* <ol className='carousel-indicators'>
-              <li data-target='#carousel' data-slide-to={0} className='active'>
-                Online Booking
-              </li>
-              <li data-target='#carousel' data-slide-to={1}>
-                Sell Car
-              </li>
-              <li data-target='#carousel' data-slide-to={2}>
-                Naayak Tvc
-              </li>
-            </ol>
-            */}
-            <div className='carousel-inner' role='listbox'>
-              <div
-                className='carousel-item active banner-carousel-box banner-one'
-                style={{ backgroundImage: 'url("assets/images/insure3.jpg")' }}>
-                <div className='carousel-caption'>
-                  <div className='container nayk-container'>
-                    <div className='row'>
-                      <div className='col-xl-7'>
-                        <div className='text-wrap'>
-                          <div className='img-wrap'>
-                            <img
-                              src='assets/images/car-slider-one.png'
-                              alt='img'
-                            />
-                          </div>
-
-                          {/*
-                          <h4>Connect Company to distributer</h4>
-
-                          <h3>And Vice Versa</h3>
-                          <Link to='/about' className='banner-btn-cus'>
-                            About us
-                          </Link>
-                        */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <a
-              href='#carousel'
-              className='carousel-control-prev'
-              role='button'
-              data-slide='prev'>
-              <span className='carousel-control-prev-icon' aria-hidden='true' />
-              <span className='sr-only' />
-            </a>
-            <a
-              href='#carousel'
-              className='carousel-control-next'
-              role='button'
-              data-slide='next'>
-              <span className='carousel-control-next-icon' aria-hidden='true' />
-              <span className='sr-only' />
-            </a>
-          </div>
-        </section>
-        {/* End of Slider */}
         <SerchField />
-        {/* // <ViewCompany /> */}
       </>
     );
   }

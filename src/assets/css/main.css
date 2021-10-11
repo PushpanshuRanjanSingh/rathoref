@@ -29657,8 +29657,8 @@ button:focus {
 
 .main-wrapper .content-body .btn-primary {
   color: #fff;
-  background-color: #0b2a97 !important;
-  border-color: #0b2a97 !important;
+  background-color: #6aacff !important;
+  border-color: #6aacff !important;
 }
 
 .btn {
@@ -35364,7 +35364,7 @@ span#counter {
 /* add menu sidebar */
 
 .add-menu-sidebar {
-  background: #0b2a97;
+  background: #6aacff;
   padding: 20px 18px;
   display: flex;
   align-items: center;
@@ -35404,6 +35404,26 @@ span#counter {
   .add-menu-sidebar {
     margin: 20px 25px 20px;
   }
+}
+
+@media only screen and (max-width: 768px) {
+  .pb-sm-2{
+    padding-bottom: 5px;
+  }
+  
+
+}@media only screen and (min-width: 768px) {
+  .middle2{
+    justify-content: center;
+  }
+  
+
+}
+.cus-text{
+  text-align: center !important;
+}
+.middle{
+  justify-content: center;
 }
 
 .donut-chart-sale {
@@ -39512,12 +39532,12 @@ a {
 }
 
 .emi_row .bg-custom-blue {
-  background-color: #40189d !important;
+  background-color: #6aacff !important;
   border-radius: 0px !important;
 }
 
 .color_9d {
-  color: #40189d;
+  color: #6aacff;
 }
 
 .border_bottom_cus {
@@ -40055,7 +40075,7 @@ border-color: #007bff;
 .step_btn_cus {
   display: block;
   width: 180px;
-  color: #40189d;
+  color: #6aacff;
   text-align: center;
   margin: 5px auto;
   padding: 10px;
@@ -40965,8 +40985,8 @@ select.form-control {
 
 .primaryButton:hover,
 .btn-col-cus {
-  border: 1px solid #40189d;
-  background: #40189d;
+  border: 1px solid #6aacff;
+  background: #6aacff;
   color: #fff;
   font-weight: 500;
   font-size: 14px;
@@ -40989,9 +41009,9 @@ select.form-control {
 
 .primaryButton,
 .btn-col-cus:hover {
-  border: 1px solid #40189d;
+  border: 1px solid #6aacff;
   background: #fff;
-  color: #40189d;
+  color: #6aacff;
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0;
@@ -41153,17 +41173,20 @@ select.form-control {
 .swal2-container {
   z-index: 99999999 !important;
 }
-/* @media screen and (min-width: 1440px){
+@media screen and (max-width: 540px){
   .serch {
-    padding-top: 1050px;
+    margin-top: 40vh; z-index: 9;
 }
-} */
+}
+@media screen and (min-width: 768px){
+  .serch {
+    margin-top: 30vh; z-index: 9;
+}
+}
 .slider-section{
   position: relative !important;
 }
-.serch{
-  margin-top: -10vh; z-index: 9;
-}
+
 .padding_serch_content{
   padding-top: 20vh;
 }
@@ -41204,4 +41227,15 @@ select.form-control {
   width: 100%;
   max-width: 130px;
 }
+}
+/* .RFS-StepContainer{
+  overflow-x: auto ;
+} */
+.overflow{
+  /* display: none !important; */
+  overflow-x: auto;
+}
+.cus-text{
+  font-weight: 500;
+    font-size: initial;
 }

@@ -143,11 +143,15 @@ function SerchField(props) {
                 <div className='card widget-stat'>
                   <div className='card-body'>
                     <div className='form-validation'>
-                      <div className='row'>
-                        <span className='pl-3'>Select Any one of These </span>
+                      <div className='row middle2'>
+                        <span className='pt-3 pb-2 cus-text '>
+                          Looking For Best Business and Distributership
+                          Opportunities In India
+                        </span>
+                        {/* <span >Select Any one of These </span> */}
                       </div>
-                      <div className='row align-items-center'>
-                        <div className='col-4'>
+                      <div className='row middle'>
+                        <div className=''>
                           <div className='form-group '>
                             <div className='d-flex px-2'>
                               <div className='w-110 d-flex align-items-center mr-3'>
@@ -191,7 +195,7 @@ function SerchField(props) {
                         </div>
                       </div>
                       <div className='row align-items-center '>
-                        <div className='col-6'>
+                        <div className='col-sm-12 col-md-6 pb-sm-2'>
                           <select
                             className='form-control'
                             id='exampleFormControlSelect1'
@@ -209,7 +213,7 @@ function SerchField(props) {
                             ))}
                           </select>
                         </div>
-                        <div className='col-6'>
+                        <div className='col-sm-12 col-md-6'>
                           <select
                             className='form-control'
                             id='exampleFormControlSelect1'
@@ -229,7 +233,7 @@ function SerchField(props) {
                         </div>
                       </div>
                       <div className='row align-item-center pt-2 '>
-                        <div className='col-6 bb'>
+                        <div className='col-sm-12 col-md-6 pb-sm-2'>
                           <select
                             className='form-control'
                             id='exampleFormControlSelect1'
@@ -247,7 +251,7 @@ function SerchField(props) {
                             ))}
                           </select>
                         </div>
-                        <div className='col-6 bb'>
+                        <div className='col-sm-12 col-md-6 '>
                           <select
                             className='form-control'
                             id='exampleFormControlSelect1'

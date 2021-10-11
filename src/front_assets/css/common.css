@@ -138,7 +138,7 @@ a {
 }
 
 .navbar .navbar-nav .nav-link {
-  color: #fffefe;
+  color: #000000;
   font-weight: 500;
   font-size: 16px;
 }
@@ -149,7 +149,7 @@ a {
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
-  color: #40189d;
+  color: #6aacff !important;
 }
 
 .x_top_header_social_icon_wrapper {
@@ -179,7 +179,7 @@ a {
 .socail-box a {
   font-size: 14px;
   font-weight: 600;
-  background: #40189d;
+  background: #6aacff;
   color: #fff;
   padding: 11px;
   border-radius: 5px;
@@ -194,7 +194,7 @@ a {
 
 .haeder-default {
   background: #fff;
-  border-bottom: 1px solid #40189d;
+  border-bottom: 1px solid #6aacff;
 }
 
 .banner-sec .carousel-control-prev,
@@ -221,7 +221,7 @@ a {
   height: 50px;
   line-height: 50px;
   text-align: center;
-  background: #40189d;
+  background: #6aacff;
   color: #ffffff;
   text-transform: uppercase;
   -webkit-border-radius: 10px;
@@ -486,7 +486,7 @@ a {
 #customers-testimonials .shadow-effect .card-title span {
   display: block;
   font-size: 16px;
-  color: #40189d;
+  color: #6aacff;
   text-transform: capitalize;
   font-weight: 400;
   font-style: normal;
@@ -563,7 +563,7 @@ a {
 .x_offer_car_heading_wrapper h4 {
   font-size: 14px;
   font-family: 'Lato', sans-serif;
-  color: #40189d;
+  color: #6aacff;
   text-transform: uppercase;
 }
 
@@ -591,8 +591,8 @@ div#customers-testimonials {
   content: '';
   position: absolute;
   width: 30px;
-  border: 2px solid #40189d;
-  background: #40189d;
+  border: 2px solid #6aacff;
+  background: #6aacff;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -615,7 +615,7 @@ div#customers-testimonials {
 .x_offer_car_heading_wrapper h4 {
   font-size: 14px;
   font-family: 'Lato', sans-serif;
-  color: #40189d;
+  color: #6aacff;
   text-transform: uppercase;
 }
 
@@ -631,7 +631,7 @@ div#customers-testimonials {
   content: '';
   position: absolute;
   width: 30px;
-  border: 2px solid #40189d;
+  border: 2px solid #6aacff;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -718,7 +718,7 @@ div#customers-testimonials {
 .x_offer_tabs_wrapper .nav-tabs .nav-item.show .nav-link,
 .x_offer_tabs_wrapper .nav-tabs .nav-link.active {
   color: #ffffff;
-  background-color: #40189d;
+  background-color: #6aacff;
   border-color: transparent;
   font-size: 14px;
   font-weight: 700;
@@ -819,7 +819,7 @@ div#customers-testimonials {
 .x_car_offer_price_inner h3 {
   font-family: 'Lato', sans-serif;
   font-size: 24px;
-  color: #40189d;
+  color: #6aacff;
   font-weight: 800;
   line-height: 50px;
   display: inline-block;
@@ -861,7 +861,7 @@ div#customers-testimonials {
 }
 
 .x_car_offer_heading h2 a:hover {
-  color: #40189d;
+  color: #6aacff;
 }
 
 .x_car_offer_heading ul {
@@ -890,7 +890,7 @@ div#customers-testimonials {
 }
 
 .x_car_offer_heading li a i {
-  color: #40189d;
+  color: #6aacff;
 }
 
 .x_car_offer_heading .nice-select {
@@ -946,7 +946,7 @@ div#customers-testimonials {
 }
 
 .x_car_offer_heading .current {
-  color: #40189d;
+  color: #6aacff;
   font-size: 18px;
 }
 
@@ -1006,7 +1006,7 @@ div#customers-testimonials {
   text-align: center;
   font-size: 12px;
   text-transform: uppercase;
-  background: #40189d;
+  background: #6aacff;
   color: #ffffff;
   -webkit-border-top-left-radius: 5px;
   -moz-border-top-left-radius: 5px;
@@ -1053,7 +1053,7 @@ div#customers-testimonials {
   height: 50px;
   line-height: 45px;
   text-align: center;
-  background: #40189d;
+  background: #6aacff;
   color: #ffffff;
   border: 1px solid transparent;
   text-transform: uppercase;
@@ -1072,8 +1072,8 @@ div#customers-testimonials {
 .x_tabs_botton_wrapper li a:hover,
 .socail-box a:hover {
   background: transparent;
-  border: 1px solid #40189d;
-  color: #40189d;
+  border: 1px solid #6aacff;
+  color: #6aacff;
 }
 
 /*-- xs offer car tabs End --*/
@@ -1190,7 +1190,7 @@ div#customers-testimonials {
   content: '';
   position: absolute;
   width: 30px;
-  border: 2px solid #40189d;
+  border: 2px solid #6aacff;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -1227,7 +1227,7 @@ div#customers-testimonials {
 .theme_btn {
   overflow: hidden;
   color: #ffffff;
-  background: #40189d;
+  background: #6aacff;
   font-size: 15px;
   font-weight: 600;
   line-height: 1;
@@ -1444,15 +1444,15 @@ ul.menu.navbar-nav .btn {
 }
 
 .btn-primary {
-  background: #40189d !important;
+  background: #6aacff !important;
   border: none;
-  border: 1px solid #40189d !important;
+  border: 1px solid #6aacff !important;
 }
 
 .x_news_letter_main_wrapper {
   float: left;
   width: 100%;
-  background: #40189d;
+  background: #6aacff;
   padding-top: 80px;
   padding-bottom: 80px;
 }
@@ -1580,7 +1580,7 @@ ul.menu.navbar-nav .btn {
 .x_footer_top_title_box_icon_cont i:before {
   margin-left: 0;
   font-size: 25px;
-  color: #40189d;
+  color: #6aacff;
 }
 
 .x_footer_top_title_box_icon_cont i {
@@ -1634,7 +1634,7 @@ ul.menu.navbar-nav .btn {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  background: #40189d;
+  background: #6aacff;
   height: 3px;
 }
 
@@ -1645,7 +1645,7 @@ ul.menu.navbar-nav .btn {
 
 .x_footer_bottom_box_wrapper span a {
   font-weight: 600;
-  color: #40189d;
+  color: #6aacff;
   padding-top: 20px;
   float: left;
 }
@@ -1686,7 +1686,7 @@ ul.menu.navbar-nav .btn {
 }
 
 .x_footer_bottom_box_wrapper li a:hover {
-  background: #40189d;
+  background: #6aacff;
 }
 
 .x_footer_bottom_box_wrapper_second {
@@ -1710,7 +1710,7 @@ ul.menu.navbar-nav .btn {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  background: #40189d;
+  background: #6aacff;
   height: 3px;
 }
 
@@ -1729,7 +1729,7 @@ ul.menu.navbar-nav .btn {
 }
 
 .x_footer_bottom_box_wrapper_second li a:hover {
-  color: #40189d;
+  color: #6aacff;
 }
 
 .x_footer_bottom_box_wrapper_third {
@@ -1753,7 +1753,7 @@ ul.menu.navbar-nav .btn {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  background: #40189d;
+  background: #6aacff;
   height: 3px;
 }
 
@@ -1858,14 +1858,14 @@ ul.menu.navbar-nav .btn {
 
 .primaryButton {
   background: #fff;
-  color: #40189d;
+  color: #6aacff;
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0;
   line-height: 36px;
   height: 40px;
   width: 100%;
-  border: 1px solid #40189d;
+  border: 1px solid #6aacff;
   -webkit-border-radius: 2px;
   border-radius: 2px;
   cursor: pointer;
@@ -1880,8 +1880,8 @@ ul.menu.navbar-nav .btn {
 }
 
 .primaryButton:hover {
-  border: 1px solid #40189d;
-  background: #40189d;
+  border: 1px solid #6aacff;
+  background: #6aacff;
   color: #fff;
 }
 
@@ -1907,10 +1907,10 @@ ul.menu.navbar-nav .btn {
 .theme-btn {
   line-height: 1.5;
   text-align: center;
-  background: #40189d;
+  background: #6aacff;
   color: #fff;
   cursor: pointer;
-  border: 1px solid #40189d;
+  border: 1px solid #6aacff;
   padding: 12px 20px;
   border-radius: 5px;
   transition: ease 0.25s;
@@ -1918,7 +1918,7 @@ ul.menu.navbar-nav .btn {
 
 .theme-btn:hover {
   background: #fff;
-  color: #40189d;
+  color: #6aacff;
   border: 1px solid #fff;
 }
 
@@ -1979,13 +1979,13 @@ ul.menu.navbar-nav .btn {
 }
 
 .btn-primary:hover {
-  border: 1px solid #40189d !important;
+  border: 1px solid #6aacff !important;
   background: #fff !important;
-  color: #40189d !important;
+  color: #6aacff !important;
 }
 
 .pri-text {
-  color: #40189d;
+  color: #6aacff;
   cursor: pointer;
 }
 
@@ -2300,7 +2300,7 @@ label.radio-img:hover {
 }
 
 .an-text {
-  color: #40189d !important;
+  color: #6aacff !important;
 }
 
 .resgister-box .login-area {
@@ -2361,7 +2361,7 @@ a.close-icon {
 
 .pagination li a {
   font-size: 16px;
-  color: #40189d;
+  color: #6aacff;
 }
 
 .inner-page-header {
@@ -2522,9 +2522,9 @@ a.close-icon {
   width: 100%;
   display: inline-block;
   text-align: center;
-  background: #40189d;
+  background: #6aacff;
   color: #fff;
-  border: 1px solid #40189d;
+  border: 1px solid #6aacff;
   padding: 10px;
   font-weight: 500;
   font-stretch: normal;
@@ -2555,15 +2555,11 @@ a.close-icon {
 
 .navbar .navbar-nav .nav-link:hover {
   font-size: 17px;
-  color: #fff;
-}
-
-.inner-page-header .navbar .navbar-nav .nav-link {
-  color: #40189d;
+  color: #6aacff;
 }
 
 .inner-page-header .navbar .login-button.call-btn a {
-  border-color: #40189d !important;
+  border-color: #6aacff !important;
 }
 
 .navbar-light .navbar-toggler {
@@ -2573,7 +2569,7 @@ a.close-icon {
 }
 
 .inner-page-header .navbar-toggler {
-  border-color: #40189d;
+  border-color: #6aacff;
 }
 
 .fs-16 {
@@ -2588,7 +2584,7 @@ a.close-icon {
 .login-button.call-btn a {
   background: #fff !important;
   border: 1px solid #fff !important;
-  color: #40189d !important;
+  color: #6aacff !important;
 }
 
 /* .headers {
@@ -2732,14 +2728,14 @@ html {
 }
 
 .iner-pb a {
-  border: 1px solid #40189d !important;
+  border: 1px solid #6aacff !important;
   background: #fff !important;
-  color: #40189d !important;
+  color: #6aacff !important;
 }
 
 .iner-pb a:hover {
-  background: #40189d !important;
-  border: 1px solid #40189d !important;
+  background: #6aacff !important;
+  border: 1px solid #6aacff !important;
   color: #fff !important;
 }
 
@@ -2937,7 +2933,7 @@ html {
   font-style: normal;
   font-size: 16px;
   letter-spacing: 0.01rem;
-  color: #40189d;
+  color: #6aacff;
   background: transparent;
 }
 
@@ -3070,7 +3066,7 @@ header.white-header {
   .button-wrap
   .src-btn:hover {
   background: transparent;
-  color: #40189d;
+  color: #6aacff;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
@@ -3207,7 +3203,7 @@ header.white-header {
 
 .page-details-main-section .comment-body .src-btn:hover {
   background: transparent;
-  color: #40189d;
+  color: #6aacff;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
@@ -3229,7 +3225,7 @@ header.white-header {
 .page-details-main-section .comments-wrap .comment-list .media .icon-wrap {
   width: 46px;
   height: 46px;
-  color: #40189d;
+  color: #6aacff;
   line-height: 42px;
   background: rgba(107, 173, 35, 0.1);
   -webkit-border-radius: 50%;
@@ -3286,7 +3282,7 @@ header.white-header {
   content: '';
   width: 5px;
   height: 5px;
-  background: #40189d;
+  background: #6aacff;
   display: inline-block;
   position: absolute;
   left: 0;
@@ -3322,7 +3318,7 @@ header.white-header {
 }
 
 .faq-page .form-control:focus {
-  border-color: #40189d;
+  border-color: #6aacff;
 }
 
 .about-page-sections p {
@@ -3337,7 +3333,7 @@ header.white-header {
   content: '';
   position: absolute;
   width: 30px;
-  border: 2px solid #40189d;
+  border: 2px solid #6aacff;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -3371,7 +3367,7 @@ header.white-header {
   text-align: center;
   line-height: 62px;
   border-radius: 100%;
-  background: #40189d;
+  background: #6aacff;
   overflow: hidden;
 }
 
@@ -3444,7 +3440,7 @@ header.white-header {
   background: #fff;
   font-size: 19px;
   border-radius: 50%;
-  color: #40189d;
+  color: #6aacff;
 }
 
 .axil-team .inner .img-wrap::after {
@@ -3454,7 +3450,7 @@ header.white-header {
   position: absolute;
   top: 0;
   left: 0;
-  background: #40189d;
+  background: #6aacff;
   opacity: 0;
   transition: 0.3s;
 }
@@ -3470,7 +3466,7 @@ header.white-header {
 .axil-team .inner .content h4.title {
   font-size: 20px;
   margin: 0;
-  color: #40189d;
+  color: #6aacff;
 }
 
 .axil-team .inner .content h4.title a {
@@ -3501,7 +3497,7 @@ header.white-header {
   content: '\f00d';
   font-family: 'Font Awesome 5 Pro';
   font-weight: 300;
-  color: #40189d;
+  color: #6aacff;
   font-size: 30px;
   transition: 0.3s;
 }
@@ -3522,8 +3518,8 @@ header.white-header {
 
 .explore-products-main .explore_wrap .filter-btn-wrap .filter-btn,
 .side-navigation-activation .profile-toggle {
-  color: #40189d;
-  border: 2px solid #40189d;
+  color: #6aacff;
+  border: 2px solid #6aacff;
   padding: 5px;
   background: #fff;
   font-size: 25px;
@@ -3581,7 +3577,7 @@ header.white-header {
   padding: 7px 10px;
   border-top-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  background: #40189d;
+  background: #6aacff;
   display: flex;
   align-items: center;
 }
@@ -3713,8 +3709,8 @@ div.radio.switcher label input + span small {
 
 div.checkbox.switcher label input:checked + span,
 div.radio.switcher label input:checked + span {
-  background: #40189d;
-  border-color: #40189d;
+  background: #6aacff;
+  border-color: #6aacff;
 }
 
 div.checkbox.switcher label input:checked + span small,
@@ -3780,11 +3776,11 @@ button.src-btn.auto-width {
 button.src-btn.auto-width:hover {
   font-size: 16px;
   background: #fff;
-  color: #40189d;
+  color: #6aacff;
 }
 
 .areas-of-interest-list .areas-of-interest .sidebar-wrap {
-  background: #40189d;
+  background: #6aacff;
   border-radius: 10px;
   overflow: hidden;
   width: 400px;
@@ -4272,7 +4268,7 @@ input {
 }
 
 ._2En4u {
-  background-color: #40189d !important;
+  background-color: #6aacff !important;
 }
 
 ._1XPkN {

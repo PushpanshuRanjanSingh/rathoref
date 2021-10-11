@@ -451,6 +451,7 @@ function Index(props) {
               <div className='col-md-12'>
                 <div className='card widget-stat'>
                   <Stepper
+                    className='overflow'
                     steps={[
                       { label: 'Personal Detail' },
                       { label: 'firm Details' },

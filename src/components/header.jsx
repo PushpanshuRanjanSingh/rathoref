@@ -176,7 +176,7 @@ export default class Header extends Component {
                       // className='nav-link'
                       className={
                         this.context.store.pathName === '/'
-                          ? ` nav-link text-white`
+                          ? ` nav-link `
                           : 'nav-link'
                       }
                       href='/'>

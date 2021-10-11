@@ -230,7 +230,7 @@ img {
 
 .navbar .navbar-nav .nav-link {
   position: relative;
-  color: #fff;
+  color: rgb(0, 0, 0);
   font-size: 14px;
   font-weight: 400;
   padding: 15px 0;
@@ -585,7 +585,7 @@ img {
   position: relative;
   top: 5px;
   font-size: 28px;
-  color: #40189d;
+  color: #6aacff;
 }
 .x_contact_title_icon_cont {
   float: left;
@@ -638,7 +638,7 @@ img {
   transition: all 0.5s;
 }
 .x_contact_title_icon_cont_main_box:hover {
-  background: #40189d;
+  background: #6aacff;
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   -ms-transition: all 0.5s;
@@ -750,7 +750,7 @@ textarea {
   height: 400px;
 }
 .privacy h5 {
-  color: #40189d;
+  color: #6aacff;
   font-weight: 600;
 }
 /*--vehical-details--*/
@@ -817,7 +817,7 @@ ul {
   list-style: none;
 }
 .question .contact-info li i {
-  color: #40189d;
+  color: #6aacff;
   margin-right: 10px;
 }
 .question .social-list li a {
@@ -845,7 +845,7 @@ ul {
 }
 .tabbing-box .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-  background-color: #40189d;
+  background-color: #6aacff;
   color: #fff;
 }
 .tabbing-box .nav-tabs .nav-link {
@@ -887,7 +887,7 @@ ul {
   font-weight: 500;
 }
 .car-amenities ul li i {
-  color: #40189d;
+  color: #6aacff;
 }
 .car-amenities ul li i {
   left: 0;
