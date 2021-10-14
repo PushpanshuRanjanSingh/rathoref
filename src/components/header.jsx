@@ -128,8 +128,8 @@ export default class Header extends Component {
                   <img
                     src={
                       this.context.store.pathName === '/'
-                        ? `/assets/images/logo.png`
-                        : '/assets/images/logo.png'
+                        ? `/assets/images/logo (2).png`
+                        : '/assets/images/logo (2).png'
                     }
                     className='img-fluid'
                   />
@@ -153,8 +153,8 @@ export default class Header extends Component {
                       <img
                         src={
                           this.context.store.pathName === '/'
-                            ? `/assets/images/logo.png`
-                            : '/assets/images/logo.png'
+                            ? `/assets/images/logo (2).png`
+                            : '/assets/images/logo (2).png'
                         }
                         className='img-fluid'
                       />
@@ -372,7 +372,7 @@ export default class Header extends Component {
                     </div>
                     <div className='_1oWAK'>
                       <img
-                        src='/assets/images/logo.png'
+                        src='/assets/images/logo (2).png'
                         className='img-fluid'
                       />
                     </div>
